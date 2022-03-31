@@ -42,16 +42,6 @@
       <div class="col">
         <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" method="post">
           <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.selectedUser._id">
-          <div class="input-group mb-3">
-            <input name="name" type="text" class="form-control" placeholder="Nom complet"
-              [(ngModel)]="userService.selectedUser.name" #name="ngModel" required minlength="4">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-user"></span>
-              </div>
-            </div>
-          </div>
-
           <!--  -->
           <div *ngIf="name.invalid && (name.dirty || name.touched)" class="" height="25px">
             <div *ngIf="name.errors?.['required']">
@@ -64,6 +54,24 @@
           <!-- /. -->
 
           <div class="input-group mb-3">
+            <input name="name" type="text" class="form-control" placeholder="Nom complet"
+              [(ngModel)]="userService.selectedUser.name" #name="ngModel" required minlength="4">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
+            <div *ngIf="email.errors?.['required']">
+              <h6><small>Veuillez saisir votre adresse e-mail.</small></h6>
+            </div>
+          </div>
+          <!-- /. -->
+          
+          <div class="input-group mb-3">
             <input name="email" type="email" class="form-control" placeholder="Adresse E-mail"
               [(ngModel)]="userService.selectedUser.email" #email="ngModel" required>
             <div class="input-group-append">
@@ -74,9 +82,9 @@
           </div>
 
           <!--  -->
-          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
-            <div *ngIf="email.errors?.['required']">
-              <h6>Veuillez saisir votre adresse e-mail.</h6>
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="">
+            <div *ngIf="phone.errors?.['required']">
+              <h6><small>Veuillez saisir votre numero telephone.</small></h6>
             </div>
           </div>
           <!-- /. -->
@@ -92,9 +100,9 @@
           </div>
 
           <!--  -->
-          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="">
-            <div *ngIf="phone.errors?.['required']">
-              <h6>Veuillez saisir votre numero telephone.</h6>
+          <div *ngIf="id_profile.invalid && (id_profile.dirty || id_profile.touched)" class="">
+            <div *ngIf="id_profile.errors?.['required']">
+              <h6><small>Veuillez choisir votre profil.</small></h6>
             </div>
           </div>
           <!-- /. -->
@@ -117,9 +125,9 @@
           </div>
 
           <!--  -->
-          <div *ngIf="id_profile.invalid && (id_profile.dirty || id_profile.touched)" class="">
-            <div *ngIf="id_profile.errors?.['required']">
-              <h6>Veuillez choisir votre profil.</h6>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="">
+            <div *ngIf="password.errors?.['required']">
+              <h6><small>Veuillez créer un mot de passe.</small></h6>
             </div>
           </div>
           <!-- /. -->
@@ -134,13 +142,6 @@
             </div>
           </div>
 
-          <!--  -->
-          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="">
-            <div *ngIf="password.errors?.['required']">
-              <h6>Veuillez créer un mot de passe.</h6>
-            </div>
-          </div>
-          <!-- /. -->
 
           <div class="row">
             <!-- /.col -->

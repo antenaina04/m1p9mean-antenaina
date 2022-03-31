@@ -11,6 +11,8 @@ var _require = require('./dbConnect.js'),
 
 var userController = require('./controllers/userController.js');
 
+var restaurantController = require('./controllers/restaurantController.js');
+
 var app = express();
 app.use(bodyParser.json());
 app.use(cors({
@@ -20,7 +22,9 @@ app.listen(3000, function () {
   return console.log('listening on port : 3000');
 }); // Router for userController into the application
 
-app.use('/users', userController);
+app.use('/users', userController); // Router for restaurantController into the application
+
+app.use('/restaurants', restaurantController);
 app.get('/', function (req, res) {
   res.send('Hello World');
 });
