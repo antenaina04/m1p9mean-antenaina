@@ -1,0 +1,170 @@
+<!-- <div class="register-box"> -->
+<div class="card card-outline card-light">
+  <div class="card-header text-center">
+    <!-- <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a> -->
+    <img src="../../assets/img/logo-ekaly.png" width="200px" height="100px">
+  </div>
+  <div class="card-body">
+    <p class="login-box-msg">Bienvenue chez e-KALY</p>
+
+
+
+    <div class="row">
+
+      <div class="col">
+        <form method="post">
+          <div class="input-group mb-3">
+            <input name="email" type="email" class="form-control" placeholder="Adresse E-mail" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input name="password" type="password" class="form-control" placeholder="Mot de passe" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <!-- /.col -->
+            <div class="col-xl">
+              <button type="button" class="btn btn-block btn-outline-success btn-sm">Se connecter</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+      </div>
+
+      <div class="col">
+        <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" method="post">
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.selectedUser._id">
+          <div class="input-group mb-3">
+            <input name="name" type="text" class="form-control" placeholder="Nom complet"
+              [(ngModel)]="userService.selectedUser.name" #name="ngModel" required minlength="4">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="" height="25px">
+            <div *ngIf="name.errors?.['required']">
+              <h6><small>Veuillez saisir votre nom.</small></h6>
+            </div>
+            <div *ngIf="name.errors?.['minlength']">
+              Votre nom doit contenir au moins 3 caractères.
+            </div>
+          </div>
+          <!-- /. -->
+
+          <div class="input-group mb-3">
+            <input name="email" type="email" class="form-control" placeholder="Adresse E-mail"
+              [(ngModel)]="userService.selectedUser.email" #email="ngModel" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
+            <div *ngIf="email.errors?.['required']">
+              <h6>Veuillez saisir votre adresse e-mail.</h6>
+            </div>
+          </div>
+          <!-- /. -->
+
+          <div class="input-group mb-3">
+            <input name="phone" type="phone" class="form-control" placeholder="Numero de telephone"
+              [(ngModel)]="userService.selectedUser.phone" #phone="ngModel" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-mobile"></span>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="">
+            <div *ngIf="phone.errors?.['required']">
+              <h6>Veuillez saisir votre numero telephone.</h6>
+            </div>
+          </div>
+          <!-- /. -->
+
+          <div class="input-group mb-3">
+            <select name="id_profile" class="form-control select2 select2-danger"
+              data-dropdown-css-class="select2-danger" [(ngModel)]="userService.selectedUser.id_profile"
+              #id_profile="ngModel" required>
+              <option selected="selected" value="">--</option>
+              <option value="Client">Client</option>
+              <option value="Restaurant">Restaurant</option>
+              <option value="Livreur">Livreur</option>
+              <option value="Responsable e-KALY">Responsable e-KALY</option>
+            </select>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-briefcase"></span>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+          <div *ngIf="id_profile.invalid && (id_profile.dirty || id_profile.touched)" class="">
+            <div *ngIf="id_profile.errors?.['required']">
+              <h6>Veuillez choisir votre profil.</h6>
+            </div>
+          </div>
+          <!-- /. -->
+
+          <div class="input-group mb-3">
+            <input name="password" type="password" class="form-control" placeholder="Mot de passe"
+              [(ngModel)]="userService.selectedUser.password" #password="ngModel" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="">
+            <div *ngIf="password.errors?.['required']">
+              <h6>Veuillez créer un mot de passe.</h6>
+            </div>
+          </div>
+          <!-- /. -->
+
+          <div class="row">
+            <!-- /.col -->
+            <div class="col-6">
+              <button type="button" class="btn btn-block btn-outline-light btn-sm"
+                (click)="resetForm(userForm)">Annuler</button>
+            </div>
+            <div class="col-6">
+              <button type="submit" class="btn btn-block btn-outline-success btn-sm">S'inscrire</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="card-footer">
+      <div class="social-auth-links text-center">
+        <p>- E-Kaly est une société de livraison qui permet de commander des plats dans divers restaurants et de
+          se faire livrer à l’endroit qu’on veut. -</p>
+      </div>
+    </div>
+  </div>
+  <!-- /.form-box -->
+</div><!-- /.card -->
+<!-- </div> -->

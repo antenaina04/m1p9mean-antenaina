@@ -5,8 +5,8 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var { User } = require('../models/user');
 
-// => localhost:3000/users/list
-router.get('/list', (req, res) => {
+// => localhost:3000/users/
+router.get('/', (req, res) => {
     User.find((err, docs) => {
         if (!err) { res.send(docs); }
         else { console.log('Error in Retriving Users :' + JSON.stringify(err, undefined, 2)); }
@@ -25,16 +25,16 @@ router.get('/:id', (req, res) => {
 
 });
 
-// => localhost:3000/users/create
-router.post('/create', (req, res) => {
+// => localhost:3000/users/
+router.post('/', (req, res) => {
     var user = new User({
-        created_at: "$$NOW",
+        created_at: null,
         updated_at: null,
-        username: req.body.username,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        address: req.body.address,
+        name: req.body.name,
+        email: req.body.email,
         phone: req.body.phone,
+        password: req.body.password,
+        id_profile: req.body.id_profile,
     });
 
     user.save((err, docs) => {
@@ -43,19 +43,19 @@ router.post('/create', (req, res) => {
     });
 });
 
-// => localhost:3000/users/update/_id
+// => localhost:3000/users/_id
 router.put('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.params.id}`);
 
     var user = {
-        created_at: "$$NOW",
+        created_at: null,
         updated_at: null,
-        username: req.body.username,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        address: req.body.address,
+        name: req.body.name,
+        email: req.body.email,
         phone: req.body.phone,
+        password: req.body.password,
+        id_profile: req.body.id_profile,
     };
 
     User.findByIdAndUpdate(req.params.id, { $set: user }, { new: true }, (err, doc) => {
@@ -64,7 +64,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// => localhost:3000/users/delete/_id
+// => localhost:3000/users/_id
 router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.params.id}`);
