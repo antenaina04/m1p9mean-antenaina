@@ -13,6 +13,8 @@ var userController = require('./controllers/userController.js');
 
 var restaurantController = require('./controllers/restaurantController.js');
 
+var dishesController = require('./controllers/dishesController.js');
+
 var app = express();
 app.use(bodyParser.json());
 app.use(cors({
@@ -24,7 +26,9 @@ app.listen(3000, function () {
 
 app.use('/users', userController); // Router for restaurantController into the application
 
-app.use('/restaurants', restaurantController);
+app.use('/restaurants', restaurantController); // Router for dishesController into the application
+
+app.use('/dishes', dishesController);
 app.get('/', function (req, res) {
   res.send('Hello World');
 });

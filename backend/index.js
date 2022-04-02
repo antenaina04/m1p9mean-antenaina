@@ -5,6 +5,9 @@ var cors = require('cors');
 const { mongoose } = require('./dbConnect.js');
 var userController = require('./controllers/userController.js');
 var restaurantController = require('./controllers/restaurantController.js');
+var dishesController = require('./controllers/dishesController.js');
+
+
 
 
 var app = express();
@@ -18,6 +21,9 @@ app.use('/users', userController);
 
 // Router for restaurantController into the application
 app.use('/restaurants', restaurantController);
+
+// Router for dishesController into the application
+app.use('/dishes', dishesController);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
