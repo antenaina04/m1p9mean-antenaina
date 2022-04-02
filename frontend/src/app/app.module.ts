@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { UserComponent } from './user/user.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
+import { DishesComponent } from './dishes/dishes.component';
 
 
 
@@ -14,7 +15,8 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
   declarations: [
     AppComponent,
     UserComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    DishesComponent
   ],
   imports: [
     BrowserModule,

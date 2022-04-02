@@ -1,0 +1,68 @@
+<div class="card card-widget widget-user shadow">
+  <div class="widget-user-header bg-success">
+    <h4 class="text-center display-6">Extra Pizza</h4>
+  </div>
+  <div class="widget-user-image text-center">
+    <img class="img-fluid mb-3" src="../../assets/img/user1-128x128.jpg">
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-sm-4 border-right">
+        <div class="description-block">
+          <h5 class="description-header"><i class="fas fa-map-marker-alt mr-1"></i>Ankorondrano</h5>
+          <span class="description-text">Adresse</span>
+        </div>
+      </div>
+      <div class="col-sm-4 border-right">
+        <div class="description-block">
+          <h5 class="description-header"><i class="far fa-clock mr-1"></i>10h - 17h</h5>
+          <span class="description-text">Ouverture</span>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="description-block">
+          <h5 class="description-header"><i class="fas fa-phone mr-1"></i>034 25 538 54</h5>
+          <span class="description-text">Numero telephone</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="callout callout-success">
+  <h4 class="display-4">Commandez vos plats depuis Gastro Pizza</h4>
+</div>
+
+<div class="card card-solid">
+  <div class="card-body pb-0">
+    <div class="row">
+      <div class="col-lg-3 col-6" *ngFor="let dishes of dishesService.dishes">
+        <div class="card card-success card-outline bg-light">
+          <div class="card-body box-profile">
+            <div class="text-center">
+              <h4 class="text-center display-6">{{dishes.dishes_name}}</h4>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <img class="img-fluid img-bordered" src="../../assets/img/user4-128x128.jpg" alt="User profile picture">
+                <p></p>
+                <span class="float-left badge bg-success">{{dishes.dishes_price}} Ariary</span>
+              </div>
+              <div class="col-6">
+                <blockquote class="quote-success bg-light">
+                  <p>{{dishes.dishes_desc}}</p>
+                </blockquote>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="float-right">
+                <button type="button" class="btn btn-block btn-outline-success btn-flat"><i
+                    class="far fa-plus-square mr-1"></i>
+                  Ajouter</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
