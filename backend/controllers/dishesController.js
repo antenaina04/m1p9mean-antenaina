@@ -18,7 +18,19 @@ router.get('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.params.id}`);
 
-        Dishes.findById(req.params.id, (err, doc) => {
+    Dishes.findById(req.params.id, (err, doc) => {
+        if (!err) { res.send(doc); }
+        else { console.log('Error in Retriving Dishes :' + JSON.stringify(err, undefined, 2)); }
+    });
+
+});
+
+// => localhost:3000/dishes/restaurant/id_restaurant [getDishesByIdRestaurant]
+router.get('/restaurant/:id_restaurant', (req, res) => {
+    if (!ObjectId.isValid(req.params.id_restaurant))
+        return res.status(400).send(`No record with given id : ${req.params.id_restaurant}`);
+        
+    Dishes.find({ id_restaurant: req.params.id_restaurant }, (err, doc) => {
         if (!err) { res.send(doc); }
         else { console.log('Error in Retriving Dishes :' + JSON.stringify(err, undefined, 2)); }
     });
@@ -47,16 +59,16 @@ router.put('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.params.id}`);
 
-        var dishes = new Dishes({
-            created_at: null,
-            updated_at: null,
-            dishes_name: req.body.dishes_name,
-            dishes_desc: req.body.dishes_desc,
-            dishes_price: req.body.dishes_price,
-            id_restaurant: req.body.id_restaurant,
-        });
+    var dishes = new Dishes({
+        created_at: null,
+        updated_at: null,
+        dishes_name: req.body.dishes_name,
+        dishes_desc: req.body.dishes_desc,
+        dishes_price: req.body.dishes_price,
+        id_restaurant: req.body.id_restaurant,
+    });
 
-        Dishes.findByIdAndUpdate(req.params.id, { $set: dishes }, { new: true }, (err, doc) => {
+    Dishes.findByIdAndUpdate(req.params.id, { $set: dishes }, { new: true }, (err, doc) => {
         if (!err) { res.send(doc); }
         else { console.log('Error in Dishes Update :' + JSON.stringify(err, undefined, 2)); }
     });
@@ -67,7 +79,7 @@ router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.params.id}`);
 
-        Dishes.findByIdAndRemove(req.params.id, (err, doc) => {
+    Dishes.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) { res.send(doc); }
         else { console.log('Error in Dishes Delete :' + JSON.stringify(err, undefined, 2)); }
     });

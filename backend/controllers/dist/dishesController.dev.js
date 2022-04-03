@@ -29,6 +29,19 @@ router.get('/:id', function (req, res) {
       console.log('Error in Retriving Dishes :' + JSON.stringify(err, undefined, 2));
     }
   });
+}); // => localhost:3000/dishes/restaurant/id_restaurant [getDishesByIdRestaurant]
+
+router.get('/restaurant/:id_restaurant', function (req, res) {
+  if (!ObjectId.isValid(req.params.id_restaurant)) return res.status(400).send("No record with given id : ".concat(req.params.id_restaurant));
+  Dishes.find({
+    id_restaurant: req.params.id_restaurant
+  }, function (err, doc) {
+    if (!err) {
+      res.send(doc);
+    } else {
+      console.log('Error in Retriving Dishes :' + JSON.stringify(err, undefined, 2));
+    }
+  });
 }); // => localhost:3000/dishes/
 
 router.post('/', function (req, res) {
