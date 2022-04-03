@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { UserComponent } from './user/user.component';
-import { RestaurantComponent } from './restaurant/restaurant.component';
-import { DishesComponent } from './dishes/dishes.component';
+// import { RestaurantComponent } from './restaurant/restaurant.component';
+// import { DishesComponent } from './dishes/dishes.component';
 
 
 
@@ -15,8 +15,9 @@ import { DishesComponent } from './dishes/dishes.component';
   declarations: [
     AppComponent,
     UserComponent,
-    RestaurantComponent,
-    DishesComponent
+    // RestaurantComponent,
+    // DishesComponent
+    routingComponents
   ],
   imports: [
     BrowserModule,

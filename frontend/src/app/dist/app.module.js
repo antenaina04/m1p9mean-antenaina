@@ -14,6 +14,8 @@ var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var forms_1 = require("@angular/forms");
 var user_component_1 = require("./user/user.component");
+// import { RestaurantComponent } from './restaurant/restaurant.component';
+// import { DishesComponent } from './dishes/dishes.component';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -21,7 +23,10 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                user_component_1.UserComponent
+                user_component_1.UserComponent,
+                // RestaurantComponent,
+                // DishesComponent
+                app_routing_module_1.routingComponents
             ],
             imports: [
                 platform_browser_1.BrowserModule,
