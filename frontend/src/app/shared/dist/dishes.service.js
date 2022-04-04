@@ -9,18 +9,23 @@ exports.__esModule = true;
 exports.DishesService = void 0;
 var core_1 = require("@angular/core");
 var dishes_model_1 = require("./dishes.model");
+var restaurant_model_1 = require("./restaurant.model");
 var DishesService = /** @class */ (function () {
     function DishesService(http) {
         this.http = http;
-        this.selectedDishes = new dishes_model_1.Dishes;
+        this.selectedDishes = new dishes_model_1.Dishes();
+        this.selectedRestaurant = new restaurant_model_1.Restaurant();
         this.dishes = [];
-        this.baseURL = "http://localhost:3000/dishes";
+        this.baseURL = 'http://localhost:3000/dishes';
     }
     DishesService.prototype.postUser = function (dishes) {
         return this.http.post(this.baseURL, dishes);
     };
     DishesService.prototype.getDishesList = function () {
         return this.http.get(this.baseURL);
+    };
+    DishesService.prototype.getDishesByRestaurant = function (id_restaurant) {
+        return this.http.get(this.baseURL + "/restaurant/" + id_restaurant);
     };
     DishesService = __decorate([
         core_1.Injectable({

@@ -14,7 +14,8 @@ var dishes_component_1 = require("./dishes/dishes.component");
 var routes = [
     { path: '', component: restaurant_component_1.RestaurantComponent },
     { path: 'restaurant', component: restaurant_component_1.RestaurantComponent },
-    { path: 'dishes', component: dishes_component_1.DishesComponent }
+    { path: 'dishes', component: dishes_component_1.DishesComponent },
+    { path: 'dishes/restaurant/:id_restaurant', component: dishes_component_1.DishesComponent }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

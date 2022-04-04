@@ -12,18 +12,32 @@ var dishes_service_1 = require("../shared/dishes.service");
 var dishes_name;
 var dishes_desc;
 var dishes_price;
-var restaurant_id;
+// let restaurant_id: string;
 var DishesComponent = /** @class */ (function () {
-    function DishesComponent(dishesService) {
+    function DishesComponent(_Activatedroute, _router, dishesService) {
+        this._Activatedroute = _Activatedroute;
+        this._router = _router;
         this.dishesService = dishesService;
     }
     DishesComponent.prototype.ngOnInit = function () {
-        this.refreshDishesList();
+        this.getAllDishesByRestaurant();
     };
     DishesComponent.prototype.refreshDishesList = function () {
         var _this = this;
         this.dishesService.getDishesList().subscribe(function (res) {
             _this.dishesService.dishes = res;
+        });
+    };
+    DishesComponent.prototype.getAllDishesByRestaurant = function () {
+        var _this = this;
+        this.sub = this._Activatedroute.paramMap.subscribe(function (params) {
+            console.log('Paramsa = ' + JSON.stringify(params));
+            console.log('ILAY ID TADIAVINA TSY METY MIVOAKA = ' + (params === null || params === void 0 ? void 0 : params.get('id_restaurant')));
+            _this.dishesService
+                .getDishesByRestaurant(params === null || params === void 0 ? void 0 : params.get('id_restaurant'))
+                .subscribe(function (res) {
+                _this.dishesService.dishes = res;
+            });
         });
     };
     DishesComponent = __decorate([
