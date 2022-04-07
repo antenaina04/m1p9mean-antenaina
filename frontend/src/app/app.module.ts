@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login/login.component';
 // import { RestaurantComponent } from './restaurant/restaurant.component';
 // import { DishesComponent } from './dishes/dishes.component';
 
@@ -17,7 +18,8 @@ import { UserComponent } from './user/user.component';
     UserComponent,
     // RestaurantComponent,
     // DishesComponent
-    routingComponents
+    routingComponents,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

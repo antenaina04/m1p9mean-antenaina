@@ -14,12 +14,17 @@ var user_model_1 = require("./user.model");
 var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
-        this.selectedUser = new user_model_1.User;
+        this.selectedUser = new user_model_1.User();
         this.users = [];
-        this.baseURL = "http://localhost:3000/users";
+        this.baseURL = 'http://localhost:3000/users';
     }
     UserService.prototype.postUser = function (user) {
         return this.http.post(this.baseURL, user);
+    };
+    UserService.prototype.GetUserByEmailAndPassword = function (email, password) {
+        // console.log('email ------' + email);
+        // console.log('password ------' + password);
+        return this.http.get(this.baseURL + "/check_user/" + email + "/user/" + password);
     };
     UserService = __decorate([
         core_1.Injectable({

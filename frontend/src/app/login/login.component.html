@@ -1,0 +1,35 @@
+<div class="card card-outline card-light ">
+    <div class="card-header text-center">
+      <img src="../../assets/img/logo-ekaly.png" width="200px" height="100px">
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Bienvenue chez e-KALY</p>
+
+      <div class="row">
+        <div class="col">
+            <form #userTest="ngForm" (ngSubmit)="GetUserByEmailAndPassword(userTest)" method="get">
+              <div class="input-group mb-3">
+                <input name="email" type="email" class="form-control" placeholder="Adresse E-mail" [(ngModel)]="userService.selectedUser.email" #email="ngModel" required>
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <input name="password" type="password" class="form-control" placeholder="Mot de passe" [(ngModel)]="userService.selectedUser.password" #password="ngModel" required>
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl">
+                  <button type="submit" class="btn btn-block btn-outline-success btn-sm">Se connecter</button>
+                </div>
+              </div>
+            </form>
+          </div>
+    </div>
+</div>

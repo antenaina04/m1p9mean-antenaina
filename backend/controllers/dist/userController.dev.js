@@ -83,14 +83,14 @@ router["delete"]('/:id', function (req, res) {
       console.log('Error in User Delete :' + JSON.stringify(err, undefined, 2));
     }
   });
-});
-router.get('/check_user/:email/:password', function (req, res) {
-  if (!ObjectId.isValid(req.params.email) && !ObjectId.isValid(req.params.password)) return res.status(400).send("No record with given Email : ".concat(req.params.email, " and Password : ").concat(req.params.password));
+}); // GetUserByEmailAndPassword
+
+router.get('/check_user/:email/user/:password', function (req, res) {
   var query = {
-    email: req.params.email,
-    password: req.params.password
+    "email": req.params.email,
+    "password": req.params.password
   };
-  Dishes.find(query, function (err, doc) {
+  User.find(query, function (err, doc) {
     if (!err) {
       res.send(doc);
     } else {
