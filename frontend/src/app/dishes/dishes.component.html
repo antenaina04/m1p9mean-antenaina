@@ -1,6 +1,6 @@
 <div class="card card-widget widget-user shadow">
   <div class="widget-user-header bg-success">
-    <h4 class="text-center display-6">Extra Pizza</h4>
+    <h4 class="text-center display-6">{{restaurantService.selectedRestaurant.restaurant_name}}</h4>
   </div>
   <div class="widget-user-image text-center">
     <img class="img-fluid mb-3" src="../../assets/img/user1-128x128.jpg">
@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-sm-4 border-right">
         <div class="description-block">
-          <h5 class="description-header"><i class="fas fa-map-marker-alt mr-1"></i>Ankorondrano</h5>
+          <h5 class="description-header"><i class="fas fa-map-marker-alt mr-1"></i>{{restaurantService.selectedRestaurant.restaurant_location}}</h5>
           <span class="description-text">Adresse</span>
         </div>
       </div>
@@ -21,7 +21,7 @@
       </div>
       <div class="col-sm-4">
         <div class="description-block">
-          <h5 class="description-header"><i class="fas fa-phone mr-1"></i>034 25 538 54</h5>
+          <h5 class="description-header"><i class="fas fa-phone mr-1"></i>{{restaurantService.selectedRestaurant.restaurant_phone}}</h5>
           <span class="description-text">Numero telephone</span>
         </div>
       </div>
@@ -31,7 +31,7 @@
 
 
 <div class="callout callout-success">
-  <h4 class="display-4">Commandez vos plats depuis Gastro Pizza</h4>
+  <h4 class="display-4">Commandez vos plats depuis {{restaurantService.selectedRestaurant.restaurant_name}}</h4>
 </div>
 
 <div class="card card-solid">

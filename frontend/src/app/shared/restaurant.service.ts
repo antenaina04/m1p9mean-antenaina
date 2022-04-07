@@ -21,4 +21,8 @@ export class RestaurantService {
   getRestaurantList(){
     return this.http.get(this.baseURL);
   }
+
+  getRestaurantByIdRestaurant(id_restaurant: string | null): Observable<Restaurant> {
+    return this.http.get<Restaurant>(this.baseURL+ `/`+ id_restaurant);
+  }
 }

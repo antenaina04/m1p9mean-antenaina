@@ -4,11 +4,8 @@ import { NgForm } from '@angular/forms';
 import { from } from 'rxjs';
 import { DishesService } from '../shared/dishes.service';
 import { Dishes } from '../shared/dishes.model';
-
-let dishes_name: string;
-let dishes_desc: string;
-let dishes_price: number;
-// let restaurant_id: string;
+import { RestaurantService } from '../shared/restaurant.service';
+import { Restaurant } from '../shared/restaurant.model';
 
 @Component({
   selector: 'app-dishes',
@@ -19,14 +16,15 @@ let dishes_price: number;
 export class DishesComponent implements OnInit {
   constructor(
     private _Activatedroute: ActivatedRoute,
-    private _router: Router,
-    public dishesService: DishesService
+    public dishesService: DishesService,
+    public restaurantService: RestaurantService
   ) {}
 
-  restaurant_id: any;
   sub: any;
+
   ngOnInit(): void {
     this.getAllDishesByRestaurant();
+    this.getRestaurantByIdRestaurant();
   }
 
   refreshDishesList() {
@@ -37,15 +35,25 @@ export class DishesComponent implements OnInit {
 
   getAllDishesByRestaurant() {
     this.sub = this._Activatedroute.paramMap.subscribe((params) => {
-      console.log('Paramsa = ' + JSON.stringify(params));
-      console.log(
-        'ILAY ID TADIAVINA TSY METY MIVOAKA = ' + params?.get('id_restaurant')
-      );
+      // console.log('Paramsa = ' + JSON.stringify(params));
+      // console.log(
+      //   'ILAY ID TADIAVINA TSY METY MIVOAKA = ' + params?.get('id_restaurant')
+      // );
 
       this.dishesService
         .getDishesByRestaurant(params?.get('id_restaurant'))
         .subscribe((res) => {
           this.dishesService.dishes = res as Dishes[];
+        });
+    });
+  }
+
+  getRestaurantByIdRestaurant() {
+    this.sub = this._Activatedroute.paramMap.subscribe((params) => {
+      this.restaurantService
+        .getRestaurantByIdRestaurant(params?.get('id_restaurant'))
+        .subscribe((res) => {
+          this.restaurantService.selectedRestaurant = res as Restaurant;
         });
     });
   }

@@ -76,4 +76,17 @@ router.delete('/:id', (req, res) => {
 });
 
 
+router.get('/check_user/:email/:password', (req, res) => {
+    if (!ObjectId.isValid(req.params.email) && !ObjectId.isValid(req.params.password))
+        return res.status(400).send(`No record with given Email : ${req.params.email} and Password : ${req.params.password}`);
+    var query = { email: req.params.email , password: req.params.password };
+    Dishes.find(query, (err, doc) => {
+        if (!err) { res.send(doc); }
+        else { console.log('Error in Retriving User :' + JSON.stringify(err, undefined, 2)); }
+    });
+
+});
+
+
+
 module.exports = router;

@@ -26,14 +26,14 @@ var AppModule = /** @class */ (function () {
                 user_component_1.UserComponent,
                 // RestaurantComponent,
                 // DishesComponent
-                app_routing_module_1.routingComponents
+                app_routing_module_1.routingComponents,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpClientModule,
                 app_routing_module_1.AppRoutingModule,
                 forms_1.FormsModule,
-                forms_1.ReactiveFormsModule
+                forms_1.ReactiveFormsModule,
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
