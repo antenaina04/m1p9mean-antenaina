@@ -1,7 +1,9 @@
+// import escapeStringRegexp from 'escape-string-regexp';
 var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
+// const escapeRegex = require('escape-string-regexp');
 
 var { Restaurant } = require('../models/restaurant');
 
@@ -18,11 +20,23 @@ router.get('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.params.id}`);
 
-        Restaurant.findById(req.params.id, (err, doc) => {
+    Restaurant.findById(req.params.id, (err, doc) => {
         if (!err) { res.send(doc); }
         else { console.log('Error in Retriving Restaurants :' + JSON.stringify(err, undefined, 2)); }
     });
 
+});
+
+
+// GetRestaurantByRestaurantName : FindLike
+router.get('/GetRestaurantByRestaurantName/:restaurant_name', (req, res) => {
+    var toFind = req.params.restaurant_name;
+    var tofind_regex = new RegExp(toFind);
+    var query = { restaurant_name: { $regex: tofind_regex, $options: 'i'  } };
+    Restaurant.find(query, (err, doc) => {
+        if (!err) { res.send(doc); }
+        else { console.log('Error in Retriving Restaurant :' + JSON.stringify(err, undefined, 2)); }
+    });
 });
 
 // => localhost:3000/restaurants/
@@ -67,7 +81,7 @@ router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.params.id}`);
 
-        Restaurant.findByIdAndRemove(req.params.id, (err, doc) => {
+    Restaurant.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) { res.send(doc); }
         else { console.log('Error in Restaurant Delete :' + JSON.stringify(err, undefined, 2)); }
     });

@@ -1,10 +1,12 @@
 "use strict";
 
+// import escapeStringRegexp from 'escape-string-regexp';
 var express = require('express');
 
 var router = express.Router();
 
-var ObjectId = require('mongoose').Types.ObjectId;
+var ObjectId = require('mongoose').Types.ObjectId; // const escapeRegex = require('escape-string-regexp');
+
 
 var _require = require('../models/restaurant'),
     Restaurant = _require.Restaurant; // => localhost:3000/restaurants/
@@ -27,6 +29,24 @@ router.get('/:id', function (req, res) {
       res.send(doc);
     } else {
       console.log('Error in Retriving Restaurants :' + JSON.stringify(err, undefined, 2));
+    }
+  });
+}); // GetRestaurantByRestaurantName : FindLike
+
+router.get('/GetRestaurantByRestaurantName/:restaurant_name', function (req, res) {
+  var toFind = req.params.restaurant_name;
+  var tofind_regex = new RegExp(toFind);
+  var query = {
+    restaurant_name: {
+      $regex: tofind_regex,
+      $options: 'i'
+    }
+  };
+  Restaurant.find(query, function (err, doc) {
+    if (!err) {
+      res.send(doc);
+    } else {
+      console.log('Error in Retriving Restaurant :' + JSON.stringify(err, undefined, 2));
     }
   });
 }); // => localhost:3000/restaurants/
