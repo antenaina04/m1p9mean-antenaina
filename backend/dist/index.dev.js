@@ -15,6 +15,8 @@ var restaurantController = require('./controllers/restaurantController.js');
 
 var dishesController = require('./controllers/dishesController.js');
 
+var orderController = require('./controllers/orderController.js');
+
 var app = express();
 app.use(bodyParser.json());
 app.use(cors({
@@ -28,7 +30,9 @@ app.use('/users', userController); // Router for restaurantController into the a
 
 app.use('/restaurants', restaurantController); // Router for dishesController into the application
 
-app.use('/dishes', dishesController);
+app.use('/dishes', dishesController); // Router for orderController into the application
+
+app.use('/order', orderController);
 app.get('/', function (req, res) {
   res.send('Hello World');
 });

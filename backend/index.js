@@ -6,6 +6,7 @@ const { mongoose } = require('./dbConnect.js');
 var userController = require('./controllers/userController.js');
 var restaurantController = require('./controllers/restaurantController.js');
 var dishesController = require('./controllers/dishesController.js');
+var orderController = require('./controllers/orderController.js');
 
 
 
@@ -24,6 +25,9 @@ app.use('/restaurants', restaurantController);
 
 // Router for dishesController into the application
 app.use('/dishes', dishesController);
+
+// Router for orderController into the application
+app.use('/order', orderController);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
