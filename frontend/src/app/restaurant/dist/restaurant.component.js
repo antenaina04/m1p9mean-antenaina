@@ -26,6 +26,23 @@ var RestaurantComponent = /** @class */ (function () {
             _this.restaurantService.restaurants = res;
         });
     };
+    RestaurantComponent.prototype.search = function (form) {
+        var _this = this;
+        console.log(form === null || form === void 0 ? void 0 : form.value.restaurant_name);
+        if ((form === null || form === void 0 ? void 0 : form.value.restaurant_name) == '' ||
+            (form === null || form === void 0 ? void 0 : form.value.restaurant_name) == undefined) {
+            // console.log("REFRESY");
+            this.refreshRestaurantList();
+        }
+        else {
+            this.restaurantService
+                .GetRestaurantByRestaurantName(String(this.restaurantService.selectedRestaurant.restaurant_name))
+                .subscribe(function (res) {
+                _this.restaurantService.restaurants = res;
+                // console.log("okaaayyy eee==="+JSON.stringify(this.restaurantService.selectedRestaurant));
+            });
+        }
+    };
     RestaurantComponent = __decorate([
         core_1.Component({
             selector: 'app-restaurant',

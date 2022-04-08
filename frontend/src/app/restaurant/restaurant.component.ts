@@ -32,4 +32,24 @@ export class RestaurantComponent implements OnInit {
     });
   }
 
+  search(form?: NgForm) {
+    console.log(form?.value.restaurant_name);
+    if (
+      form?.value.restaurant_name == '' ||
+      form?.value.restaurant_name == undefined
+    ) {
+      // console.log("REFRESY");
+      this.refreshRestaurantList();
+    } else {
+      this.restaurantService
+        .GetRestaurantByRestaurantName(
+          String(this.restaurantService.selectedRestaurant.restaurant_name)
+        )
+        .subscribe((res) => {
+          this.restaurantService.restaurants = res as Restaurant[];
+          // console.log("okaaayyy eee==="+JSON.stringify(this.restaurantService.selectedRestaurant));
+        });
+    }
+  }
+
 }
