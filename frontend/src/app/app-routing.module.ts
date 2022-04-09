@@ -5,6 +5,7 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
 import { DishesComponent } from './dishes/dishes.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
+import { OrderPageComponent } from './order-page/order-page.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'restaurant', component: RestaurantComponent },
   { path: 'dishes', component: DishesComponent },
   { path: 'dishes/restaurant/:id_restaurant', component: DishesComponent },
+  { path: 'order', component: OrderPageComponent },
   { path: 'user', component: DishesComponent },
   { path: 'login', component: LoginComponent },
   // { path: 'dishes/restaurant/:id_restaurant', component: DishesComponent },

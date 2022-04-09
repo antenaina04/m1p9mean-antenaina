@@ -32,7 +32,7 @@ app.use('/restaurants', restaurantController); // Router for dishesController in
 
 app.use('/dishes', dishesController); // Router for orderController into the application
 
-app.use('/order', orderController);
+app.use('/orders', orderController);
 app.get('/', function (req, res) {
   res.send('Hello World');
 });

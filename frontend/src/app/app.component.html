@@ -25,7 +25,7 @@
 
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" data-target="#navbar-search2" href="#" role="button">
           <i class="fas fa-search"></i>
         </a>
@@ -44,12 +44,12 @@
             </div>
           </form>
         </div>
-      </li>
+      </li> -->
 
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+        <a [routerLink]="['order',]" class="nav-link" data-toggle="dropdown" href="#">
           <b><i class="fa fa-shopping-basket fa-3"></i></b>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-warning navbar-badge">1</span>
         </a>
       </li>
       <li class="nav-item">
@@ -69,6 +69,7 @@
     <!-- <app-restaurant></app-restaurant> -->
     <!-- <app-dishes></app-dishes> -->
     <!-- <app-user></app-user> -->
+    <!-- <app-order-page></app-order-page> -->
   </div>
 </div>
 <router-outlet></router-outlet>

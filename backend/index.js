@@ -27,7 +27,7 @@ app.use('/restaurants', restaurantController);
 app.use('/dishes', dishesController);
 
 // Router for orderController into the application
-app.use('/order', orderController);
+app.use('/orders', orderController);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
