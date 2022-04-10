@@ -9,6 +9,8 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { OrderLineComponent } from './order-line/order-line.component';
+// import { ProfileComponent } from './profile/profile.component';
+import { InsertDishesComponent } from './insert-dishes/insert-dishes.component';
 // import { RestaurantComponent } from './restaurant/restaurant.component';
 // import { DishesComponent } from './dishes/dishes.component';
 
@@ -23,7 +25,9 @@ import { OrderLineComponent } from './order-line/order-line.component';
     routingComponents,
     LoginComponent,
     OrderPageComponent,
-    OrderLineComponent
+    OrderLineComponent,
+    // ProfileComponent,
+    InsertDishesComponent
   ],
   imports: [
     BrowserModule,

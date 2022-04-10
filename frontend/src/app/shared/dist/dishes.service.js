@@ -18,7 +18,7 @@ var DishesService = /** @class */ (function () {
         this.dishes = [];
         this.baseURL = 'http://localhost:3000/dishes';
     }
-    DishesService.prototype.postUser = function (dishes) {
+    DishesService.prototype.postDishes = function (dishes) {
         return this.http.post(this.baseURL, dishes);
     };
     DishesService.prototype.getDishesList = function () {

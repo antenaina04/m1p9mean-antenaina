@@ -18,7 +18,7 @@ export class DishesService {
 
   constructor(private http: HttpClient) {}
 
-  postUser(dishes: Dishes) {
+  postDishes(dishes: Dishes) {
     return this.http.post(this.baseURL, dishes);
   }
 

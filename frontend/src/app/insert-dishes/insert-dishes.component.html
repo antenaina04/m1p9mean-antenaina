@@ -1,0 +1,83 @@
+<div class="card card-warning">
+    <div class="card-header">
+        <h3 class="card-title">Inserer un nouveau plat</h3>
+    </div>
+    <form #dishesForm="ngForm" (ngSubmit)="onSubmit(dishesForm)" method="post">
+        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="dishesService.selectedDishes._id">
+        <div class="card-body">
+
+            <div *ngIf="id_restaurant.invalid && (id_restaurant.dirty || id_restaurant.touched)" class="">
+                <div *ngIf="id_restaurant.errors?.['required']">
+                  <h6><small>Veuillez saisir [id_restaurant].</small></h6>
+                </div>
+              </div>
+            <div class="form-group">
+                <label for="id_restaurant">Restaurant</label>
+                <input name="id_restaurant" type="text" class="form-control" [(ngModel)]="dishesService.selectedDishes.id_restaurant" #id_restaurant="ngModel" placeholder="[id_restaurant]" required>
+            </div>
+
+            <div *ngIf="dishes_name.invalid && (dishes_name.dirty || dishes_name.touched)" class="">
+                <div *ngIf="dishes_name.errors?.['required']">
+                  <h6><small>Veuillez saisir [dishes_name].</small></h6>
+                </div>
+              </div>
+            <div class="form-group">
+                <label for="dishes_name">Nom du plat</label>
+                <input name="dishes_name" type="text" class="form-control" [(ngModel)]="dishesService.selectedDishes.dishes_name" #dishes_name="ngModel" placeholder="Entrer le nom du plat" required>
+            </div>
+
+            <div *ngIf="dishes_desc.invalid && (dishes_desc.dirty || dishes_desc.touched)" class="">
+                <div *ngIf="dishes_desc.errors?.['required']">
+                  <h6><small>Veuillez saisir [dishes_desc].</small></h6>
+                </div>
+              </div>
+            <div class="form-group">
+                <label for="dishes_desc">Description du plat</label>
+                <textarea name="dishes_desc" type="text" class="form-control" [(ngModel)]="dishesService.selectedDishes.dishes_desc" #dishes_desc="ngModel" placeholder="Entrer la description du plat" required></textarea>
+            </div>
+
+            <div *ngIf="dishes_price.invalid && (dishes_price.dirty || dishes_price.touched)" class="">
+                <div *ngIf="dishes_price.errors?.['required']">
+                  <h6><small>Veuillez saisir [dishes_price].</small></h6>
+                </div>
+              </div>
+            <div class="form-group">
+                <label for="dishes_price">Prix du plat</label>
+                <input name="dishes_price" type="number" class="form-control" [(ngModel)]="dishesService.selectedDishes.dishes_price" #dishes_price="ngModel" placeholder="Entrer le prix du plat" required>
+            </div>
+
+            <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
+                <div *ngIf="email.errors?.['required']">
+                  <h6><small>Veuillez saisir votre adresse e-mail.</small></h6>
+                </div>
+              </div>
+            <div class="form-group">
+                <label for="dishes_photo">Photo du plat</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input name="dishes_photo" type="file" class="custom-file-input" [(ngModel)]="dishesService.selectedDishes.dishes_photo" #dishes_photo="ngModel">
+                        <label class="custom-file-label" for="dishes_photo">Parcourir</label>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Telecharger</span>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
+                <div *ngIf="email.errors?.['required']">
+                  <h6><small>Veuillez saisir votre adresse e-mail.</small></h6>
+                </div>
+              </div>
+            <div class="form-check">
+                <input name="dishes_status" type="checkbox" class="form-check-input" [(ngModel)]="dishesService.selectedDishes.dishes_status" #dishes_status="ngModel">
+                <label class="form-check-label" for="dishes_status">Disponible de suite</label>
+            </div> -->
+
+
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-warning">Submit</button>
+        </div>
+    </form>
+</div>

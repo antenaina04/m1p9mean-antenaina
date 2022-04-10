@@ -14,6 +14,7 @@ var dishes_component_1 = require("./dishes/dishes.component");
 var user_component_1 = require("./user/user.component");
 var login_component_1 = require("./login/login.component");
 var order_page_component_1 = require("./order-page/order-page.component");
+var insert_dishes_component_1 = require("./insert-dishes/insert-dishes.component");
 var routes = [
     { path: '', component: restaurant_component_1.RestaurantComponent },
     { path: 'restaurant', component: restaurant_component_1.RestaurantComponent },
@@ -22,6 +23,7 @@ var routes = [
     { path: 'order', component: order_page_component_1.OrderPageComponent },
     { path: 'user', component: user_component_1.UserComponent },
     { path: 'login', component: login_component_1.LoginComponent },
+    { path: 'saveOrUpdateDishes', component: insert_dishes_component_1.InsertDishesComponent },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

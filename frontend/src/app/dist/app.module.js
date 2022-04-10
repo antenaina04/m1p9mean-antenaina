@@ -14,6 +14,11 @@ var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var forms_1 = require("@angular/forms");
 var user_component_1 = require("./user/user.component");
+var login_component_1 = require("./login/login.component");
+var order_page_component_1 = require("./order-page/order-page.component");
+var order_line_component_1 = require("./order-line/order-line.component");
+// import { ProfileComponent } from './profile/profile.component';
+var insert_dishes_component_1 = require("./insert-dishes/insert-dishes.component");
 // import { RestaurantComponent } from './restaurant/restaurant.component';
 // import { DishesComponent } from './dishes/dishes.component';
 var AppModule = /** @class */ (function () {
@@ -27,13 +32,18 @@ var AppModule = /** @class */ (function () {
                 // RestaurantComponent,
                 // DishesComponent
                 app_routing_module_1.routingComponents,
+                login_component_1.LoginComponent,
+                order_page_component_1.OrderPageComponent,
+                order_line_component_1.OrderLineComponent,
+                // ProfileComponent,
+                insert_dishes_component_1.InsertDishesComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpClientModule,
                 app_routing_module_1.AppRoutingModule,
                 forms_1.FormsModule,
-                forms_1.ReactiveFormsModule,
+                forms_1.ReactiveFormsModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
