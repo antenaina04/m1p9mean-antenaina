@@ -14,9 +14,8 @@ const routes: Routes = [
   { path: 'dishes', component: DishesComponent },
   { path: 'dishes/restaurant/:id_restaurant', component: DishesComponent },
   { path: 'order', component: OrderPageComponent },
-  { path: 'user', component: DishesComponent },
+  { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
-  // { path: 'dishes/restaurant/:id_restaurant', component: DishesComponent },
 ];
 
 @NgModule({

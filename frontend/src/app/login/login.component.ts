@@ -7,6 +7,7 @@ import { User } from '../shared/user.model';
 
 let email: string;
 let password: string;
+let id_profile: string;
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ let password: string;
 })
 export class LoginComponent implements OnInit {
   constructor(
+    private _router: Router,
     private _Activatedroute: ActivatedRoute,
     public userService: UserService
   ) {}
@@ -23,13 +25,20 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   GetUserByEmailAndPassword(form?: NgForm) {
-    // console.log('email :::: ' + this.userService.selectedUser.email);
-    // console.log('password :::: ' + this.userService.selectedUser.password);
     this.userService
-      .GetUserByEmailAndPassword(String(this.userService.selectedUser.email), String(this.userService.selectedUser.password))
+      .GetUserByEmailAndPassword(
+        String(this.userService.selectedUser.email),
+        String(this.userService.selectedUser.password)
+      )
       .subscribe((res) => {
         this.userService.selectedUser = res as User;
-        // console.log('RESPONSA = ' + JSON.stringify(this.userService.selectedUser));
+        console.log('RESPONSA = '+JSON.stringify(this.userService.selectedUser));
+        if (this.userService.selectedUser != 0) {
+          //=> CreateSessions
+          console.log('id_profile  = '+JSON.stringify(this.userService.selectedUser.id_profile)); //Cannot get id_profile [undefined] ???
+          this._router.navigateByUrl('/restaurant');
+        } 
+        else {}
       });
   }
 }

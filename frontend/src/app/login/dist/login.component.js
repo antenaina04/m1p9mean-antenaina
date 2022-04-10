@@ -11,21 +11,27 @@ var core_1 = require("@angular/core");
 var user_service_1 = require("../shared/user.service");
 var email;
 var password;
+var id_profile;
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(_Activatedroute, userService) {
+    function LoginComponent(_router, _Activatedroute, userService) {
+        this._router = _router;
         this._Activatedroute = _Activatedroute;
         this.userService = userService;
     }
     LoginComponent.prototype.ngOnInit = function () { };
     LoginComponent.prototype.GetUserByEmailAndPassword = function (form) {
         var _this = this;
-        // console.log('email :::: ' + this.userService.selectedUser.email);
-        // console.log('password :::: ' + this.userService.selectedUser.password);
         this.userService
             .GetUserByEmailAndPassword(String(this.userService.selectedUser.email), String(this.userService.selectedUser.password))
             .subscribe(function (res) {
             _this.userService.selectedUser = res;
-            // console.log('RESPONSA = ' + JSON.stringify(this.userService.selectedUser));
+            console.log('RESPONSA = ' + JSON.stringify(_this.userService.selectedUser));
+            if (_this.userService.selectedUser != 0) {
+                //=> CreateSessions
+                console.log('id_profile  = ' + JSON.stringify(_this.userService.selectedUser.id_profile)); //Cannot get id_profile [undefined]
+                _this._router.navigateByUrl('/restaurant');
+            }
+            else { }
         });
     };
     LoginComponent = __decorate([
