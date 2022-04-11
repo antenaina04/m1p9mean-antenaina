@@ -17,7 +17,9 @@ var InsertDishesComponent = /** @class */ (function () {
         this._Activatedroute = _Activatedroute;
         this.dishesService = dishesService;
     }
-    InsertDishesComponent.prototype.ngOnInit = function () { };
+    InsertDishesComponent.prototype.ngOnInit = function () {
+        this.refreshDishesList();
+    };
     InsertDishesComponent.prototype.resetForm = function (form) {
         if (form)
             form.reset();
@@ -35,25 +37,53 @@ var InsertDishesComponent = /** @class */ (function () {
         console.log(this.dishesService.selectedDishes.dishes_name);
         console.log(this.dishesService.selectedDishes.dishes_desc);
         console.log(this.dishesService.selectedDishes.dishes_price);
-        if (this.dishesService.selectedDishes.dishes_name == '' || this.dishesService.selectedDishes.dishes_name == undefined) {
+        if (this.dishesService.selectedDishes.dishes_name == '' ||
+            this.dishesService.selectedDishes.dishes_name == undefined) {
             console.log('Veuillez remplir dishes_name');
         }
-        else if (this.dishesService.selectedDishes.dishes_desc == '' || this.dishesService.selectedDishes.dishes_desc == undefined) {
+        else if (this.dishesService.selectedDishes.dishes_desc == '' ||
+            this.dishesService.selectedDishes.dishes_desc == undefined) {
             console.log('Veuillez remplir dishes_desc');
         }
-        else if (this.dishesService.selectedDishes.dishes_price == null || this.dishesService.selectedDishes.dishes_price == 0 || this.dishesService.selectedDishes.dishes_price == undefined) {
+        else if (this.dishesService.selectedDishes.dishes_price == null ||
+            this.dishesService.selectedDishes.dishes_price == 0 ||
+            this.dishesService.selectedDishes.dishes_price == undefined) {
             console.log('Veuillez remplir dishes_price');
         }
-        else if (this.dishesService.selectedDishes.id_restaurant == '' || this.dishesService.selectedDishes.id_restaurant == undefined) {
+        else if (this.dishesService.selectedDishes.id_restaurant == '' ||
+            this.dishesService.selectedDishes.id_restaurant == undefined) {
             console.log('Veuillez remplir id_restaurant');
         }
         else {
-            this.dishesService.postDishes(form === null || form === void 0 ? void 0 : form.value).subscribe(function (res) {
-                console.log('-- INSERT DISHES SUCCEEDED --');
-                _this.resetForm(form);
-            });
-            console.log('INSERT {[Dishes]} OK');
+            console.log("okaaayyy eee===" + JSON.stringify(this.dishesService.selectedDishes._id));
+            if (this.dishesService.selectedDishes._id == '' ||
+                this.dishesService.selectedDishes._id == undefined) {
+                this.dishesService.postDishes(form === null || form === void 0 ? void 0 : form.value).subscribe(function (res) {
+                    console.log('-- INSERT DISHES SUCCEEDED --');
+                    _this.resetForm(form);
+                    _this.refreshDishesList();
+                });
+                console.log('INSERT {[Dishes]} OK');
+            }
+            else {
+                this.dishesService.putDishes(form === null || form === void 0 ? void 0 : form.value, this.dishesService.selectedDishes._id).subscribe(function (res) {
+                    console.log('-- UPDATE DISHES SUCCEEDED --');
+                    _this.resetForm(form);
+                    _this.refreshDishesList();
+                });
+                console.log('UPDATE {[Dishes]} OK');
+            }
         }
+    };
+    InsertDishesComponent.prototype.refreshDishesList = function () {
+        var _this = this;
+        this.dishesService.getDishesList().subscribe(function (res) {
+            _this.dishesService.dishes = res;
+        });
+    };
+    InsertDishesComponent.prototype.onEdit = function (dishes) {
+        // console.log('DISHES ::'+ JSON.stringify(this.dishesService.selectedDishes)); //Tsisy raha ato
+        this.dishesService.selectedDishes = dishes;
     };
     InsertDishesComponent = __decorate([
         core_1.Component({

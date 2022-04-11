@@ -21,7 +21,9 @@ export class InsertDishesComponent implements OnInit {
     public dishesService: DishesService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.refreshDishesList();
+  }
 
   resetForm(form?: NgForm) {
     if (form) form.reset();
@@ -39,20 +41,59 @@ export class InsertDishesComponent implements OnInit {
     console.log(this.dishesService.selectedDishes.dishes_name);
     console.log(this.dishesService.selectedDishes.dishes_desc);
     console.log(this.dishesService.selectedDishes.dishes_price);
-    if (this.dishesService.selectedDishes.dishes_name == ''|| this.dishesService.selectedDishes.dishes_name == undefined) {
+    if (
+      this.dishesService.selectedDishes.dishes_name == '' ||
+      this.dishesService.selectedDishes.dishes_name == undefined
+    ) {
       console.log('Veuillez remplir dishes_name');
-    } else if (this.dishesService.selectedDishes.dishes_desc == ''|| this.dishesService.selectedDishes.dishes_desc == undefined) {
+    } else if (
+      this.dishesService.selectedDishes.dishes_desc == '' ||
+      this.dishesService.selectedDishes.dishes_desc == undefined
+    ) {
       console.log('Veuillez remplir dishes_desc');
-    } else if (this.dishesService.selectedDishes.dishes_price == null || this.dishesService.selectedDishes.dishes_price == 0 || this.dishesService.selectedDishes.dishes_price == undefined) {
+    } else if (
+      this.dishesService.selectedDishes.dishes_price == null ||
+      this.dishesService.selectedDishes.dishes_price == 0 ||
+      this.dishesService.selectedDishes.dishes_price == undefined
+    ) {
       console.log('Veuillez remplir dishes_price');
-    } else if (this.dishesService.selectedDishes.id_restaurant == '' || this.dishesService.selectedDishes.id_restaurant == undefined) {
+    } else if (
+      this.dishesService.selectedDishes.id_restaurant == '' ||
+      this.dishesService.selectedDishes.id_restaurant == undefined
+    ) {
       console.log('Veuillez remplir id_restaurant');
     } else {
-      this.dishesService.postDishes(form?.value).subscribe((res) => {
-        console.log('-- INSERT DISHES SUCCEEDED --');
-        this.resetForm(form);
-      });
-      console.log('INSERT {[Dishes]} OK');
+      console.log("okaaayyy eee==="+JSON.stringify(this.dishesService.selectedDishes._id));
+
+      if (
+        this.dishesService.selectedDishes._id == '' ||
+        this.dishesService.selectedDishes._id == undefined
+      ) {
+        this.dishesService.postDishes(form?.value).subscribe((res) => {
+          console.log('-- INSERT DISHES SUCCEEDED --');
+          this.resetForm(form);
+          this.refreshDishesList();
+        });
+        console.log('INSERT {[Dishes]} OK');
+      } else {
+        this.dishesService.putDishes(form?.value, this.dishesService.selectedDishes._id).subscribe((res) => { //Doesn't work
+          console.log('-- UPDATE DISHES SUCCEEDED --');
+          this.resetForm(form);
+          this.refreshDishesList();
+        });
+        console.log('UPDATE {[Dishes]} OK');
+      }
     }
+  }
+
+  refreshDishesList() {
+    this.dishesService.getDishesList().subscribe((res) => {
+      this.dishesService.dishes = res as Dishes[];
+    });
+  }
+
+  onEdit(dishes: Dishes) {
+    // console.log('DISHES ::'+ JSON.stringify(this.dishesService.selectedDishes)); //Tsisy raha ato
+    this.dishesService.selectedDishes = dishes;
   }
 }

@@ -22,6 +22,9 @@ export class DishesService {
     return this.http.post(this.baseURL, dishes);
   }
 
+  putDishes(dishes: Dishes, _id: string | null) {
+    return this.http.put(this.baseURL+`/`+_id, dishes);
+  }
   getDishesList() {
     return this.http.get(this.baseURL);
   }
@@ -31,4 +34,5 @@ export class DishesService {
       this.baseURL + `/restaurant/` + id_restaurant
     );
   }
+
 }

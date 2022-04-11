@@ -70,8 +70,11 @@ router.put('/:id', function (req, res) {
     dishes_name: req.body.dishes_name,
     dishes_desc: req.body.dishes_desc,
     dishes_price: req.body.dishes_price,
-    id_restaurant: req.body.id_restaurant
+    id_restaurant: req.body.id_restaurant,
+    _id: req.params.id //required for update
+
   });
+  console.log("Zavatra = " + JSON.stringify(req.params.id));
   Dishes.findByIdAndUpdate(req.params.id, {
     $set: dishes
   }, {

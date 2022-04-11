@@ -21,6 +21,9 @@ var DishesService = /** @class */ (function () {
     DishesService.prototype.postDishes = function (dishes) {
         return this.http.post(this.baseURL, dishes);
     };
+    DishesService.prototype.putDishes = function (dishes, _id) {
+        return this.http.put(this.baseURL + "/" + _id, dishes);
+    };
     DishesService.prototype.getDishesList = function () {
         return this.http.get(this.baseURL);
     };
