@@ -4,6 +4,8 @@ var cors = require('cors');
 
 const { mongoose } = require('./dbConnect.js');
 var userController = require('./controllers/userController.js');
+var profileController = require('./controllers/profileController.js');
+
 var restaurantController = require('./controllers/restaurantController.js');
 var dishesController = require('./controllers/dishesController.js');
 var orderController = require('./controllers/orderController.js');
@@ -19,6 +21,9 @@ app.listen(3000, () => console.log('listening on port : 3000'));
 
 // Router for userController into the application
 app.use('/users', userController);
+
+// Router for userController into the application
+app.use('/profiles', profileController);
 
 // Router for restaurantController into the application
 app.use('/restaurants', restaurantController);

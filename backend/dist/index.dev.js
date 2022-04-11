@@ -11,6 +11,8 @@ var _require = require('./dbConnect.js'),
 
 var userController = require('./controllers/userController.js');
 
+var profileController = require('./controllers/profileController.js');
+
 var restaurantController = require('./controllers/restaurantController.js');
 
 var dishesController = require('./controllers/dishesController.js');
@@ -26,7 +28,9 @@ app.listen(3000, function () {
   return console.log('listening on port : 3000');
 }); // Router for userController into the application
 
-app.use('/users', userController); // Router for restaurantController into the application
+app.use('/users', userController); // Router for userController into the application
+
+app.use('/profiles', profileController); // Router for restaurantController into the application
 
 app.use('/restaurants', restaurantController); // Router for dishesController into the application
 

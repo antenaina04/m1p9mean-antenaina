@@ -28,7 +28,7 @@ var LoginComponent = /** @class */ (function () {
             console.log('RESPONSA = ' + JSON.stringify(_this.userService.selectedUser));
             if (_this.userService.selectedUser != 0) {
                 //=> CreateSessions
-                console.log('id_profile  = ' + JSON.stringify(_this.userService.selectedUser.id_profile)); //Cannot get id_profile [undefined]
+                console.log('id_profile  = ' + JSON.stringify(_this.userService.selectedUser.id_profile)); //Cannot get id_profile [undefined] ???
                 _this._router.navigateByUrl('/restaurant');
             }
             else { }
