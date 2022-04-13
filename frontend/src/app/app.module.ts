@@ -11,6 +11,7 @@ import { OrderPageComponent } from './order-page/order-page.component';
 import { OrderLineComponent } from './order-line/order-line.component';
 // import { ProfileComponent } from './profile/profile.component';
 import { InsertDishesComponent } from './insert-dishes/insert-dishes.component';
+import { InsertRestaurantComponent } from './insert-restaurant/insert-restaurant.component';
 // import { RestaurantComponent } from './restaurant/restaurant.component';
 // import { DishesComponent } from './dishes/dishes.component';
 
@@ -27,7 +28,8 @@ import { InsertDishesComponent } from './insert-dishes/insert-dishes.component';
     OrderPageComponent,
     OrderLineComponent,
     // ProfileComponent,
-    InsertDishesComponent
+    InsertDishesComponent,
+    InsertRestaurantComponent
   ],
   imports: [
     BrowserModule,

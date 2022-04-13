@@ -7,6 +7,7 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { InsertDishesComponent } from './insert-dishes/insert-dishes.component';
+import { InsertRestaurantComponent } from './insert-restaurant/insert-restaurant.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'saveOrUpdateDishes', component: InsertDishesComponent },
+  { path: 'saveOrUpdateRestaurant', component: InsertRestaurantComponent },
 ];
 
 @NgModule({

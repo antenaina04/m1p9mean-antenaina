@@ -1,0 +1,79 @@
+<div class="card card-warning">
+    <div class="card-header">
+      <h3 class="card-title">Inserer un restaurant</h3>
+    </div>
+    <form #restaurantForm="ngForm" (ngSubmit)="onSubmit(restaurantForm)">
+      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="restaurantService.selectedRestaurant._id">
+      <div class="card-body">
+
+        <div *ngIf="restaurant_name.invalid && (restaurant_name.dirty || restaurant_name.touched)" class="">
+          <div *ngIf="restaurant_name.errors?.['required']">
+            <h6><small>Veuillez saisir [restaurant_name].</small></h6>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="restaurant_name">Nom du restaurant</label>
+          <input name="restaurant_name" type="text" class="form-control"
+            [(ngModel)]="restaurantService.selectedRestaurant.restaurant_name" #restaurant_name="ngModel"
+            placeholder="Entrer le nom du restaurant" required>
+        </div>
+
+        <div *ngIf="restaurant_location.invalid && (restaurant_location.dirty || restaurant_location.touched)" class="">
+          <div *ngIf="restaurant_location.errors?.['required']">
+            <h6><small>Veuillez saisir [restaurant_location].</small></h6>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="restaurant_location">Adresse du restaurant</label>
+          <textarea name="restaurant_location" type="text" class="form-control"
+            [(ngModel)]="restaurantService.selectedRestaurant.restaurant_location" #restaurant_location="ngModel"
+            placeholder="Entrer l'adresse du restaurant" required></textarea>
+        </div>
+
+        <div *ngIf="restaurant_phone.invalid && (restaurant_phone.dirty || restaurant_phone.touched)" class="">
+          <div *ngIf="restaurant_phone.errors?.['required']">
+            <h6><small>Veuillez saisir [restaurant_phone].</small></h6>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="restaurant_phone">Numero telephone du restaurant</label>
+          <input name="restaurant_phone" type="phone" class="form-control"
+            [(ngModel)]="restaurantService.selectedRestaurant.restaurant_phone" #restaurant_phone="ngModel"
+            placeholder="Entrer le numero telephone" required>
+        </div>
+
+        <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
+                  <div *ngIf="email.errors?.['required']">
+                    <h6><small>Veuillez saisir votre adresse e-mail.</small></h6>
+                  </div>
+                </div>
+              <div class="form-group">
+                  <label for="restaurant_photo">Photo du restaurant</label>
+                  <div class="input-group">
+                      <div class="custom-file">
+                          <input name="restaurant_photo" type="file" class="custom-file-input" [(ngModel)]="restaurantService.selectedRestaurant.restaurant_photo" #restaurant_photo="ngModel">
+                          <label class="custom-file-label" for="restaurant_photo">Parcourir</label>
+                      </div>
+                      <div class="input-group-append">
+                          <span class="input-group-text">Telecharger</span>
+                      </div>
+                  </div>
+              </div> -->
+
+        <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
+                  <div *ngIf="email.errors?.['required']">
+                    <h6><small>Veuillez saisir votre adresse e-mail.</small></h6>
+                  </div>
+                </div>
+              <div class="form-check">
+                  <input name="restaurant_status" type="checkbox" class="form-check-input" [(ngModel)]="restaurantService.selectedRestaurant.restaurant_status" #restaurant_status="ngModel">
+                  <label class="form-check-label" for="restaurant_status">Disponible de suite</label>
+              </div> -->
+
+
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-warning">Enregistrer</button>
+      </div>
+    </form>
+  </div>
