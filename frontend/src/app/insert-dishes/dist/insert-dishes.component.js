@@ -85,6 +85,23 @@ var InsertDishesComponent = /** @class */ (function () {
         // console.log('DISHES ::'+ JSON.stringify(this.dishesService.selectedDishes)); //Tsisy raha ato
         this.dishesService.selectedDishes = dishes;
     };
+    InsertDishesComponent.prototype.search = function (form) {
+        var _this = this;
+        // console.log(form?.value.dishes_name_search);
+        if ((form === null || form === void 0 ? void 0 : form.value.dishes_name_search) == '' ||
+            (form === null || form === void 0 ? void 0 : form.value.dishes_name_search) == undefined) {
+            // console.log("REFRESY");
+            this.refreshDishesList();
+        }
+        else {
+            this.dishesService
+                .GetDishesByDishesName(String(this.dishesService.selectedDishes.dishes_name_search))
+                .subscribe(function (res) {
+                _this.dishesService.dishes = res;
+                // console.log("okaaayyy eee==="+JSON.stringify(this.restaurantService.selectedRestaurant));
+            });
+        }
+    };
     InsertDishesComponent = __decorate([
         core_1.Component({
             selector: 'app-insert-dishes',

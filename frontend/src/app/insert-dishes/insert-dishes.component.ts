@@ -96,4 +96,26 @@ export class InsertDishesComponent implements OnInit {
     // console.log('DISHES ::'+ JSON.stringify(this.dishesService.selectedDishes)); //Tsisy raha ato
     this.dishesService.selectedDishes = dishes;
   }
+
+  search(form?: NgForm) {
+    // console.log(form?.value.dishes_name_search);
+    if (
+      form?.value.dishes_name_search == '' ||
+      form?.value.dishes_name_search == undefined
+    ) {
+      // console.log("REFRESY");
+      this.refreshDishesList();
+    } else {
+      this.dishesService
+        .GetDishesByDishesName(
+          String(this.dishesService.selectedDishes.dishes_name_search)
+        )
+        .subscribe((res) => {
+          this.dishesService.dishes = res as Dishes[];
+          // console.log("okaaayyy eee==="+JSON.stringify(this.restaurantService.selectedRestaurant));
+        });
+    }
+  }
+
+  
 }

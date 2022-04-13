@@ -25,6 +25,19 @@ router.get('/:id', (req, res) => {
 
 });
 
+
+// GetDishesByDishesName : FindLike
+router.get('/GetDishesByDishesName/:dishes_name', (req, res) => {
+    var toFind = req.params.dishes_name;
+    var tofind_regex = new RegExp(toFind);
+    var query = { dishes_name: { $regex: tofind_regex, $options: 'i'  } };
+    Dishes.find(query, (err, doc) => {
+        if (!err) { res.send(doc); }
+        else { console.log('Error in Retriving Dishes :' + JSON.stringify(err, undefined, 2)); }
+    });
+});
+
+
 // => localhost:3000/dishes/restaurant/id_restaurant [getDishesByIdRestaurant]
 router.get('/restaurant/:id_restaurant', (req, res) => {
     if (!ObjectId.isValid(req.params.id_restaurant))

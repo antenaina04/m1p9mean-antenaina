@@ -98,9 +98,12 @@
       <div class="card-header bg-warning">
         <h3 class="card-title">Liste des plats</h3>
 
+
+        <!-- Find Dishes By Name -->
         <div class="card-tools">
+          <form #searchDishes="ngForm" (ngSubmit)="search(searchDishes)" method="get">
           <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="text" name="table_search" class="form-control float-right" placeholder="Rechercher">
+            <input type="search" [(ngModel)]="dishesService.selectedDishes.dishes_name_search" name="dishes_name_search" #dishes_name_search="ngModel"  class="form-control float-right" placeholder="">
 
             <div class="input-group-append">
               <button type="submit" class="btn btn-default">
@@ -108,7 +111,10 @@
               </button>
             </div>
           </div>
+        </form>
         </div>
+
+
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0">

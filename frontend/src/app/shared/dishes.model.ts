@@ -6,6 +6,6 @@ export class Dishes {
     dishes_desc?: string;
     dishes_price?: number;
     id_restaurant?: string;
-  
+    dishes_name_search?: string;
     constructor() {}
 }
