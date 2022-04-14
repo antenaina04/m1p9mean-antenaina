@@ -17,6 +17,7 @@ var order_page_component_1 = require("./order-page/order-page.component");
 var insert_dishes_component_1 = require("./insert-dishes/insert-dishes.component");
 var insert_restaurant_component_1 = require("./insert-restaurant/insert-restaurant.component");
 var about_us_component_1 = require("./about-us/about-us.component");
+var contact_us_component_1 = require("./contact-us/contact-us.component");
 var routes = [
     { path: '', component: restaurant_component_1.RestaurantComponent },
     { path: 'restaurant', component: restaurant_component_1.RestaurantComponent },
@@ -28,6 +29,7 @@ var routes = [
     { path: 'saveOrUpdateDishes', component: insert_dishes_component_1.InsertDishesComponent },
     { path: 'saveOrUpdateRestaurant', component: insert_restaurant_component_1.InsertRestaurantComponent },
     { path: 'aboutUs', component: about_us_component_1.AboutUsComponent },
+    { path: 'contactUs', component: contact_us_component_1.ContactUsComponent },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

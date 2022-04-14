@@ -13,6 +13,7 @@ import { OrderLineComponent } from './order-line/order-line.component';
 import { InsertDishesComponent } from './insert-dishes/insert-dishes.component';
 import { InsertRestaurantComponent } from './insert-restaurant/insert-restaurant.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 // import { RestaurantComponent } from './restaurant/restaurant.component';
 // import { DishesComponent } from './dishes/dishes.component';
 
@@ -31,7 +32,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     // ProfileComponent,
     InsertDishesComponent,
     InsertRestaurantComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

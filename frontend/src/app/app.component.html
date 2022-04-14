@@ -2,7 +2,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="assets/img/logo-ekaly.png" alt="AdminLTELogo" length="144px" height="auto"/>
+    <img class="animation__shake" src="assets/img/logo-ekaly.png" alt="AdminLTELogo" length="144px" height="auto" />
   </div>
 
   <nav class="navbar navbar-expand navbar-white navbar-light">
@@ -16,11 +16,12 @@
         <b><a href="http://localhost:4200/" class="nav-link">Accueil</a></b>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <b><a href="#" class="nav-link">A propos de nous</a></b>
+        <b><a href="#" [routerLink]="['aboutUs',]" class="nav-link">A propos de nous</a></b>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <b><a href="#" class="nav-link">Contactez e-kaly</a></b>
+        <b><a href="#" [routerLink]="['contactUs',]" class="nav-link">Contactez e-kaly</a></b>
       </li>
+
     </ul>
 
     <ul class="navbar-nav ml-auto">
@@ -45,6 +46,7 @@
           </form>
         </div>
       </li> -->
+
 
       <li class="nav-item dropdown">
         <a [routerLink]="['order',]" class="nav-link" data-toggle="dropdown" href="#">
