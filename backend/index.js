@@ -9,6 +9,8 @@ var profileController = require('./controllers/profileController.js');
 var restaurantController = require('./controllers/restaurantController.js');
 var dishesController = require('./controllers/dishesController.js');
 var orderController = require('./controllers/orderController.js');
+var mailHelper = require('./controllers/mailHelper.js');
+
 
 
 
@@ -33,6 +35,9 @@ app.use('/dishes', dishesController);
 
 // Router for orderController into the application
 app.use('/orders', orderController);
+
+// Router for mailHelper into the application
+app.use('/sendMail', mailHelper);
 
 app.get('/', (req, res) => {
     res.send('Hello World');

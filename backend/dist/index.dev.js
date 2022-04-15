@@ -19,6 +19,8 @@ var dishesController = require('./controllers/dishesController.js');
 
 var orderController = require('./controllers/orderController.js');
 
+var mailHelper = require('./controllers/mailHelper.js');
+
 var app = express();
 app.use(bodyParser.json());
 app.use(cors({
@@ -36,7 +38,9 @@ app.use('/restaurants', restaurantController); // Router for dishesController in
 
 app.use('/dishes', dishesController); // Router for orderController into the application
 
-app.use('/orders', orderController);
+app.use('/orders', orderController); // Router for mailHelper into the application
+
+app.use('/sendMail', mailHelper);
 app.get('/', function (req, res) {
   res.send('Hello World');
 });
