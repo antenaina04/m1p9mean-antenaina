@@ -6,6 +6,11 @@ import { DishesService } from '../shared/dishes.service';
 import { Dishes } from '../shared/dishes.model';
 import { RestaurantService } from '../shared/restaurant.service';
 import { Restaurant } from '../shared/restaurant.model';
+import {
+  CdkDropList,
+  CdkDragDrop,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-dishes',
@@ -56,5 +61,13 @@ export class DishesComponent implements OnInit {
           this.restaurantService.selectedRestaurant = res as Restaurant;
         });
     });
+  }
+
+  drop(event: CdkDragDrop<Dishes[]>) {
+    moveItemInArray(
+      this.dishesService.dishes,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }

@@ -9,6 +9,7 @@ exports.__esModule = true;
 exports.DishesComponent = void 0;
 var core_1 = require("@angular/core");
 var dishes_service_1 = require("../shared/dishes.service");
+var drag_drop_1 = require("@angular/cdk/drag-drop");
 var DishesComponent = /** @class */ (function () {
     function DishesComponent(_Activatedroute, dishesService, restaurantService) {
         this._Activatedroute = _Activatedroute;
@@ -48,6 +49,9 @@ var DishesComponent = /** @class */ (function () {
                 _this.restaurantService.selectedRestaurant = res;
             });
         });
+    };
+    DishesComponent.prototype.drop = function (event) {
+        drag_drop_1.moveItemInArray(this.dishesService.dishes, event.previousIndex, event.currentIndex);
     };
     DishesComponent = __decorate([
         core_1.Component({

@@ -17,6 +17,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 // import { RestaurantComponent } from './restaurant/restaurant.component';
 // import { DishesComponent } from './dishes/dishes.component';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

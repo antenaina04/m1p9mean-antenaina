@@ -19,8 +19,12 @@ var order_page_component_1 = require("./order-page/order-page.component");
 var order_line_component_1 = require("./order-line/order-line.component");
 // import { ProfileComponent } from './profile/profile.component';
 var insert_dishes_component_1 = require("./insert-dishes/insert-dishes.component");
+var insert_restaurant_component_1 = require("./insert-restaurant/insert-restaurant.component");
+var about_us_component_1 = require("./about-us/about-us.component");
+var contact_us_component_1 = require("./contact-us/contact-us.component");
 // import { RestaurantComponent } from './restaurant/restaurant.component';
 // import { DishesComponent } from './dishes/dishes.component';
+var drag_drop_1 = require("@angular/cdk/drag-drop");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -36,14 +40,18 @@ var AppModule = /** @class */ (function () {
                 order_page_component_1.OrderPageComponent,
                 order_line_component_1.OrderLineComponent,
                 // ProfileComponent,
-                insert_dishes_component_1.InsertDishesComponent
+                insert_dishes_component_1.InsertDishesComponent,
+                insert_restaurant_component_1.InsertRestaurantComponent,
+                about_us_component_1.AboutUsComponent,
+                contact_us_component_1.ContactUsComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpClientModule,
                 app_routing_module_1.AppRoutingModule,
                 forms_1.FormsModule,
-                forms_1.ReactiveFormsModule
+                forms_1.ReactiveFormsModule,
+                drag_drop_1.DragDropModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
