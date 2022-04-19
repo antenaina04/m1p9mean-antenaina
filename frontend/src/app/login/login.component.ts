@@ -16,6 +16,8 @@ let id_profile: string;
   providers: [UserService],
 })
 export class LoginComponent implements OnInit {
+loginError:any;
+
   constructor(
     private _router: Router,
     private _Activatedroute: ActivatedRoute,
@@ -23,7 +25,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
   GetUserByEmailAndPassword(form?: NgForm) {
     this.userService
       .GetUserByEmailAndPassword(
@@ -31,14 +32,35 @@ export class LoginComponent implements OnInit {
         String(this.userService.selectedUser.password)
       )
       .subscribe((res) => {
-        this.userService.selectedUser = res as User;
-        console.log('RESPONSA = '+JSON.stringify(this.userService.selectedUser));
-        if (this.userService.selectedUser != 0) {
+        this.userService.users = res as User[];
+        console.log('RESPONSA = ' + JSON.stringify(this.userService.users));
+        if (this.userService.users.length != 0) {
+          let IdUser = this.userService.users.map(user => user._id);
+          let UserName = this.userService.users.map(user => user.name);
+          let UserEmail = this.userService.users.map(user => user.email);
+          let UserProfile = this.userService.users.map(user => user.id_profile);
+          console.log('IdUser  == ' + IdUser);
+          console.log('UserName  == ' + UserName);
+          console.log('UserEmail  == ' + UserEmail);
+          console.log('UserProfile  == ' + UserProfile);
           //=> CreateSessions
-          console.log('id_profile  = '+JSON.stringify(this.userService.selectedUser.id_profile)); //Cannot get id_profile [undefined] ???
+          localStorage.setItem('Username', JSON.stringify(UserName));
+          localStorage.setItem('IdUser', JSON.stringify(IdUser));
           this._router.navigateByUrl('/restaurant');
         } 
-        else {}
+        else {
+          this.resetLogin();
+        }
       });
+  }
+
+  resetLogin(form?: NgForm) {
+    if (form) form.reset();
+    this.userService.selectedUser = {
+      _id: '',
+      email: '',
+      password: '',
+    };
+     this.loginError = "L'adresse email ou le mots de passe ne correspond pas à un compte e-kaly";
   }
 }

@@ -18,6 +18,8 @@ var RestaurantComponent = /** @class */ (function () {
         this.restaurantService = restaurantService;
     }
     RestaurantComponent.prototype.ngOnInit = function () {
+        this.Username = localStorage.getItem('Username');
+        this.IdUser = localStorage.getItem('IdUser');
         this.refreshRestaurantList();
     };
     RestaurantComponent.prototype.refreshRestaurantList = function () {

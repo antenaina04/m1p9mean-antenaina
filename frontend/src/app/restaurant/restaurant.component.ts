@@ -20,9 +20,15 @@ let restaurant_logo: string;
 })
 export class RestaurantComponent implements OnInit {
 
+  Username:any;
+  IdUser:any;
   constructor(public restaurantService: RestaurantService) { }
 
+
+
   ngOnInit(): void {
+    this.Username = localStorage.getItem('Username');
+    this.IdUser = localStorage.getItem('IdUser');
     this.refreshRestaurantList();
   }
 
