@@ -9,14 +9,16 @@ exports.__esModule = true;
 exports.AppComponent = void 0;
 var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(router) {
-        this.router = router;
+    function AppComponent(_router) {
+        this._router = _router;
         this.title = 'frontend';
-        this.showMenu = true;
-        if (this.router.url === '/user') {
-            this.showMenu = false;
-        }
     }
+    AppComponent.prototype.login = function () {
+        localStorage.clear();
+        localStorage.removeItem('IdUser');
+        localStorage.removeItem('Username');
+        this._router.navigateByUrl('/login');
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app-root',

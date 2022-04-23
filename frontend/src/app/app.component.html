@@ -60,9 +60,10 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="btn btn-block btn-success" [routerLink]="['login',]" href="#" role="button">
+        <!-- <a class="btn btn-block btn-success" [routerLink]="['login',]" href="#" role="button">
           <b><i class="fa fa-sign-in-alt"></i> SE CONNECTER</b>
-        </a>
+        </a> -->
+        <button type="submit" (click)="login()" class="btn btn-block btn-success"><b><i class="fa fa-sign-in-alt"></i> SE CONNECTER</b></button>
       </li>
     </ul>
   </nav>
