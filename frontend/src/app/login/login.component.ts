@@ -24,7 +24,12 @@ loginError:any;
     public userService: UserService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //Clear all localStorage
+    localStorage.clear()
+    localStorage.removeItem('IdUser');
+    localStorage.removeItem('Username');    
+  }
   GetUserByEmailAndPassword(form?: NgForm) {
     this.userService
       .GetUserByEmailAndPassword(

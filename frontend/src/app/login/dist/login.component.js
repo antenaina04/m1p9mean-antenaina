@@ -18,7 +18,12 @@ var LoginComponent = /** @class */ (function () {
         this._Activatedroute = _Activatedroute;
         this.userService = userService;
     }
-    LoginComponent.prototype.ngOnInit = function () { };
+    LoginComponent.prototype.ngOnInit = function () {
+        //Clear all localStorage
+        localStorage.clear();
+        localStorage.removeItem('IdUser');
+        localStorage.removeItem('Username');
+    };
     LoginComponent.prototype.GetUserByEmailAndPassword = function (form) {
         var _this = this;
         this.userService
