@@ -6,6 +6,7 @@ import { DishesService } from '../shared/dishes.service';
 import { Dishes } from '../shared/dishes.model';
 import { RestaurantService } from '../shared/restaurant.service';
 import { Restaurant } from '../shared/restaurant.model';
+import { CartService } from '../cart.service';
 import {
   CdkDropList,
   CdkDragDrop,
@@ -22,10 +23,29 @@ export class DishesComponent implements OnInit {
   constructor(
     private _Activatedroute: ActivatedRoute,
     public dishesService: DishesService,
-    public restaurantService: RestaurantService
+    public restaurantService: RestaurantService,
+    private cartService: CartService,
+    private _router: Router
   ) {}
 
   sub: any;
+
+  addToCart(dishes: Dishes) {
+    this.cartService.addToCart(dishes);
+    window.alert(dishes.dishes_name + ' ajouté dans le panier!');
+
+    //Refresh page in order to add dishes in order-line-components
+    this.sub = this._Activatedroute.paramMap.subscribe((params) => {
+      const url = 'dishes/restaurant/' + params?.get('id_restaurant');
+      this._router
+        .navigateByUrl('/', {
+          skipLocationChange: true,
+        })
+        .then(() => {
+          this._router.navigate([url]);
+        });
+    });
+  }
 
   ngOnInit(): void {
     this.getAllDishesByRestaurant();
@@ -40,11 +60,6 @@ export class DishesComponent implements OnInit {
 
   getAllDishesByRestaurant() {
     this.sub = this._Activatedroute.paramMap.subscribe((params) => {
-      // console.log('Paramsa = ' + JSON.stringify(params));
-      // console.log(
-      //   'ILAY ID TADIAVINA TSY METY MIVOAKA = ' + params?.get('id_restaurant')
-      // );
-
       this.dishesService
         .getDishesByRestaurant(params?.get('id_restaurant'))
         .subscribe((res) => {

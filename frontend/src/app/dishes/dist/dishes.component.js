@@ -11,11 +11,29 @@ var core_1 = require("@angular/core");
 var dishes_service_1 = require("../shared/dishes.service");
 var drag_drop_1 = require("@angular/cdk/drag-drop");
 var DishesComponent = /** @class */ (function () {
-    function DishesComponent(_Activatedroute, dishesService, restaurantService) {
+    function DishesComponent(_Activatedroute, dishesService, restaurantService, cartService, _router) {
         this._Activatedroute = _Activatedroute;
         this.dishesService = dishesService;
         this.restaurantService = restaurantService;
+        this.cartService = cartService;
+        this._router = _router;
     }
+    DishesComponent.prototype.addToCart = function (dishes) {
+        var _this = this;
+        this.cartService.addToCart(dishes);
+        window.alert(dishes.dishes_name + ' ajouté dans le panier!');
+        //Refresh page in order to add dishes in order-line-components
+        this.sub = this._Activatedroute.paramMap.subscribe(function (params) {
+            var url = 'dishes/restaurant/' + (params === null || params === void 0 ? void 0 : params.get('id_restaurant'));
+            _this._router
+                .navigateByUrl('/', {
+                skipLocationChange: true
+            })
+                .then(function () {
+                _this._router.navigate([url]);
+            });
+        });
+    };
     DishesComponent.prototype.ngOnInit = function () {
         this.getAllDishesByRestaurant();
         this.getRestaurantByIdRestaurant();
@@ -29,10 +47,6 @@ var DishesComponent = /** @class */ (function () {
     DishesComponent.prototype.getAllDishesByRestaurant = function () {
         var _this = this;
         this.sub = this._Activatedroute.paramMap.subscribe(function (params) {
-            // console.log('Paramsa = ' + JSON.stringify(params));
-            // console.log(
-            //   'ILAY ID TADIAVINA TSY METY MIVOAKA = ' + params?.get('id_restaurant')
-            // );
             _this.dishesService
                 .getDishesByRestaurant(params === null || params === void 0 ? void 0 : params.get('id_restaurant'))
                 .subscribe(function (res) {
