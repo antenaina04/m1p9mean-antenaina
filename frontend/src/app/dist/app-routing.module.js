@@ -18,12 +18,14 @@ var insert_dishes_component_1 = require("./insert-dishes/insert-dishes.component
 var insert_restaurant_component_1 = require("./insert-restaurant/insert-restaurant.component");
 var about_us_component_1 = require("./about-us/about-us.component");
 var contact_us_component_1 = require("./contact-us/contact-us.component");
+var checkout_component_1 = require("./checkout/checkout.component");
 var routes = [
     { path: '', component: restaurant_component_1.RestaurantComponent },
     { path: 'restaurant', component: restaurant_component_1.RestaurantComponent },
     { path: 'dishes', component: dishes_component_1.DishesComponent },
     { path: 'dishes/restaurant/:id_restaurant', component: dishes_component_1.DishesComponent },
     { path: 'order', component: order_page_component_1.OrderPageComponent },
+    { path: 'checkout', component: checkout_component_1.CheckoutComponent },
     { path: 'user', component: user_component_1.UserComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'saveOrUpdateDishes', component: insert_dishes_component_1.InsertDishesComponent },
