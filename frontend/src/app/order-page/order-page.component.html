@@ -3,60 +3,45 @@
     <div class="col-sm-8">
         <div class="card card-black card-outline">
             <div class="card-header bg-success">
-                <h2 class="text-left display-4">Votre commande</h2>
+                <h2 class="text-left display-5">Votre commande</h2>
             </div>
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead class="bg-light">
                         <tr>
-                            <th class="text-center">
-                            </th>
+                            <!-- <th class="text-center">
+                                Photo du plat
+                            </th> -->
                             <th class="text-center">
                                 Plat(s)
                             </th>
                             <th class="text-center">
                                 Prix
                             </th>
-                            <th class="text-center">
-                                Nombre
-                            </th>
-                            <th class="text-center">
-                                Status
-                            </th>
-                            <th style="width: 20%">
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center">
+                        <tr *ngFor="let item of obj">
+                            <!-- <td class="text-center">
                                 #Photo
-                            </td>
+                            </td> -->
                             <td class="text-center">
                                 <a>
-                                    Lasopy
+                                    <h5 class="text-center display-5"> {{item.dishes_name}}</h5>
                                 </a>
                                 <br />
                                 <small>
-                                    Created 01.01.2019
+                                    [[Quantité]]
                                 </small>
                             </td>
                             <td class="text-center">
-                                $250.30
+                                <strong>{{item.dishes_price}}</strong><em>&nbsp;Ariary</em>
                             </td>
-                            <td class="text-center">
-                                <span title="Nombre d'element" class="badge bg-success">3</span>
-                            </td>
-                            <td class="text-center">
-                                <span class="badge badge-success">Unpaid</span>
-                            </td>
-                            <td class="text-center">
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Supprimer
-                                </a>
-                            </td>
+                            <!-- <td class="text-center">
+                                <button type="button" (click)="removeToCart(item)" class="btn btn-danger btn-sm"><i
+                                    class="far fa-plus-trash mr-1"></i>
+                                  Supprimer</button>
+                            </td> -->
                         </tr>
                     </tbody>
                 </table>
@@ -77,18 +62,18 @@
                                 <tr>
                                     <th style="width:50%">
                                         Nombre de plats</th>
-                                    <td class="text-right">5</td>
+                                    <td class="text-right">{{obj.length}}</td>
                                 </tr>
                                 <tr>
                                     <th>Sous-total</th>
-                                    <td class="text-right">$10.34</td>
+                                    <td class="text-right">{{totalPrice}}</td>
                                 </tr>
                                 <tr>
                                     <th>
                                         <h5><strong>Montant à payer:</strong></h5>
                                     </th>
                                     <td class="text-right">
-                                        
+
                                         <h5><strong>$265.24</strong></h5>
                                     </td>
                                 </tr>
