@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Dishes } from '../shared/dishes.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order-page',
@@ -13,7 +14,7 @@ export class OrderPageComponent implements OnInit {
   obj!: any;
 
   panier = localStorage.getItem('panier');
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private _router: Router, private _Activatedroute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.obj = JSON.parse(String(this.panier));
@@ -35,5 +36,9 @@ export class OrderPageComponent implements OnInit {
         this.totalPrice += price;
       });
     }
+  }
+
+  checkout() {
+    this._router.navigateByUrl('/checkout');
   }
 }

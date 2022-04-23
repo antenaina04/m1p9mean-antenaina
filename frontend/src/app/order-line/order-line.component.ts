@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Dishes } from '../shared/dishes.model';
-
+import { Router, ActivatedRoute } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 @Component({
   selector: 'app-order-line',
@@ -12,7 +12,7 @@ export class OrderLineComponent implements OnInit {
   totalPrice!: number;
   obj!: any;
   panier = localStorage.getItem('panier');
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private _router: Router, private _Activatedroute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.obj = JSON.parse(String(this.panier));
@@ -32,5 +32,9 @@ export class OrderLineComponent implements OnInit {
         this.totalPrice += price;
       });
     }
+  }
+
+  checkout() {
+    this._router.navigateByUrl('/checkout');
   }
 }

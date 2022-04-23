@@ -9,8 +9,10 @@ exports.__esModule = true;
 exports.OrderLineComponent = void 0;
 var core_1 = require("@angular/core");
 var OrderLineComponent = /** @class */ (function () {
-    function OrderLineComponent(cartService) {
+    function OrderLineComponent(cartService, _router, _Activatedroute) {
         this.cartService = cartService;
+        this._router = _router;
+        this._Activatedroute = _Activatedroute;
         this.panier = localStorage.getItem('panier');
     }
     OrderLineComponent.prototype.ngOnInit = function () {
@@ -30,6 +32,9 @@ var OrderLineComponent = /** @class */ (function () {
                 _this.totalPrice += price;
             });
         }
+    };
+    OrderLineComponent.prototype.checkout = function () {
+        this._router.navigateByUrl('/checkout');
     };
     OrderLineComponent = __decorate([
         core_1.Component({
