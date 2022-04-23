@@ -3,12 +3,25 @@
         <h3>Votre panier<sup style="font-size: 18px"></sup></h3>
         <table class="table">
             <tbody>
-                <tr>
-                    <td>Lasopy</td>
-                    <td>1000Ar</td>
+                <tr *ngFor="let item of obj">
+                    <td>
+                        <h5 class="text-left display-5">{{item.dishes_name}}</h5>
+                    </td>
+                    <td><strong>{{item.dishes_price}}</strong><em>&nbsp;Ariary</em></td>
+                    <!-- <td class="text-center">
+                        <button type="button" (click)="removeToCart(item)" class="btn btn-danger btn-sm"><i
+                            class="far fa-plus-trash mr-1"></i>
+                          Supprimer</button>
+                    </td> -->
                 </tr>
             </tbody>
         </table>
+        <hr class="bg-light">
+
+        <div class="row">
+            <div class="col-md-4"><strong>Sous-total</strong></div>
+            <div class="col-md-4 offset-md-3"><strong>{{totalPrice}} &nbsp;Ariary</strong></div>
+        </div>
     </div>
     <div class="icon">
         <i class="ion ion-stats-bars"></i>

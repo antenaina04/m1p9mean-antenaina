@@ -1,0 +1,43 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+exports.__esModule = true;
+exports.OrderLineComponent = void 0;
+var core_1 = require("@angular/core");
+var OrderLineComponent = /** @class */ (function () {
+    function OrderLineComponent(cartService) {
+        this.cartService = cartService;
+        this.panier = localStorage.getItem('panier');
+    }
+    OrderLineComponent.prototype.ngOnInit = function () {
+        this.obj = JSON.parse(String(this.panier));
+        this.sum();
+    };
+    // removeToCart(dishes: Dishes) {
+    //   this.cartService.removeToCart(dishes);
+    //   window.alert(dishes.dishes_name + ' supprimé du panier!');
+    // }
+    OrderLineComponent.prototype.sum = function () {
+        var _this = this;
+        this.totalPrice = 0;
+        if (this.obj) {
+            this.obj.map(function (_dishes) {
+                var price = _dishes.dishes_price || 0;
+                _this.totalPrice += price;
+            });
+        }
+    };
+    OrderLineComponent = __decorate([
+        core_1.Component({
+            selector: 'app-order-line',
+            templateUrl: './order-line.component.html',
+            styleUrls: ['./order-line.component.css']
+        })
+    ], OrderLineComponent);
+    return OrderLineComponent;
+}());
+exports.OrderLineComponent = OrderLineComponent;
