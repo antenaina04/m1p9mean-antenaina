@@ -5,10 +5,11 @@ var cors = require('cors');
 const { mongoose } = require('./dbConnect.js');
 var userController = require('./controllers/userController.js');
 var profileController = require('./controllers/profileController.js');
-
 var restaurantController = require('./controllers/restaurantController.js');
 var dishesController = require('./controllers/dishesController.js');
 var orderController = require('./controllers/orderController.js');
+var deliveryController = require('./controllers/deliveryController.js');
+
 var mailHelper = require('./controllers/mailHelper.js');
 
 
@@ -36,8 +37,14 @@ app.use('/dishes', dishesController);
 // Router for orderController into the application
 app.use('/orders', orderController);
 
+// Router for deliveryController into the application
+app.use('/delivery', deliveryController);
+
 // Router for mailHelper into the application
-app.use('/sendMail', mailHelper);
+// app.use('/sendMail', mailHelper);
+
+// app.use(express.static(path.join(__dirname, 'public'))); //=> Upload Image
+// app.use('/images', express.static('images')); //=> Upload Image
 
 app.get('/', (req, res) => {
     res.send('Hello World');

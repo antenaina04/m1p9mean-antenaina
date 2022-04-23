@@ -19,6 +19,8 @@ var dishesController = require('./controllers/dishesController.js');
 
 var orderController = require('./controllers/orderController.js');
 
+var deliveryController = require('./controllers/deliveryController.js');
+
 var mailHelper = require('./controllers/mailHelper.js');
 
 var app = express();
@@ -38,9 +40,13 @@ app.use('/restaurants', restaurantController); // Router for dishesController in
 
 app.use('/dishes', dishesController); // Router for orderController into the application
 
-app.use('/orders', orderController); // Router for mailHelper into the application
+app.use('/orders', orderController); // Router for deliveryController into the application
 
-app.use('/sendMail', mailHelper);
+app.use('/delivery', deliveryController); // Router for mailHelper into the application
+// app.use('/sendMail', mailHelper);
+// app.use(express.static(path.join(__dirname, 'public'))); //=> Upload Image
+// app.use('/images', express.static('images')); //=> Upload Image
+
 app.get('/', function (req, res) {
   res.send('Hello World');
 });
