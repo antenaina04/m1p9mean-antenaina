@@ -11,6 +11,8 @@ import { InsertRestaurantComponent } from './insert-restaurant/insert-restaurant
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { DeliveryComponent } from './delivery/delivery.component';
+
 
 
 
@@ -21,6 +23,7 @@ const routes: Routes = [
   { path: 'dishes/restaurant/:id_restaurant', component: DishesComponent },
   { path: 'order', component: OrderPageComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'delivery', component: DeliveryComponent },
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'saveOrUpdateDishes', component: InsertDishesComponent },
