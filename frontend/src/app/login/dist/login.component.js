@@ -17,15 +17,17 @@ var LoginComponent = /** @class */ (function () {
         this._router = _router;
         this._Activatedroute = _Activatedroute;
         this.userService = userService;
+        this.panier = localStorage.getItem('panier');
     }
     LoginComponent.prototype.ngOnInit = function () {
         //Clear all localStorage
-        localStorage.clear();
-        localStorage.removeItem('IdUser');
-        localStorage.removeItem('Username');
+        // localStorage.clear()
+        // localStorage.removeItem('IdUser');
+        // localStorage.removeItem('Username');
     };
     LoginComponent.prototype.GetUserByEmailAndPassword = function (form) {
         var _this = this;
+        this.obj = JSON.parse(String(this.panier));
         this.userService
             .GetUserByEmailAndPassword(String(this.userService.selectedUser.email), String(this.userService.selectedUser.password))
             .subscribe(function (res) {
@@ -43,8 +45,27 @@ var LoginComponent = /** @class */ (function () {
                 //=> CreateSessions
                 localStorage.setItem('Username', JSON.stringify(UserName));
                 localStorage.setItem('IdUser', JSON.stringify(IdUser));
-                _this._router.navigateByUrl('/restaurant');
+                //=>Check Cart
+                if (_this.obj == null ||
+                    _this.obj === undefined ||
+                    _this.obj.length == 0 ||
+                    _this.obj.length == '') {
+                    _this._router.navigateByUrl('/restaurant');
+                }
+                else {
+                    _this.sub = _this._Activatedroute.paramMap.subscribe(function () {
+                        var url = '/checkout';
+                        _this._router
+                            .navigateByUrl('/', {
+                            skipLocationChange: true
+                        })
+                            .then(function () {
+                            _this._router.navigate([url]);
+                        });
+                    });
+                }
             }
+            // => If there is an error on login
             else {
                 _this.resetLogin();
             }
@@ -58,7 +79,8 @@ var LoginComponent = /** @class */ (function () {
             email: '',
             password: ''
         };
-        this.loginError = "L'adresse email ou le mots de passe ne correspond pas à un compte e-kaly";
+        this.loginError =
+            "L'adresse email ou le mots de passe ne correspond pas à un compte e-kaly";
     };
     LoginComponent = __decorate([
         core_1.Component({

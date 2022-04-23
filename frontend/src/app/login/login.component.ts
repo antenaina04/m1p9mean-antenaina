@@ -16,7 +16,10 @@ let id_profile: string;
   providers: [UserService],
 })
 export class LoginComponent implements OnInit {
-loginError:any;
+  panier = localStorage.getItem('panier');
+  obj!: any;
+  loginError: any;
+  sub: any;
 
   constructor(
     private _router: Router,
@@ -26,11 +29,13 @@ loginError:any;
 
   ngOnInit(): void {
     //Clear all localStorage
-    localStorage.clear()
-    localStorage.removeItem('IdUser');
-    localStorage.removeItem('Username');    
+    // localStorage.clear()
+    // localStorage.removeItem('IdUser');
+    // localStorage.removeItem('Username');
   }
+
   GetUserByEmailAndPassword(form?: NgForm) {
+    this.obj = JSON.parse(String(this.panier));
     this.userService
       .GetUserByEmailAndPassword(
         String(this.userService.selectedUser.email),
@@ -40,19 +45,44 @@ loginError:any;
         this.userService.users = res as User[];
         console.log('RESPONSA = ' + JSON.stringify(this.userService.users));
         if (this.userService.users.length != 0) {
-          let IdUser = this.userService.users.map(user => user._id);
-          let UserName = this.userService.users.map(user => user.name);
-          let UserEmail = this.userService.users.map(user => user.email);
-          let UserProfile = this.userService.users.map(user => user.id_profile);
+          let IdUser = this.userService.users.map((user) => user._id);
+          let UserName = this.userService.users.map((user) => user.name);
+          let UserEmail = this.userService.users.map((user) => user.email);
+          let UserProfile = this.userService.users.map(
+            (user) => user.id_profile
+          );
           console.log('IdUser  == ' + IdUser);
           console.log('UserName  == ' + UserName);
           console.log('UserEmail  == ' + UserEmail);
           console.log('UserProfile  == ' + UserProfile);
+
           //=> CreateSessions
           localStorage.setItem('Username', JSON.stringify(UserName));
           localStorage.setItem('IdUser', JSON.stringify(IdUser));
-          this._router.navigateByUrl('/restaurant');
-        } 
+
+          //=>Check Cart
+          if (
+            this.obj == null ||
+            this.obj === undefined ||
+            this.obj.length == 0 ||
+            this.obj.length == ''
+          ) {
+            this._router.navigateByUrl('/restaurant');
+          } else {
+            this.sub = this._Activatedroute.paramMap.subscribe(() => {
+              const url = '/checkout';
+              this._router
+                .navigateByUrl('/', {
+                  skipLocationChange: true,
+                })
+                .then(() => {
+                  this._router.navigate([url]);
+                });
+            });
+          }
+        }
+        
+        // => If there is an error on login
         else {
           this.resetLogin();
         }
@@ -66,6 +96,7 @@ loginError:any;
       email: '',
       password: '',
     };
-     this.loginError = "L'adresse email ou le mots de passe ne correspond pas à un compte e-kaly";
+    this.loginError =
+      "L'adresse email ou le mots de passe ne correspond pas à un compte e-kaly";
   }
 }
