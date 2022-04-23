@@ -1,7 +1,10 @@
 <div class="container-fluid">
-    <h2 class="text-center display-4">Le meilleur des restaurants livré chez vous Username = {{Username}} and IdUser = {{IdUser}}</h2>
+    <div *ngIf="show">
+        <h2 class="text-center display-4">{{WelcomeText}}</h2>
+    </div>
+    <h2 class="text-center display-4">Le meilleur des restaurants livré chez vous</h2>
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-8 offset-md-2">  
             <form #searchRestaurant="ngForm" (ngSubmit)="search(searchRestaurant)" method="get">
                 <div class="input-group">
                     <input type="search" [(ngModel)]="restaurantService.selectedRestaurant.restaurant_name" name="restaurant_name" #restaurant_name="ngModel" class="form-control form-control-lg" placeholder="Restaurants">

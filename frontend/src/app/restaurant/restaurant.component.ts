@@ -9,31 +9,39 @@ let restaurant_location: string;
 let restaurant_phone: string;
 let restaurant_logo: string;
 
-
-
 @Component({
   selector: 'app-restaurant',
   templateUrl: './restaurant.component.html',
   styleUrls: ['./restaurant.component.css'],
   providers: [RestaurantService],
-
 })
 export class RestaurantComponent implements OnInit {
+  Username = localStorage.getItem('Username');
+  IdUser = localStorage.getItem('IdUser');
+  WelcomeText!: string;
 
-  Username:any;
-  IdUser:any;
-  constructor(public restaurantService: RestaurantService) { }
-
-
+  show = true;
+  constructor(public restaurantService: RestaurantService) {}
 
   ngOnInit(): void {
-    this.Username = localStorage.getItem('Username');
-    this.IdUser = localStorage.getItem('IdUser');
+    // Welcome text
+    if (
+      this.Username == null ||
+      this.Username == undefined ||
+      this.Username == '' ||
+      this.Username == 'null'
+    ) {
+      this.show = false;
+    } else {
+      this.WelcomeText = 'Bienvenue ' + this.Username;
+      this.show = true;
+    }
+
     this.refreshRestaurantList();
   }
 
-  refreshRestaurantList(){
-    this.restaurantService.getRestaurantList().subscribe((res)=>{
+  refreshRestaurantList() {
+    this.restaurantService.getRestaurantList().subscribe((res) => {
       this.restaurantService.restaurants = res as Restaurant[];
     });
   }
@@ -44,7 +52,6 @@ export class RestaurantComponent implements OnInit {
       form?.value.restaurant_name == '' ||
       form?.value.restaurant_name == undefined
     ) {
-      // console.log("REFRESY");
       this.refreshRestaurantList();
     } else {
       this.restaurantService
@@ -53,9 +60,7 @@ export class RestaurantComponent implements OnInit {
         )
         .subscribe((res) => {
           this.restaurantService.restaurants = res as Restaurant[];
-          // console.log("okaaayyy eee==="+JSON.stringify(this.restaurantService.selectedRestaurant));
         });
     }
   }
-
 }

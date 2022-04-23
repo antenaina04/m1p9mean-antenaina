@@ -16,10 +16,22 @@ var restaurant_logo;
 var RestaurantComponent = /** @class */ (function () {
     function RestaurantComponent(restaurantService) {
         this.restaurantService = restaurantService;
-    }
-    RestaurantComponent.prototype.ngOnInit = function () {
         this.Username = localStorage.getItem('Username');
         this.IdUser = localStorage.getItem('IdUser');
+        this.show = true;
+    }
+    RestaurantComponent.prototype.ngOnInit = function () {
+        // Welcome text
+        if (this.Username == null ||
+            this.Username == undefined ||
+            this.Username == '' ||
+            this.Username == 'null') {
+            this.show = false;
+        }
+        else {
+            this.WelcomeText = 'Bienvenue ' + this.Username;
+            this.show = true;
+        }
         this.refreshRestaurantList();
     };
     RestaurantComponent.prototype.refreshRestaurantList = function () {
@@ -33,7 +45,6 @@ var RestaurantComponent = /** @class */ (function () {
         console.log(form === null || form === void 0 ? void 0 : form.value.restaurant_name);
         if ((form === null || form === void 0 ? void 0 : form.value.restaurant_name) == '' ||
             (form === null || form === void 0 ? void 0 : form.value.restaurant_name) == undefined) {
-            // console.log("REFRESY");
             this.refreshRestaurantList();
         }
         else {
@@ -41,7 +52,6 @@ var RestaurantComponent = /** @class */ (function () {
                 .GetRestaurantByRestaurantName(String(this.restaurantService.selectedRestaurant.restaurant_name))
                 .subscribe(function (res) {
                 _this.restaurantService.restaurants = res;
-                // console.log("okaaayyy eee==="+JSON.stringify(this.restaurantService.selectedRestaurant));
             });
         }
     };
