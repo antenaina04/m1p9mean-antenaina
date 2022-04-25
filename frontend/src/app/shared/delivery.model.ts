@@ -5,6 +5,7 @@ export class Delivery {
   delivery_deliverer?: string;
   delivery_client?: string;
   delivery_location?: string;
+  delivery_date?: string;
   delivery_price?: number;
   id_order?: string;
 

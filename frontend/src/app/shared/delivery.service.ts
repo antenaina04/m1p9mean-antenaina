@@ -32,4 +32,38 @@ export class DeliveryService {
       this.baseURL + `/GetDeliveryByDelivererName/` + delivery_deliverer
     );
   }
+
+  // Calculer nombre de livraison
+  DeliveryCount(dishes_count: number) {
+    var delivery_count;
+    delivery_count = dishes_count / 2; // Max Plat pour 1 livraison = 2
+    return Math.round(delivery_count);
+  }
+
+  // Calcul benefice
+  GetBenefits(initial_price: number, Percentage: number) {
+    var Benefits;
+    Benefits = (Percentage * initial_price) / 100;
+    return Benefits;
+  }
+
+  // Calcul frais de livraison
+  GetShippingCost(
+    initial_price: number,
+    Percentage: number,
+    DeliveryCount: number
+  ) {
+    var ShippingCost;
+    ShippingCost =
+      (this.GetBenefits(initial_price, Percentage) + initial_price) *
+      DeliveryCount;
+    return ShippingCost;
+  }
+
+  // Calcul Montant total a payer
+  GetTotalAmountToPay(subtotal: number, ShippingCost: number) {
+    var TotalAmountToPay;
+    TotalAmountToPay = subtotal + ShippingCost;
+    return TotalAmountToPay;
+  }
 }
