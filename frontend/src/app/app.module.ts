@@ -20,6 +20,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { DeliveryComponent } from './delivery/delivery.component';
+import { PreviewComponent } from './preview/preview.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { DeliveryComponent } from './delivery/delivery.component';
     AboutUsComponent,
     ContactUsComponent,
     CheckoutComponent,
-    DeliveryComponent
+    DeliveryComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule,

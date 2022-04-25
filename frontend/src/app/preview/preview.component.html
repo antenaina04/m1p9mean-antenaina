@@ -1,0 +1,121 @@
+<br>
+<br>
+<br>
+
+<div class="row">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h5><i class="fas fa-info"></i> Note:</h5>
+            Cette page a été améliorée pour l'impression. Cliquez sur le bouton d'impression au bas de la facture pour
+            tester.
+        </div>
+
+
+        <div class="invoice p-3 mb-3">
+            <div class="row">
+                <div class="col-12">
+                    <h4>
+                        <i class="fas fa-globe"></i> e-Kaly, C<sup>ie</sup>.
+                    </h4>
+                    <img src="../../assets/img/logo-ekaly.png" width="200px" height="100px">
+                </div>
+            </div>
+            <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong> e-Kaly, C<sup>ie</sup></strong><br>
+                        LOT IIN 185, Analamahitsy<br>
+                        Antananarivo, Madagascar<br>
+                        Phone: +261 32 69 310 51<br>
+                        Email: antenainarandrianantoandro@gmail.com
+                    </address>
+                </div>
+                <div class="col-sm-4 invoice-col">
+                    <u>Information du client:</u>
+                    <address>
+                        <strong>{{userService.selectedUser.name}}</strong><br>
+                        Adresse de livraison : <strong><i> "{{delivery_adress}}, Antananarivo, Madagascar"</i></strong><br>
+                        
+                        Phone: {{userService.selectedUser.phone}}<br>
+                        Email:  <a href="#">{{userService.selectedUser.email}}</a>
+                    </address>
+                </div>
+                <div class="col-sm-4 invoice-col">
+                    <br>
+                    <b>Restaurant:</b> {{restaurantService.selectedRestaurant.restaurant_name}}<br>
+                    <b>Date de commande:</b> {{OrderDate}}<br>
+                    <b>Date de livraison:</b> {{delivery_date}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Qté</th>
+                                <th>Plat</th>
+                                <th>Description</th>
+                                <th>Sous-total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of obj">
+                                <td>1</td>
+                                <td>{{item.dishes_name}}</td>
+                                <td>{{item.dishes_desc}}</td>
+                                <td><strong>{{item.dishes_price}}</strong><em>&nbsp;Ariary</em> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <br>
+                        <div class="callout callout-danger">
+                            <h5><i class="fas fa-info"></i> Note:</h5>
+                            Seulement <mark><strong>(2)deux plats au maximum</strong></mark> pourraient se faire pour <mark><strong>(1)une livraison</strong></mark>.
+                        </div>
+                </div>
+                <div class="col-6">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th style="width:50%">Sous-total:</th>
+                                    <td>{{totalPrice}} Ariary</td>
+                                </tr>
+                                <tr>
+                                    <th>Nombre de livraison:</th>
+                                    <td>{{DeliveryCount}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Frais de livraison</th>
+                                    <td>{{ShippingCost}} Ariary</td>
+                                </tr>
+                                <tr>
+                                    <th>Montant total à payer:</th>
+                                    <td>{{TotalAmountToPay}} Ariary</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row no-print">
+                <div class="col-12">
+                    <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
+                            class="fas fa-print"></i> Print</a>
+                    <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Modifier le panier
+                    </button>
+                    <button type="button" class="btn btn-success float-right" style="margin-right: 5px;">
+                        <i class="fas fa-download"></i> Soumettre la commande
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
