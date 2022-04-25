@@ -24,7 +24,7 @@
                                         </h4>
                                     </div>
                                 </a>
-                                <div id="collapseSeven" class="collapse show" data-parent="#accordion" style="">
+                                <div id="collapseSeven" class="collapse show" data-parent="#accordion">
                                     <div class="card-body">
                                         <table class="table">
                                             <tbody>
@@ -46,9 +46,35 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="w-100"></div>
+                    <div class="col">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <!-- <p class="text-center">1 of 3</p> -->
+                                </div>
+                                <div class="col-6">
+                                    <div class="card card-light">
+                                        <div class="card-header">
+                                                <p class="text-center">Pour pouvoir effectuer la livraison, veuillez saisir la date et l'adresse de livraison</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <input type="text" [(ngModel)]="deliveryService.selectedDelivery.delivery_location" class="form-control form-control-border" id="exampleInputBorder" placeholder="Adresse de livraison">
+                                            <br>
+                                            <!-- <input type="text" [(ngModel)]="deliveryService.selectedDelivery.delivery_date" class="form-control form-control-border" id="exampleInputBorder" placeholder="Adresse de livraison"> -->
+                                            <input type="datetime-local" [(ngModel)]="deliveryService.selectedDelivery.delivery_date" class="form-control form-control-border" id="delivery_date" placeholder="Date de livraison">
+                                            <br>
+                                            <a [routerLink]="['/preview', deliveryService.selectedDelivery.delivery_location, deliveryService.selectedDelivery.delivery_date]" class="btn btn-success btn-block"><b>Soumettre la livraison</b></a>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="col">
+                                    <!-- <p class="text-center">3 of 3</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -68,17 +94,17 @@
                                         Nombre de plats</th>
                                     <td class="text-right">{{obj.length}}</td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th>Sous-total</th>
-                                    <td class="text-right">{{totalPrice}}</td>
-                                </tr>
+                                    <td class="text-right">{{totalPrice}} <em>&nbsp;Ariary</em></td>
+                                </tr> -->
                                 <tr>
                                     <th>
-                                        <h5><strong>Montant à payer:</strong></h5>
+                                        <h5><strong>Sous-total:</strong></h5>
                                     </th>
                                     <td class="text-right">
 
-                                        <h5><strong>$265.24</strong></h5>
+                                        <h5><strong>{{totalPrice}} <em>&nbsp;Ariary</em></strong></h5>
                                     </td>
                                 </tr>
                             </table>
@@ -97,9 +123,9 @@
                 </div>
             </div>
             <!-- contenu -->
-            <a href="#" class="small-box-footer">
+            <!-- <a href="#" class="small-box-footer">
                 Continuer &nbsp;<i class="fas fa-arrow-circle-right"></i>
-            </a>
+            </a> -->
         </div>
     </div>
 </div>

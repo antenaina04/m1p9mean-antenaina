@@ -9,7 +9,8 @@ exports.__esModule = true;
 exports.CheckoutComponent = void 0;
 var core_1 = require("@angular/core");
 var CheckoutComponent = /** @class */ (function () {
-    function CheckoutComponent() {
+    function CheckoutComponent(deliveryService) {
+        this.deliveryService = deliveryService;
         this.Username = localStorage.getItem('Username');
         this.IdUser = localStorage.getItem('IdUser');
         this.panier = localStorage.getItem('panier');

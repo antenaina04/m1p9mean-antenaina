@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DeliveryService } from '../shared/delivery.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -12,7 +12,7 @@ export class CheckoutComponent implements OnInit {
   totalPrice!: number;
   obj!: any;
   show = true;
-  constructor() { }
+  constructor(public deliveryService: DeliveryService) { }
 
   ngOnInit(): void {
     this.obj = JSON.parse(String(this.panier));
