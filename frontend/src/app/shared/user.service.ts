@@ -34,4 +34,12 @@ export class UserService {
       this.baseURL + `/check_user/` + email + `/user/` + password
     );
   }
+  GetUserByIdUser(
+    id_user: string | null
+  ): Observable<User> {
+    return this.http.get<User>(this.baseURL + `/` + id_user);
+  }
+
+
+
 }

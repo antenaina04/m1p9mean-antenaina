@@ -28,6 +28,32 @@ var DeliveryService = /** @class */ (function () {
     DeliveryService.prototype.GetDeliveryByDelivererName = function (delivery_deliverer) {
         return this.http.get(this.baseURL + "/GetDeliveryByDelivererName/" + delivery_deliverer);
     };
+    // Calculer nombre de livraison
+    DeliveryService.prototype.DeliveryCount = function (dishes_count) {
+        var delivery_count;
+        delivery_count = dishes_count / 2; // Max Plat pour 1 livraison = 2
+        return Math.round(delivery_count);
+    };
+    // Calcul benefice
+    DeliveryService.prototype.GetBenefits = function (initial_price, Percentage) {
+        var Benefits;
+        Benefits = (Percentage * initial_price) / 100;
+        return Benefits;
+    };
+    // Calcul frais de livraison
+    DeliveryService.prototype.GetShippingCost = function (initial_price, Percentage, DeliveryCount) {
+        var ShippingCost;
+        ShippingCost =
+            (this.GetBenefits(initial_price, Percentage) + initial_price) *
+                DeliveryCount;
+        return ShippingCost;
+    };
+    // Calcul Montant total a payer
+    DeliveryService.prototype.GetTotalAmountToPay = function (subtotal, ShippingCost) {
+        var TotalAmountToPay;
+        TotalAmountToPay = subtotal + ShippingCost;
+        return TotalAmountToPay;
+    };
     DeliveryService = __decorate([
         core_1.Injectable({
             providedIn: 'root'

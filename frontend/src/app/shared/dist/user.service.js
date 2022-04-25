@@ -26,6 +26,9 @@ var UserService = /** @class */ (function () {
         // console.log('password ------' + password);
         return this.http.get(this.baseURL + "/check_user/" + email + "/user/" + password);
     };
+    UserService.prototype.GetUserByIdUser = function (id_user) {
+        return this.http.get(this.baseURL + "/" + id_user);
+    };
     UserService = __decorate([
         core_1.Injectable({
             providedIn: 'root'
