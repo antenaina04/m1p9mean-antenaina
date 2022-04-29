@@ -1,7 +1,14 @@
 <div class="card card-widget widget-user shadow">
-  <div class="widget-user-header bg-success">
-    <h4 class="text-center display-6">{{restaurantService.selectedRestaurant.restaurant_name}}</h4>
+  <div style="background-image: url(../../assets/img/banner-e-kaly.jpg)" class="widget-user-header bg-success">
+    <!-- <h4 class="text-center display-6"><i class="fa fa-cutlery fa-5" aria-hidden="true"></i>{{restaurantService.selectedRestaurant.restaurant_name}}</h4> -->
+    <div class="row justify-content-center">
+      <div class="col-2">
+        <!-- <a href="#" class="btn btn-block btn-light btn-lg"><h4 class="text-center display-6">{{restaurantService.selectedRestaurant.restaurant_name}}</h4></a> -->
+      </div>
+    </div>
+
   </div>
+
   <div class="widget-user-image text-center">
     <img class="img-fluid mb-3" src="../../assets/img/user1-128x128.jpg">
   </div>
@@ -43,30 +50,50 @@
     <div class="card card-solid">
       <div class="card-body pb-0">
         <div class="row" cdkDropList (cdkDropListDropped)="drop($event)">
-          <div cdkDrag class="col-lg-3 col-6" *ngFor="let dishes of dishesService.dishes">
-            <div class="card card-success card-outline bg-light">
+          <div cdkDrag class="col-sm-6" *ngFor="let dishes of dishesService.dishes">
+            <div class="card card-widget card-outline shadow">
               <div class="card-body box-profile">
                 <div class="text-center">
+
                   <h4 class="text-center display-6">{{dishes.dishes_name}}</h4>
+
+                  <div class="row justify-content-center">
+                    <div class="col-4">
+                      <span class="float-left badge bg-light">{{dishes.dishes_price}} Ariary</span>
+                    </div>
+                  </div>
+
+
+                  <hr class="bg-light">
                 </div>
                 <div class="row">
                   <div class="col-6">
                     <img class="img-fluid img-bordered" src="../../assets/img/user4-128x128.jpg"
                       alt="User profile picture">
                     <p></p>
-                    <span class="float-left badge bg-success">{{dishes.dishes_price}} Ariary</span>
                   </div>
                   <div class="col-6">
                     <!-- <blockquote class="quote-success bg-light"> -->
-                      <p>{{dishes.dishes_desc}}</p>
+                    <p>{{dishes.dishes_desc}}</p>
                     <!-- </blockquote> -->
                   </div>
                 </div>
-                <div class="col-12">
+                <!-- <div class="col-12">
                   <div class="float-right">
                     <button type="button" (click)="addToCart(dishes)" class="btn btn-block btn-outline-success btn-flat"><i
                         class="far fa-plus-square mr-1"></i>
                       Ajouter</button>
+                  </div>
+                </div> -->
+                <div class="row justify-content-center">
+                  <div class="col-6">
+                    <button type="button" (click)="addToCart(dishes)" class="btn btn-default btn-block">
+                      <!-- <button type="button" class="btn btn-default btn-block">.btn-block</button> -->
+
+
+                      <i class="fas fa-cart-plus"></i>
+                      Ajouter
+                    </button>
                   </div>
                 </div>
               </div>
@@ -78,6 +105,19 @@
   </div>
 
   <div class="col-sm-4">
-    <app-order-line></app-order-line>
+    <div class="small-box bg-light">
+      <div class="inner">
+        <h5 class="text-left display-5">
+          <i class="fa fa-shopping-basket fa-2" aria-hidden="true"></i>&nbsp; Votre panier
+        </h5>
+        <app-order-line></app-order-line>
+      </div>
+      <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+      </div>
+      <a (click)="orderPage()" class="small-box-footer">
+        Continuer &nbsp;<i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
   </div>
 </div>

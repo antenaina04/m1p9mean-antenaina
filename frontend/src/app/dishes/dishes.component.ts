@@ -85,4 +85,7 @@ export class DishesComponent implements OnInit {
       event.currentIndex
     );
   }
+  orderPage() {
+    this._router.navigateByUrl('/order');
+  }
 }

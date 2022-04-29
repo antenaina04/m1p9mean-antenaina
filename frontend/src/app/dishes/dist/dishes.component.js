@@ -67,6 +67,9 @@ var DishesComponent = /** @class */ (function () {
     DishesComponent.prototype.drop = function (event) {
         drag_drop_1.moveItemInArray(this.dishesService.dishes, event.previousIndex, event.currentIndex);
     };
+    DishesComponent.prototype.orderPage = function () {
+        this._router.navigateByUrl('/order');
+    };
     DishesComponent = __decorate([
         core_1.Component({
             selector: 'app-dishes',

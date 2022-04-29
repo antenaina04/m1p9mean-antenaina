@@ -27,8 +27,9 @@
         <div class="row">
 
 
-            <div class="col-lg-3 col-6" *ngFor="let restaurant of restaurantService.restaurants">
-                <div class="card card-success card-outline">
+            <div class="col-sm-6" *ngFor="let restaurant of restaurantService.restaurants">
+                <div class="card card-widget shadow">
+
                     <div class="card-body box-profile">
                         <div class="text-center">
                             <img class="img-fluid img-bordered" src="../../assets/img/user4-128x128.jpg"
@@ -45,10 +46,10 @@
                                     class="float-right">{{restaurant.restaurant_phone}}</a>
                             </li>
                         </ul>
-                        <div class="col-12">
-                            <div class="float-right">
+                        <div class="row justify-content-end">
+                            <div class="col-4">
                                 <a [routerLink]="['/dishes/restaurant/', restaurant._id]"
-                                    class="btn btn-outline-info btn-block btn-flat"><b> Visiter</b></a>
+                                    class="btn btn-block btn-outline-dark btn-sm"><b> Visiter</b></a>
                             </div>
                         </div>
                     </div>
