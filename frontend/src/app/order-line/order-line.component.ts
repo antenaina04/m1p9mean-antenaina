@@ -24,6 +24,13 @@ export class OrderLineComponent implements OnInit {
   //   window.alert(dishes.dishes_name + ' supprimé du panier!');
   // }
 
+  removeToCart(selectedItem: []) {
+    let index = this.obj.indexOf(selectedItem);
+    this.obj.splice(index, 1);
+    this.sum();
+    console.log('OBJ =' + JSON.stringify(this.obj.length));
+    localStorage.setItem('panier', JSON.stringify(this.obj));
+  } 
   sum(): void {
     this.totalPrice = 0;
     if (this.obj) {

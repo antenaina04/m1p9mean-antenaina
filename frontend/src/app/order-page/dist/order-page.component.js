@@ -25,6 +25,13 @@ var OrderPageComponent = /** @class */ (function () {
     //   this.sum();
     //   window.alert(dishes.dishes_name + ' supprimé du panier!');
     // }
+    OrderPageComponent.prototype.removeToCart = function (selectedItem) {
+        var index = this.obj.indexOf(selectedItem);
+        this.obj.splice(index, 1);
+        this.sum();
+        console.log('OBJ =' + JSON.stringify(this.obj.length));
+        localStorage.setItem('panier', JSON.stringify(this.obj));
+    };
     OrderPageComponent.prototype.sum = function () {
         var _this = this;
         this.totalPrice = 0;

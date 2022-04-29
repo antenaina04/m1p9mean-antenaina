@@ -14,7 +14,11 @@ export class OrderPageComponent implements OnInit {
   obj!: any;
 
   panier = localStorage.getItem('panier');
-  constructor(private cartService: CartService, private _router: Router, private _Activatedroute: ActivatedRoute) {}
+  constructor(
+    private cartService: CartService,
+    private _router: Router,
+    private _Activatedroute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.obj = JSON.parse(String(this.panier));
@@ -28,10 +32,18 @@ export class OrderPageComponent implements OnInit {
   //   window.alert(dishes.dishes_name + ' supprimé du panier!');
   // }
 
+  removeToCart(selectedItem: []) {
+    let index = this.obj.indexOf(selectedItem);
+    this.obj.splice(index, 1);
+    this.sum();
+    console.log('OBJ =' + JSON.stringify(this.obj.length));
+    localStorage.setItem('panier', JSON.stringify(this.obj));
+  }
+
   sum(): void {
     this.totalPrice = 0;
     if (this.obj) {
-      this.obj.map((_dishes:any) => {
+      this.obj.map((_dishes: any) => {
         const price: number = _dishes.dishes_price || 0;
         this.totalPrice += price;
       });

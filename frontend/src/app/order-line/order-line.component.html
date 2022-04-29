@@ -1,32 +1,29 @@
-<div class="small-box bg-success">
-    <div class="inner">
-        <h3>Votre panier<sup style="font-size: 18px"></sup></h3>
-        <table class="table">
-            <tbody>
-                <tr *ngFor="let item of obj">
-                    <td>
-                        <h5 class="text-left display-5">{{item.dishes_name}}</h5>
-                    </td>
-                    <td><strong>{{item.dishes_price}}</strong><em>&nbsp;Ariary</em></td>
-                    <!-- <td class="text-center">
-                        <button type="button" (click)="removeToCart(item)" class="btn btn-danger btn-sm"><i
-                            class="far fa-plus-trash mr-1"></i>
-                          Supprimer</button>
+<table class="table">
+    <tbody>
+        <tr *ngFor="let item of obj;index as i">
+            <td>
+                <!-- <h5 class="text-left display-5">{{item.dishes_name}}</h5> -->
+                {{item.dishes_name}}
+            </td>
+            <td align="right"><strong>{{item.dishes_price}}</strong><em>&nbsp;Ar</em> </td>
+            <!-- <td>
+                        <button type="button" (click)="removeToCart(obj[i])" class="btn btn-danger btn-sm"><i
+                                class="far fa-plus-trash mr-1"></i>
+                            Supprimer</button>
                     </td> -->
-                </tr>
-            </tbody>
-        </table>
-        <hr class="bg-light">
+            <td align="right">
+                <!-- <button type="button" (click)="removeToCart(obj[i])" class="btn btn-danger btn-sm"><i
+                            class="far fa-plus-trash mr-1"></i>
+                            </button> -->
+                <a (click)="removeToCart(obj[i])"><i class="fa fa-minus-circle fa-3" aria-hidden="true"></i></a>
+            </td>
+            <!-- <i class="fa fa-minus-circle fa-3" aria-hidden="true"></i> -->
+        </tr>
+    </tbody>
+</table>
+<hr class="bg-light">
 
-        <div class="row">
-            <div class="col-md-4"><strong>Sous-total</strong></div>
-            <div class="col-md-4 offset-md-3"><strong>{{totalPrice}} &nbsp;Ariary</strong></div>
-        </div>
-    </div>
-    <div class="icon">
-        <i class="ion ion-stats-bars"></i>
-    </div>
-<a (click)="checkout()" class="small-box-footer">
-        Continuer &nbsp;<i class="fas fa-arrow-circle-right"></i>
-    </a>
+<div class="row justify-content-center">
+    <div class="col-md-4"><strong>Sous-total :</strong></div>
+    <div class="col-md-4 offset-md-1"><strong>{{totalPrice}}</strong><em>&nbsp;Ar</em></div>
 </div>
