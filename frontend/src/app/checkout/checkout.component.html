@@ -2,7 +2,7 @@
 
     <div class="col-sm-8">
         <div class="card card-black card-outline">
-            <div class="card-header bg-success">
+            <div class="card-header bg-light">
                 <h2 class="text-left display-5">Caisse</h2>
             </div>
             <div class="card-body p-0">
@@ -10,18 +10,32 @@
                 <div class="row">
 
                     <div *ngIf="show" class="col">
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>Login</h3>
+                                <p>Vous devez vous connecter</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                        </div>
                         <app-login></app-login>
                     </div>
+
                     <div class="w-100"></div>
                     <div class="col">
                         <div id="accordion">
-                            <div class="card card-success card-outline">
+                            <div class="card card-light card-outline">
                                 <a class="d-block w-100" data-toggle="collapse" href="#collapseSeven"
                                     aria-expanded="true">
-                                    <div class="card-header">
-                                        <h4 class="card-title w-100">
-                                            Votre commande
-                                        </h4>
+                                    <div class="small-box bg-warning">
+                                        <div class="inner">
+                                            <h3>Votre commande</h3>
+                                            <p>Veuillez verifier votre commande</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </div>
                                     </div>
                                 </a>
                                 <div id="collapseSeven" class="collapse show" data-parent="#accordion">
@@ -32,7 +46,9 @@
                                                     <td>
                                                         <h5 class="text-left display-5">{{item.dishes_name}}</h5>
                                                     </td>
-                                                    <td><strong>{{item.dishes_price}}</strong><em>&nbsp;Ariary</em></td>
+                                                    <td align="right">
+                                                        <strong>{{item.dishes_price}}</strong><em>&nbsp;Ariary</em>
+                                                    </td>
                                                     <!-- <td class="text-center">
                                                 <button type="button" (click)="removeToCart(item)" class="btn btn-danger btn-sm"><i
                                                     class="far fa-plus-trash mr-1"></i>
@@ -56,17 +72,25 @@
                                 <div class="col-6">
                                     <div class="card card-light">
                                         <div class="card-header">
-                                                <p class="text-center">Pour pouvoir effectuer la livraison, veuillez saisir la date et l'adresse de livraison</p>
+                                            <p class="text-center">Pour pouvoir effectuer la livraison, veuillez saisir
+                                                la date et l'adresse de livraison</p>
                                         </div>
                                         <div class="card-body">
-                                            <input type="text" [(ngModel)]="deliveryService.selectedDelivery.delivery_location" class="form-control form-control-border" id="exampleInputBorder" placeholder="Adresse de livraison">
+                                            <input type="text"
+                                                [(ngModel)]="deliveryService.selectedDelivery.delivery_location"
+                                                class="form-control form-control-border" id="exampleInputBorder"
+                                                placeholder="Adresse de livraison">
                                             <br>
                                             <!-- <input type="text" [(ngModel)]="deliveryService.selectedDelivery.delivery_date" class="form-control form-control-border" id="exampleInputBorder" placeholder="Adresse de livraison"> -->
-                                            <input type="datetime-local" [(ngModel)]="deliveryService.selectedDelivery.delivery_date" class="form-control form-control-border" id="delivery_date" placeholder="Date de livraison">
+                                            <input type="datetime-local"
+                                                [(ngModel)]="deliveryService.selectedDelivery.delivery_date"
+                                                class="form-control form-control-border" id="delivery_date"
+                                                placeholder="Date de livraison">
                                             <br>
-                                            <a [routerLink]="['/preview', deliveryService.selectedDelivery.delivery_location, deliveryService.selectedDelivery.delivery_date]" class="btn btn-success btn-block"><b>Soumettre la livraison</b></a>
+                                            <a [routerLink]="['/preview', deliveryService.selectedDelivery.delivery_location, deliveryService.selectedDelivery.delivery_date]"
+                                                class="btn btn-block bg-gradient-dark btn-lg"><b><i class="fa fa-arrow-circle-right fa-4" aria-hidden="true"></i> Soumettre la livraison</b></a>
                                         </div>
-                                      </div>
+                                    </div>
                                 </div>
                                 <div class="col">
                                     <!-- <p class="text-center">3 of 3</p> -->
@@ -81,17 +105,17 @@
 
     <div class="col-sm-4">
 
-        <div class="small-box bg-success">
+        <div class="small-box bg-secondary">
             <div class="inner">
-                <h3>Résumé de votre commande</h3>
+                <h4>Résumé de votre commande</h4>
                 <!-- contenu -->
                 <div class="row">
                     <div class="col-sm-8">
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
-                                    <th style="width:50%">
-                                        Nombre de plats</th>
+                                    <th class="text-left">
+                                        Nombre de plats:</th>
                                     <td class="text-right">{{obj.length}}</td>
                                 </tr>
                                 <!-- <tr>
@@ -100,11 +124,10 @@
                                 </tr> -->
                                 <tr>
                                     <th>
-                                        <h5><strong>Sous-total:</strong></h5>
+                                        <strong>Sous-total:</strong>
                                     </th>
                                     <td class="text-right">
-
-                                        <h5><strong>{{totalPrice}} <em>&nbsp;Ariary</em></strong></h5>
+                                        <strong>{{totalPrice}}</strong><em>&nbsp;Ar</em>
                                     </td>
                                 </tr>
                             </table>

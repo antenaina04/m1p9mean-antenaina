@@ -17,7 +17,7 @@
                     <h4>
                         <i class="fas fa-globe"></i> e-Kaly, C<sup>ie</sup>.
                     </h4>
-                    <img src="../../assets/img/logo-ekaly.png" width="200px" height="100px">
+                    <img src="assets/img/logo-e-kaly-v2.png" width="200px" height="100px">
                 </div>
             </div>
             <div class="row invoice-info">
@@ -50,9 +50,9 @@
 
             <div class="row">
                 <div class="col-12 table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-bordered">
                         <thead>
-                            <tr>
+                            <tr align="center">
                                 <th>Qté</th>
                                 <th>Plat</th>
                                 <th>Description</th>
@@ -61,10 +61,10 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of obj">
-                                <td>1</td>
-                                <td>{{item.dishes_name}}</td>
-                                <td>{{item.dishes_desc}}</td>
-                                <td><strong>{{item.dishes_price}}</strong><em>&nbsp;Ariary</em> </td>
+                                <td align="center">1</td>
+                                <td align="center">{{item.dishes_name}}</td>
+                                <td align="center">{{item.dishes_desc}}</td>
+                                <td align="right"><strong>{{item.dishes_price}}</strong><em>&nbsp;Ariary</em> </td>
                             </tr>
                         </tbody>
                     </table>
@@ -76,7 +76,7 @@
                     <br>
                         <div class="callout callout-danger">
                             <h5><i class="fas fa-info"></i> Note:</h5>
-                            Seulement <mark><strong>(2)deux plats au maximum</strong></mark> pourraient se faire pour <mark><strong>(1)une livraison</strong></mark>.
+                            <mark><strong>(2)deux plats au maximum</strong></mark> pour <mark><strong>(1)une livraison</strong></mark>.
                         </div>
                 </div>
                 <div class="col-6">
@@ -85,19 +85,19 @@
                             <tbody>
                                 <tr>
                                     <th style="width:50%">Sous-total:</th>
-                                    <td>{{totalPrice}} Ariary</td>
+                                    <td align="right">{{totalPrice}} Ariary</td>
                                 </tr>
                                 <tr>
                                     <th>Nombre de livraison:</th>
-                                    <td>{{DeliveryCount}}</td>
+                                    <td align="right">{{DeliveryCount}}</td>
                                 </tr>
                                 <tr>
                                     <th>Frais de livraison</th>
-                                    <td>{{ShippingCost}} Ariary</td>
+                                    <td align="right">{{ShippingCost}} Ariary</td>
                                 </tr>
                                 <tr>
                                     <th>Montant total à payer:</th>
-                                    <td>{{TotalAmountToPay}} Ariary</td>
+                                    <td align="right">{{TotalAmountToPay}} Ariary</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -108,10 +108,10 @@
             <div class="row no-print">
                 <div class="col-12">
                     <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
-                            class="fas fa-print"></i> Print</a>
-                    <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Modifier le panier
+                            class="fas fa-print"></i> Imprimer</a>
+                    <button type="button" class="btn btn-warning btn-flat float-right"><i class="far fa-credit-card"></i> Modifier le panier
                     </button>
-                    <button type="button" class="btn btn-success float-right" style="margin-right: 5px;">
+                    <button type="button" class="btn btn-primary btn-flat float-right" style="margin-right: 5px;">
                         <i class="fas fa-download"></i> Soumettre la commande
                     </button>
                 </div>
