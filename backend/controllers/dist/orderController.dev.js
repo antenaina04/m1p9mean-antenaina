@@ -50,10 +50,9 @@ router.post('/', function (req, res) {
   var order = new Order({
     created_at: null,
     updated_at: null,
-    id_user: req.body.id_user,
-    id_dishes: req.body.id_dishes,
     order_price: req.body.order_price,
-    order_status: req.body.order_status
+    order_status: req.body.order_status,
+    id_user: req.body.id_user
   });
   order.save(function (err, docs) {
     if (!err) {
@@ -69,10 +68,9 @@ router.put('/:id', function (req, res) {
   var order = new Order({
     created_at: null,
     updated_at: null,
-    id_user: req.body.id_user,
-    id_dishes: req.body.id_dishes,
     order_price: req.body.order_price,
-    order_status: req.body.order_status
+    order_status: req.body.order_status,
+    id_user: req.body.id_user
   });
   Order.findByIdAndUpdate(req.params.id, {
     $set: order

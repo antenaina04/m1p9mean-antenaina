@@ -17,8 +17,8 @@ export class OrderService {
   order_status: any;
 
   
-  readonly baseURL: 'http://localhost:3000/order' =
-    'http://localhost:3000/order';
+  readonly baseURL: 'http://localhost:3000/orders' =
+    'http://localhost:3000/orders';
 
   constructor(private http: HttpClient) {}
 
