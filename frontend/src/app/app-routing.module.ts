@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'order', component: OrderPageComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'delivery', component: DeliveryComponent },
-  { path: 'preview/:adressDelivery/:dateDelivery', component: PreviewComponent },
+  { path: 'preview', component: PreviewComponent },
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'saveOrUpdateDishes', component: InsertDishesComponent },
