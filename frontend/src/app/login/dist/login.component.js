@@ -54,7 +54,7 @@ var LoginComponent = /** @class */ (function () {
                 }
                 else {
                     _this.sub = _this._Activatedroute.paramMap.subscribe(function () {
-                        var url = '/checkout';
+                        var url = '/preview';
                         _this._router
                             .navigateByUrl('/', {
                             skipLocationChange: true

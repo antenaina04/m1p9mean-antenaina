@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
             this._router.navigateByUrl('/restaurant');
           } else {
             this.sub = this._Activatedroute.paramMap.subscribe(() => {
-              const url = '/checkout';
+              const url = '/preview';
               this._router
                 .navigateByUrl('/', {
                   skipLocationChange: true,
