@@ -29,7 +29,7 @@ var routes = [
     { path: 'order', component: order_page_component_1.OrderPageComponent },
     { path: 'checkout', component: checkout_component_1.CheckoutComponent },
     { path: 'delivery', component: delivery_component_1.DeliveryComponent },
-    { path: 'preview/:adressDelivery/:dateDelivery', component: preview_component_1.PreviewComponent },
+    { path: 'preview', component: preview_component_1.PreviewComponent },
     { path: 'user', component: user_component_1.UserComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'saveOrUpdateDishes', component: insert_dishes_component_1.InsertDishesComponent },
