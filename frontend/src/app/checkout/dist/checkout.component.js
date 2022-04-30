@@ -9,8 +9,9 @@ exports.__esModule = true;
 exports.CheckoutComponent = void 0;
 var core_1 = require("@angular/core");
 var CheckoutComponent = /** @class */ (function () {
-    function CheckoutComponent(deliveryService) {
+    function CheckoutComponent(deliveryService, _router) {
         this.deliveryService = deliveryService;
+        this._router = _router;
         this.Username = localStorage.getItem('Username');
         this.IdUser = localStorage.getItem('IdUser');
         this.panier = localStorage.getItem('panier');
@@ -19,14 +20,22 @@ var CheckoutComponent = /** @class */ (function () {
     CheckoutComponent.prototype.ngOnInit = function () {
         this.obj = JSON.parse(String(this.panier));
         this.sum();
-        if (this.Username == null ||
-            this.Username == undefined ||
-            this.Username == '' ||
-            this.Username == 'null') {
-            this.show = true;
+        if (String(this.panier) == "[]" ||
+            this.panier == undefined ||
+            this.panier == '') {
+            this._router.navigateByUrl('/order');
         }
         else {
-            this.show = false;
+            if (this.Username == null ||
+                this.Username == undefined ||
+                this.Username == '' ||
+                this.Username == 'null') {
+                this.show = true;
+            }
+            else {
+                this.show = false;
+                this._router.navigateByUrl('/preview');
+            }
         }
     };
     CheckoutComponent.prototype.sum = function () {

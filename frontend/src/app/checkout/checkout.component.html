@@ -49,11 +49,6 @@
                                                     <td align="right">
                                                         <strong>{{item.dishes_price}}</strong><em>&nbsp;Ariary</em>
                                                     </td>
-                                                    <!-- <td class="text-center">
-                                                <button type="button" (click)="removeToCart(item)" class="btn btn-danger btn-sm"><i
-                                                    class="far fa-plus-trash mr-1"></i>
-                                                  Supprimer</button>
-                                            </td> -->
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -67,33 +62,18 @@
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <!-- <p class="text-center">1 of 3</p> -->
                                 </div>
                                 <div class="col-6">
-                                    <div class="card card-light">
-                                        <div class="card-header">
-                                            <p class="text-center">Pour pouvoir effectuer la livraison, veuillez saisir
-                                                la date et l'adresse de livraison</p>
-                                        </div>
+                                    <div class="">
                                         <div class="card-body">
-                                            <input type="text"
-                                                [(ngModel)]="deliveryService.selectedDelivery.delivery_location"
-                                                class="form-control form-control-border" id="exampleInputBorder"
-                                                placeholder="Adresse de livraison">
-                                            <br>
-                                            <!-- <input type="text" [(ngModel)]="deliveryService.selectedDelivery.delivery_date" class="form-control form-control-border" id="exampleInputBorder" placeholder="Adresse de livraison"> -->
-                                            <input type="datetime-local"
-                                                [(ngModel)]="deliveryService.selectedDelivery.delivery_date"
-                                                class="form-control form-control-border" id="delivery_date"
-                                                placeholder="Date de livraison">
-                                            <br>
-                                            <a [routerLink]="['/preview', deliveryService.selectedDelivery.delivery_location, deliveryService.selectedDelivery.delivery_date]"
-                                                class="btn btn-block bg-gradient-dark btn-lg"><b><i class="fa fa-arrow-circle-right fa-4" aria-hidden="true"></i> Soumettre la livraison</b></a>
+                                            <a [routerLink]="['/preview']"
+                                                class="btn btn-block bg-gradient-dark btn-lg"><b><i
+                                                        class="fa fa-arrow-circle-right fa-4" aria-hidden="true"></i>
+                                                    Suivant</b></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <!-- <p class="text-center">3 of 3</p> -->
                                 </div>
                             </div>
                         </div>
@@ -108,7 +88,6 @@
         <div class="small-box bg-secondary">
             <div class="inner">
                 <h4>Résumé de votre commande</h4>
-                <!-- contenu -->
                 <div class="row">
                     <div class="col-sm-8">
                         <div class="table-responsive">
@@ -118,10 +97,6 @@
                                         Nombre de plats:</th>
                                     <td class="text-right">{{obj.length}}</td>
                                 </tr>
-                                <!-- <tr>
-                                    <th>Sous-total</th>
-                                    <td class="text-right">{{totalPrice}} <em>&nbsp;Ariary</em></td>
-                                </tr> -->
                                 <tr>
                                     <th>
                                         <strong>Sous-total:</strong>
@@ -145,10 +120,6 @@
                     </div>
                 </div>
             </div>
-            <!-- contenu -->
-            <!-- <a href="#" class="small-box-footer">
-                Continuer &nbsp;<i class="fas fa-arrow-circle-right"></i>
-            </a> -->
         </div>
     </div>
 </div>

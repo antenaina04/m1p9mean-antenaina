@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { DeliveryService } from '../shared/delivery.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
   Username = localStorage.getItem('Username');
@@ -12,33 +14,43 @@ export class CheckoutComponent implements OnInit {
   totalPrice!: number;
   obj!: any;
   show = true;
-  constructor(public deliveryService: DeliveryService) { }
+  constructor(
+    public deliveryService: DeliveryService,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.obj = JSON.parse(String(this.panier));
     this.sum();
 
     if (
-      this.Username == null ||
-      this.Username == undefined ||
-      this.Username == '' ||
-      this.Username == 'null'
+      String(this.panier) == "[]" ||
+      this.panier == undefined ||
+      this.panier == ''
     ) {
-      this.show = true;
+      this._router.navigateByUrl('/order');
     } else {
-      this.show = false;
+      if (
+        this.Username == null ||
+        this.Username == undefined ||
+        this.Username == '' ||
+        this.Username == 'null'
+      ) {
+        this.show = true;
+      } else {
+        this.show = false;
+        this._router.navigateByUrl('/preview');
+      }
     }
-
   }
 
   sum(): void {
     this.totalPrice = 0;
     if (this.obj) {
-      this.obj.map((_dishes:any) => {
+      this.obj.map((_dishes: any) => {
         const price: number = _dishes.dishes_price || 0;
         this.totalPrice += price;
       });
     }
   }
-
 }
