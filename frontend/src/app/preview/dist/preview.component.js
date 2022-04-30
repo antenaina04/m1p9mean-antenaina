@@ -9,23 +9,32 @@ exports.__esModule = true;
 exports.PreviewComponent = void 0;
 var core_1 = require("@angular/core");
 var PreviewComponent = /** @class */ (function () {
-    function PreviewComponent(_Activatedroute, deliveryService, restaurantService, userService) {
+    function PreviewComponent(_Activatedroute, deliveryService, restaurantService, userService, _router) {
         this._Activatedroute = _Activatedroute;
         this.deliveryService = deliveryService;
         this.restaurantService = restaurantService;
         this.userService = userService;
+        this._router = _router;
         this.Username = localStorage.getItem('Username');
         this.IdUser = localStorage.getItem('IdUser');
         this.panier = localStorage.getItem('panier');
     }
     PreviewComponent.prototype.ngOnInit = function () {
-        this.obj = JSON.parse(String(this.panier));
-        this.sum();
-        this.GetUserByIdUser();
-        this.GetAdressAndDateDelivery();
-        this.GetRestaurantByIdRestaurant();
-        this.GetAmountSummary();
-        this.GetOrderDate();
+        if (this.Username == null ||
+            this.Username == undefined ||
+            this.Username == '' ||
+            this.Username == 'null') {
+            this._router.navigateByUrl('checkout');
+        }
+        else {
+            this.obj = JSON.parse(String(this.panier));
+            this.sum();
+            this.GetUserByIdUser();
+            this.GetAdressAndDateDelivery();
+            this.GetRestaurantByIdRestaurant();
+            this.GetAmountSummary();
+            this.GetOrderDate();
+        }
     };
     // GetUser
     PreviewComponent.prototype.GetUserByIdUser = function () {
@@ -59,15 +68,39 @@ var PreviewComponent = /** @class */ (function () {
     PreviewComponent.prototype.GetAdressAndDateDelivery = function () {
         var _this = this;
         this.sub = this._Activatedroute.paramMap.subscribe(function (params) {
-            _this.delivery_adress = String(params === null || params === void 0 ? void 0 : params.get('adressDelivery'));
-            // var deliveryDate = String(params?.get('dateDelivery'));
-            // new Date(dateString)
+            _this.delivery_adress = String('xxxx');
             var dateDelivery = new Date(String(params === null || params === void 0 ? void 0 : params.get('dateDelivery')));
-            var date = dateDelivery.getDate() + '/' + (dateDelivery.getMonth() + 1) + '/' + dateDelivery.getFullYear();
-            var time = dateDelivery.getHours() + "h " + dateDelivery.getMinutes() + "min";
+            var date = dateDelivery.getDate() +
+                '/' +
+                (dateDelivery.getMonth() + 1) +
+                '/' +
+                dateDelivery.getFullYear();
+            var time = dateDelivery.getHours() + 'h ' + dateDelivery.getMinutes() + 'min';
             var DateTimeDelivery = date + ' ' + time;
-            _this.delivery_date = String(DateTimeDelivery);
+            _this.delivery_date = String('xxxx');
         });
+    };
+    PreviewComponent.prototype.onBlurDeliveryDate = function () {
+        var dateDelivery = new Date(String(this.deliveryService.selectedDelivery.delivery_date));
+        var date = dateDelivery.getDate() +
+            '/' +
+            (dateDelivery.getMonth() + 1) +
+            '/' +
+            dateDelivery.getFullYear();
+        var time = dateDelivery.getHours() + 'h ' + dateDelivery.getMinutes() + 'min';
+        var DateTimeDelivery = date + ' ' + time;
+        this.delivery_date = String(DateTimeDelivery);
+        this.deliveryService.selectedDelivery.delivery_date = this.delivery_date;
+        if (String(this.deliveryService.selectedDelivery.delivery_date) ==
+            'NaN/NaN/NaN NaNh NaNmin' ||
+            String(this.deliveryService.selectedDelivery.delivery_date) == '' ||
+            String(this.deliveryService.selectedDelivery.delivery_date) == null ||
+            String(this.deliveryService.selectedDelivery.delivery_date) == undefined) {
+            this.deliveryService.selectedDelivery.delivery_date = '...';
+        }
+        else {
+            this.deliveryService.selectedDelivery.delivery_date = this.delivery_date;
+        }
     };
     PreviewComponent.prototype.sum = function () {
         var _this = this;
@@ -89,8 +122,12 @@ var PreviewComponent = /** @class */ (function () {
     };
     PreviewComponent.prototype.GetOrderDate = function () {
         var today = new Date();
-        var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
-        var time = today.getHours() + "h " + today.getMinutes() + "min";
+        var date = today.getDate() +
+            '/' +
+            (today.getMonth() + 1) +
+            '/' +
+            today.getFullYear();
+        var time = today.getHours() + 'h ' + today.getMinutes() + 'min';
         var CurrentDate = date + ' ' + time;
         this.OrderDate = String(CurrentDate);
     };

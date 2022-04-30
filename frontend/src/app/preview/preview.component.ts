@@ -22,7 +22,7 @@ export class PreviewComponent implements OnInit {
 
   // OrderDate
   OrderDate!: any;
-  
+
   // AmountSummary
   totalPrice!: number;
   Benefice!: number;
@@ -30,24 +30,32 @@ export class PreviewComponent implements OnInit {
   ShippingCost!: number;
   TotalAmountToPay!: number;
 
-
-
   constructor(
     private _Activatedroute: ActivatedRoute,
     public deliveryService: DeliveryService,
     public restaurantService: RestaurantService,
-    public userService: UserService
+    public userService: UserService,
+    private _router: Router
   ) {}
   sub: any;
 
   ngOnInit(): void {
-    this.obj = JSON.parse(String(this.panier));
-    this.sum();
-    this.GetUserByIdUser();
-    this.GetAdressAndDateDelivery();
-    this.GetRestaurantByIdRestaurant();
-    this.GetAmountSummary();
-    this.GetOrderDate();
+    if (
+      this.Username == null ||
+      this.Username == undefined ||
+      this.Username == '' ||
+      this.Username == 'null'
+    ) {
+      this._router.navigateByUrl('checkout');
+    } else {
+      this.obj = JSON.parse(String(this.panier));
+      this.sum();
+      this.GetUserByIdUser();
+      this.GetAdressAndDateDelivery();
+      this.GetRestaurantByIdRestaurant();
+      this.GetAmountSummary();
+      this.GetOrderDate();
+    }
   }
 
   // GetUser
@@ -80,15 +88,48 @@ export class PreviewComponent implements OnInit {
 
   GetAdressAndDateDelivery() {
     this.sub = this._Activatedroute.paramMap.subscribe((params) => {
-      this.delivery_adress = String(params?.get('adressDelivery'));
-      // var deliveryDate = String(params?.get('dateDelivery'));
-      // new Date(dateString)
+      this.delivery_adress = String('xxxx');
       var dateDelivery = new Date(String(params?.get('dateDelivery')));
-      var date = dateDelivery.getDate()+'/'+(dateDelivery.getMonth()+1)+'/'+dateDelivery.getFullYear();
-      var time = dateDelivery.getHours() + "h " + dateDelivery.getMinutes() + "min";
-      var DateTimeDelivery = date+' '+time
-      this.delivery_date = String(DateTimeDelivery);
+      var date =
+        dateDelivery.getDate() +
+        '/' +
+        (dateDelivery.getMonth() + 1) +
+        '/' +
+        dateDelivery.getFullYear();
+      var time =
+        dateDelivery.getHours() + 'h ' + dateDelivery.getMinutes() + 'min';
+      var DateTimeDelivery = date + ' ' + time;
+      this.delivery_date = String('xxxx');
     });
+  }
+
+  onBlurDeliveryDate() {
+    var dateDelivery = new Date(
+      String(this.deliveryService.selectedDelivery.delivery_date)
+    );
+
+    var date =
+      dateDelivery.getDate() +
+      '/' +
+      (dateDelivery.getMonth() + 1) +
+      '/' +
+      dateDelivery.getFullYear();
+    var time =
+      dateDelivery.getHours() + 'h ' + dateDelivery.getMinutes() + 'min';
+    var DateTimeDelivery = date + ' ' + time;
+    this.delivery_date = String(DateTimeDelivery);
+    this.deliveryService.selectedDelivery.delivery_date = this.delivery_date;
+    if (
+      String(this.deliveryService.selectedDelivery.delivery_date) ==
+        'NaN/NaN/NaN NaNh NaNmin' ||
+      String(this.deliveryService.selectedDelivery.delivery_date) == '' ||
+      String(this.deliveryService.selectedDelivery.delivery_date) == null ||
+      String(this.deliveryService.selectedDelivery.delivery_date) == undefined
+    ) {
+      this.deliveryService.selectedDelivery.delivery_date = '...';
+    } else {
+      this.deliveryService.selectedDelivery.delivery_date = this.delivery_date;
+    }
   }
 
   sum(): void {
@@ -105,17 +146,29 @@ export class PreviewComponent implements OnInit {
     var initial_price = 4000;
     var Percentage = 50;
 
-   this.Benefice =  this.deliveryService.GetBenefits(initial_price, Percentage);
-   this.DeliveryCount = this.deliveryService.DeliveryCount(this.obj.length);   
-   this.ShippingCost = this.deliveryService.GetShippingCost(initial_price, Percentage, this.DeliveryCount);
-   this.TotalAmountToPay = this.deliveryService.GetTotalAmountToPay(this.totalPrice, this.ShippingCost);
+    this.Benefice = this.deliveryService.GetBenefits(initial_price, Percentage);
+    this.DeliveryCount = this.deliveryService.DeliveryCount(this.obj.length);
+    this.ShippingCost = this.deliveryService.GetShippingCost(
+      initial_price,
+      Percentage,
+      this.DeliveryCount
+    );
+    this.TotalAmountToPay = this.deliveryService.GetTotalAmountToPay(
+      this.totalPrice,
+      this.ShippingCost
+    );
   }
 
   GetOrderDate() {
     var today = new Date();
-    var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
-    var time = today.getHours() + "h " + today.getMinutes() + "min";
-    var CurrentDate = date+' '+time
+    var date =
+      today.getDate() +
+      '/' +
+      (today.getMonth() + 1) +
+      '/' +
+      today.getFullYear();
+    var time = today.getHours() + 'h ' + today.getMinutes() + 'min';
+    var CurrentDate = date + ' ' + time;
     this.OrderDate = String(CurrentDate);
   }
 }
