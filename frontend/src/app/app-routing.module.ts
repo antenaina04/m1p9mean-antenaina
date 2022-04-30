@@ -13,6 +13,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { PreviewComponent } from './preview/preview.component';
+import { OrderListComponent } from './order-list/order-list.component';
+
 
 
 
@@ -26,6 +28,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'delivery', component: DeliveryComponent },
   { path: 'preview', component: PreviewComponent },
+  { path: 'orderList', component: OrderListComponent },
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'saveOrUpdateDishes', component: InsertDishesComponent },

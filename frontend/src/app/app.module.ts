@@ -21,6 +21,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { PreviewComponent } from './preview/preview.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { PreviewComponent } from './preview/preview.component';
     ContactUsComponent,
     CheckoutComponent,
     DeliveryComponent,
-    PreviewComponent
+    PreviewComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,

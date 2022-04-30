@@ -21,6 +21,7 @@ var contact_us_component_1 = require("./contact-us/contact-us.component");
 var checkout_component_1 = require("./checkout/checkout.component");
 var delivery_component_1 = require("./delivery/delivery.component");
 var preview_component_1 = require("./preview/preview.component");
+var order_list_component_1 = require("./order-list/order-list.component");
 var routes = [
     { path: '', component: restaurant_component_1.RestaurantComponent },
     { path: 'restaurant', component: restaurant_component_1.RestaurantComponent },
@@ -30,6 +31,7 @@ var routes = [
     { path: 'checkout', component: checkout_component_1.CheckoutComponent },
     { path: 'delivery', component: delivery_component_1.DeliveryComponent },
     { path: 'preview', component: preview_component_1.PreviewComponent },
+    { path: 'orderList', component: order_list_component_1.OrderListComponent },
     { path: 'user', component: user_component_1.UserComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'saveOrUpdateDishes', component: insert_dishes_component_1.InsertDishesComponent },
