@@ -3,6 +3,7 @@
 <br>
 
 <div class="row">
+
     <div class="col-12">
 
         <div class="card card-light">
@@ -11,20 +12,22 @@
                     la date et l'adresse de livraison</p>
             </div>
             <div class="card-body">
-                <input type="text"
-                    [(ngModel)]="deliveryService.selectedDelivery.delivery_location"
-                    class="form-control form-control-border" id="exampleInputBorder"
-                    placeholder="Adresse de livraison">
+                <input type="text" [(ngModel)]="deliveryService.selectedDelivery.delivery_location"
+                    class="form-control form-control-border" id="exampleInputBorder" placeholder="Adresse de livraison"
+                    name="delivery_location">
                 <br>
-                <input type="datetime-local"
-                    [(ngModel)]="deliveryService.selectedDelivery.delivery_date" (blur)="onBlurDeliveryDate()"
-                    class="form-control form-control-border" id="delivery_date"
-                    placeholder="Date de livraison">
+                <input type="datetime-local" [(ngModel)]="deliveryService.selectedDelivery.delivery_date"
+                    (blur)="onBlurDeliveryDate()" class="form-control form-control-border" id="delivery_date"
+                    placeholder="Date de livraison" name="delivery_date">
                 <br>
             </div>
+            <div *ngIf="show" class="card-footer bg-danger">
+                <h3>
+                    <p class="text-center"><i class="fa fa-arrow-up fa-3" aria-hidden="true"></i> Veuillez completer
+                        l'information de la livraison <i class="fa fa-arrow-up fa-3" aria-hidden="true"></i></p>
+                </h3>
+            </div>
         </div>
-
-
 
 
         <div class="callout callout-dark">
@@ -57,7 +60,8 @@
                     <u>Information du client:</u>
                     <address>
                         <strong>{{userService.selectedUser.name}}</strong><br>
-                        Adresse de livraison : <strong><i> "{{deliveryService.selectedDelivery.delivery_location}}, Antananarivo,
+                        Adresse de livraison : <strong><i> "{{deliveryService.selectedDelivery.delivery_location}},
+                                Antananarivo,
                                 Madagascar"</i></strong><br>
 
                         Phone: {{userService.selectedUser.phone}}<br>
@@ -68,7 +72,7 @@
                     <br>
                     <b>Restaurant:</b> {{restaurantService.selectedRestaurant.restaurant_name}}<br>
                     <b>Date de commande:</b> {{OrderDate}}<br>
-                    <b>Date de livraison:</b> {{deliveryService.selectedDelivery.delivery_date}}
+                    <b>Date de livraison:</b> {{delivery_date}}
                 </div>
             </div>
 
@@ -137,7 +141,8 @@
                     <a href="" [routerLink]="['/order']" class="btn btn-warning btn-flat float-right"><i
                             class="far fa-credit-card"></i> Modifier le panier
                     </a>
-                    <button type="button" class="btn btn-info btn-flat float-right" style="margin-right: 5px;">
+                    <button type="button" (click)="onSubmitOrder()" class="btn btn-info btn-flat float-right"
+                        style="margin-right: 5px;">
                         <i class="fas fa-download"></i> Effectuer la commande
                     </button>
                 </div>

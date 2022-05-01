@@ -5,6 +5,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RestaurantService } from '../shared/restaurant.service';
 import { Restaurant } from '../shared/restaurant.model';
 import { User } from '../shared/user.model';
+import { OrderService } from '../shared/order.service';
+import { Order } from '../shared/order.model';
+
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-preview',
@@ -30,11 +34,15 @@ export class PreviewComponent implements OnInit {
   ShippingCost!: number;
   TotalAmountToPay!: number;
 
+  //NgIF Error Message
+  show = false;
+
   constructor(
     private _Activatedroute: ActivatedRoute,
     public deliveryService: DeliveryService,
     public restaurantService: RestaurantService,
     public userService: UserService,
+    public orderService: OrderService,
     private _router: Router
   ) {}
   sub: any;
@@ -99,7 +107,7 @@ export class PreviewComponent implements OnInit {
       var time =
         dateDelivery.getHours() + 'h ' + dateDelivery.getMinutes() + 'min';
       var DateTimeDelivery = date + ' ' + time;
-      this.delivery_date = String('xxxx');
+      this.delivery_date = String('...');
     });
   }
 
@@ -118,20 +126,17 @@ export class PreviewComponent implements OnInit {
       dateDelivery.getHours() + 'h ' + dateDelivery.getMinutes() + 'min';
     var DateTimeDelivery = date + ' ' + time;
     this.delivery_date = String(DateTimeDelivery);
-    this.deliveryService.selectedDelivery.delivery_date = this.delivery_date;
     if (
-      String(this.deliveryService.selectedDelivery.delivery_date) ==
-        'NaN/NaN/NaN NaNh NaNmin' ||
-      String(this.deliveryService.selectedDelivery.delivery_date) == '' ||
-      String(this.deliveryService.selectedDelivery.delivery_date) == null ||
-      String(this.deliveryService.selectedDelivery.delivery_date) == undefined
+      String(this.delivery_date) == 'NaN/NaN/NaN NaNh NaNmin' ||
+      String(this.delivery_date) == '' ||
+      String(this.delivery_date) == null ||
+      String(this.delivery_date) == undefined
     ) {
-      this.deliveryService.selectedDelivery.delivery_date = '...';
+      this.delivery_date = '...';
     } else {
-      this.deliveryService.selectedDelivery.delivery_date = this.delivery_date;
+      this.delivery_date = this.delivery_date;
     }
   }
-
   sum(): void {
     this.totalPrice = 0;
     if (this.obj) {
@@ -170,5 +175,48 @@ export class PreviewComponent implements OnInit {
     var time = today.getHours() + 'h ' + today.getMinutes() + 'min';
     var CurrentDate = date + ' ' + time;
     this.OrderDate = String(CurrentDate);
+  }
+
+  //SaveOrder
+  //SaveOrderDetails
+  //SaveDelivery
+  onSubmitOrder() {
+    if (
+      this.deliveryService.selectedDelivery.delivery_location == undefined ||
+      this.deliveryService.selectedDelivery.delivery_location == null ||
+      this.deliveryService.selectedDelivery.delivery_location == '' ||
+      this.deliveryService.selectedDelivery.delivery_date == undefined ||
+      this.deliveryService.selectedDelivery.delivery_date == null ||
+      this.deliveryService.selectedDelivery.delivery_date == ''
+    ) {
+      this.show = true;
+      var ErrorMessage =
+        "Veuillez completer l'information de la livaison de votre commmande ! Merci.";
+      console.log(ErrorMessage);
+    } else {
+      // Save Delivery Param
+      console.log(
+        'delivery_location = ' +
+          this.deliveryService.selectedDelivery.delivery_location
+      );
+      console.log(
+        'delivery_date = ' + this.deliveryService.selectedDelivery.delivery_date
+      );
+      console.log('___________________________________');
+
+
+
+      // delivery_date
+      // delivery_client
+      // delivery_location
+      // delivery_price
+      // id_order
+
+      //Save Order and OrderDetails and Delivery
+      var data = { id_user: this.newStrIdUser, order_price: this.totalPrice, cart : this.panier }; // Set JSON Data      
+      this.orderService.postOrder(data).subscribe((res) => {
+        this._router.navigateByUrl('orderList');
+      });
+    }
   }
 }

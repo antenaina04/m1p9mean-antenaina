@@ -9,15 +9,18 @@ exports.__esModule = true;
 exports.PreviewComponent = void 0;
 var core_1 = require("@angular/core");
 var PreviewComponent = /** @class */ (function () {
-    function PreviewComponent(_Activatedroute, deliveryService, restaurantService, userService, _router) {
+    function PreviewComponent(_Activatedroute, deliveryService, restaurantService, userService, orderService, _router) {
         this._Activatedroute = _Activatedroute;
         this.deliveryService = deliveryService;
         this.restaurantService = restaurantService;
         this.userService = userService;
+        this.orderService = orderService;
         this._router = _router;
         this.Username = localStorage.getItem('Username');
         this.IdUser = localStorage.getItem('IdUser');
         this.panier = localStorage.getItem('panier');
+        //NgIF Error Message
+        this.show = false;
     }
     PreviewComponent.prototype.ngOnInit = function () {
         if (this.Username == null ||
@@ -77,7 +80,7 @@ var PreviewComponent = /** @class */ (function () {
                 dateDelivery.getFullYear();
             var time = dateDelivery.getHours() + 'h ' + dateDelivery.getMinutes() + 'min';
             var DateTimeDelivery = date + ' ' + time;
-            _this.delivery_date = String('xxxx');
+            _this.delivery_date = String('...');
         });
     };
     PreviewComponent.prototype.onBlurDeliveryDate = function () {
@@ -90,16 +93,14 @@ var PreviewComponent = /** @class */ (function () {
         var time = dateDelivery.getHours() + 'h ' + dateDelivery.getMinutes() + 'min';
         var DateTimeDelivery = date + ' ' + time;
         this.delivery_date = String(DateTimeDelivery);
-        this.deliveryService.selectedDelivery.delivery_date = this.delivery_date;
-        if (String(this.deliveryService.selectedDelivery.delivery_date) ==
-            'NaN/NaN/NaN NaNh NaNmin' ||
-            String(this.deliveryService.selectedDelivery.delivery_date) == '' ||
-            String(this.deliveryService.selectedDelivery.delivery_date) == null ||
-            String(this.deliveryService.selectedDelivery.delivery_date) == undefined) {
-            this.deliveryService.selectedDelivery.delivery_date = '...';
+        if (String(this.delivery_date) == 'NaN/NaN/NaN NaNh NaNmin' ||
+            String(this.delivery_date) == '' ||
+            String(this.delivery_date) == null ||
+            String(this.delivery_date) == undefined) {
+            this.delivery_date = '...';
         }
         else {
-            this.deliveryService.selectedDelivery.delivery_date = this.delivery_date;
+            this.delivery_date = this.delivery_date;
         }
     };
     PreviewComponent.prototype.sum = function () {
@@ -130,6 +131,39 @@ var PreviewComponent = /** @class */ (function () {
         var time = today.getHours() + 'h ' + today.getMinutes() + 'min';
         var CurrentDate = date + ' ' + time;
         this.OrderDate = String(CurrentDate);
+    };
+    //SaveOrder
+    //SaveOrderDetails
+    //SaveDelivery
+    PreviewComponent.prototype.onSubmitOrder = function () {
+        var _this = this;
+        if (this.deliveryService.selectedDelivery.delivery_location == undefined ||
+            this.deliveryService.selectedDelivery.delivery_location == null ||
+            this.deliveryService.selectedDelivery.delivery_location == '' ||
+            this.deliveryService.selectedDelivery.delivery_date == undefined ||
+            this.deliveryService.selectedDelivery.delivery_date == null ||
+            this.deliveryService.selectedDelivery.delivery_date == '') {
+            this.show = true;
+            var ErrorMessage = "Veuillez completer l'information de la livaison de votre commmande ! Merci.";
+            console.log(ErrorMessage);
+        }
+        else {
+            // Save Delivery Param
+            console.log('delivery_location = ' +
+                this.deliveryService.selectedDelivery.delivery_location);
+            console.log('delivery_date = ' + this.deliveryService.selectedDelivery.delivery_date);
+            console.log('___________________________________');
+            // delivery_date
+            // delivery_client
+            // delivery_location
+            // delivery_price
+            // id_order
+            //Save Order and OrderDetails and Delivery
+            var data = { id_user: this.newStrIdUser, order_price: this.totalPrice, cart: this.panier }; // Set JSON Data      
+            this.orderService.postOrder(data).subscribe(function (res) {
+                _this._router.navigateByUrl('orderList');
+            });
+        }
     };
     PreviewComponent = __decorate([
         core_1.Component({
