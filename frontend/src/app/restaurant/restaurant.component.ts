@@ -20,7 +20,7 @@ export class RestaurantComponent implements OnInit {
   IdUser = localStorage.getItem('IdUser');
   WelcomeText!: string;
 
-  show = true;
+  show = false;
   constructor(public restaurantService: RestaurantService) {}
 
   ngOnInit(): void {
