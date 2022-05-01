@@ -17,7 +17,7 @@ var OrderService = /** @class */ (function () {
         this.order = [];
         this.baseURL = 'http://localhost:3000/orders';
     }
-    OrderService.prototype.postUser = function (order) {
+    OrderService.prototype.postOrder = function (order) {
         return this.http.post(this.baseURL, order);
     };
     OrderService.prototype.getOrderList = function () {

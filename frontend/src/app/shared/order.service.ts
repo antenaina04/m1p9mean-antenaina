@@ -22,7 +22,7 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
-  postUser(order: Order) {
+  postOrder(order: Order) {
     return this.http.post(this.baseURL, order);
   }
 
