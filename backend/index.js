@@ -8,6 +8,7 @@ var profileController = require('./controllers/profileController.js');
 var restaurantController = require('./controllers/restaurantController.js');
 var dishesController = require('./controllers/dishesController.js');
 var orderController = require('./controllers/orderController.js');
+var orderDetailController = require('./controllers/orderDetailController.js');
 var deliveryController = require('./controllers/deliveryController.js');
 
 var mailHelper = require('./controllers/mailHelper.js');
@@ -37,8 +38,13 @@ app.use('/dishes', dishesController);
 // Router for orderController into the application
 app.use('/orders', orderController);
 
+// Router for orderController into the application
+app.use('/orderDetails', orderDetailController);
+
 // Router for deliveryController into the application
 app.use('/delivery', deliveryController);
+
+
 
 // Router for mailHelper into the application
 // app.use('/sendMail', mailHelper);
