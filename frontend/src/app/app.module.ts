@@ -22,6 +22,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { PreviewComponent } from './preview/preview.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { OrderListComponent } from './order-list/order-list.component';
     CheckoutComponent,
     DeliveryComponent,
     PreviewComponent,
-    OrderListComponent
+    OrderListComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

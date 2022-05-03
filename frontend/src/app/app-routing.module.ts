@@ -15,7 +15,8 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { PreviewComponent } from './preview/preview.component';
 import { OrderListComponent } from './order-list/order-list.component';
 
-
+import { PagenotfoundComponent } from 
+    './pagenotfound/pagenotfound.component';
 
 
 
@@ -35,6 +36,8 @@ const routes: Routes = [
   { path: 'saveOrUpdateRestaurant', component: InsertRestaurantComponent },
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'contactUs', component: ContactUsComponent },
+  { path: '**', pathMatch: 'full', 
+  component: PagenotfoundComponent },
 ];
 
 @NgModule({

@@ -22,6 +22,7 @@ var checkout_component_1 = require("./checkout/checkout.component");
 var delivery_component_1 = require("./delivery/delivery.component");
 var preview_component_1 = require("./preview/preview.component");
 var order_list_component_1 = require("./order-list/order-list.component");
+var pagenotfound_component_1 = require("./pagenotfound/pagenotfound.component");
 var routes = [
     { path: '', component: restaurant_component_1.RestaurantComponent },
     { path: 'restaurant', component: restaurant_component_1.RestaurantComponent },
@@ -38,6 +39,8 @@ var routes = [
     { path: 'saveOrUpdateRestaurant', component: insert_restaurant_component_1.InsertRestaurantComponent },
     { path: 'aboutUs', component: about_us_component_1.AboutUsComponent },
     { path: 'contactUs', component: contact_us_component_1.ContactUsComponent },
+    { path: '**', pathMatch: 'full',
+        component: pagenotfound_component_1.PagenotfoundComponent },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
