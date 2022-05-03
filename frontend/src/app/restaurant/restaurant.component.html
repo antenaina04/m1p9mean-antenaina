@@ -7,7 +7,7 @@
         <div class="col-md-8 offset-md-2">  
             <form #searchRestaurant="ngForm" (ngSubmit)="search(searchRestaurant)" method="get">
                 <div class="input-group">
-                    <input type="search" [(ngModel)]="restaurantService.selectedRestaurant.restaurant_name" name="restaurant_name" #restaurant_name="ngModel" class="form-control form-control-lg" placeholder="Restaurants">
+                    <input type="search" (keyup)="search(searchRestaurant)" [(ngModel)]="restaurantService.selectedRestaurant.restaurant_name" name="restaurant_name" #restaurant_name="ngModel" class="form-control form-control-lg" placeholder="Restaurants">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-lg btn-default">
                             <i class="fa fa-search"></i>
@@ -49,7 +49,7 @@
                         <div class="row justify-content-end">
                             <div class="col-4">
                                 <a [routerLink]="['/dishes/restaurant/', restaurant._id]"
-                                    class="btn btn-block btn-outline-dark btn-sm"><b> Visiter</b></a>
+                                    class="btn btn-block btn-outline-dark btn-flat"><b> Visiter</b></a>
                             </div>
                         </div>
                     </div>
