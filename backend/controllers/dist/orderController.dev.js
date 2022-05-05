@@ -10,7 +10,10 @@ var _require = require('../models/order'),
     Order = _require.Order;
 
 var _require2 = require('../models/orderDetails'),
-    OrderDetail = _require2.OrderDetail; // => localhost:3000/order/
+    OrderDetail = _require2.OrderDetail;
+
+var _require3 = require('../models/delivery'),
+    Delivery = _require3.Delivery; // => localhost:3000/order/
 
 
 router.get('/', function (req, res) {
@@ -59,7 +62,7 @@ router.post('/', function _callee(req, res) {
             created_at: null,
             updated_at: null,
             order_price: req.body.order_price,
-            order_status: req.body.order_status,
+            order_status: "COMMANDE ENVOYE",
             id_user: req.body.id_user
           });
           _context.next = 3;
@@ -81,9 +84,21 @@ router.post('/', function _callee(req, res) {
 
                 });
                 var OrderDetailSave = orderDetail.save(function (err, docs) {});
-              }
+              } //Save Delivery
 
+
+              var delivery = new Delivery({
+                created_at: req.body.delivery_date,
+                updated_at: null,
+                delivery_deliverer: "Non choisi",
+                delivery_client: req.body.id_user,
+                delivery_location: req.body.delivery_location,
+                delivery_price: req.body.delivery_price,
+                id_order: docs._id
+              });
+              var DeliverySave = delivery.save(function (err, docs) {});
               res.send(docs);
+              console.log('SAVE ALL OK !!!');
             } else {
               console.log('Error in Order Save :' + JSON.stringify(err, undefined, 2));
             }

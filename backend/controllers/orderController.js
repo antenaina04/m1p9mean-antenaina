@@ -5,6 +5,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var { Order } = require('../models/order');
 var { OrderDetail } = require('../models/orderDetails');
+var { Delivery } = require('../models/delivery');
 
 
 // => localhost:3000/order/
@@ -45,7 +46,7 @@ router.post('/', async (req, res) => {
         created_at: null,
         updated_at: null,
         order_price: req.body.order_price,
-        order_status: req.body.order_status,
+        order_status: "COMMANDE ENVOYE",
         id_user: req.body.id_user,
     });
 
@@ -65,7 +66,20 @@ router.post('/', async (req, res) => {
                 var OrderDetailSave = orderDetail.save((err, docs) => {
                 });
             }
+            //Save Delivery
+            var delivery = new Delivery({
+                created_at: req.body.delivery_date,
+                updated_at: null,
+                delivery_deliverer: "Non choisi",
+                delivery_client: req.body.id_user,
+                delivery_location: req.body.delivery_location,
+                delivery_price: req.body.delivery_price,
+                id_order: docs._id,
+            });
+            var DeliverySave = delivery.save((err, docs) => {
+            });
             res.send(docs);
+            console.log('SAVE ALL OK !!!');
         }
         else { console.log('Error in Order Save :' + JSON.stringify(err, undefined, 2)); }
     });

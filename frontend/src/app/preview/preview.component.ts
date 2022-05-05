@@ -176,11 +176,8 @@ export class PreviewComponent implements OnInit {
     var CurrentDate = date + ' ' + time;
     this.OrderDate = String(CurrentDate);
   }
-
-  //SaveOrder
-  //SaveOrderDetails
-  //SaveDelivery
-  onSubmitOrder() {
+  
+  async onSubmitOrder() {
     if (
       this.deliveryService.selectedDelivery.delivery_location == undefined ||
       this.deliveryService.selectedDelivery.delivery_location == null ||
@@ -194,29 +191,21 @@ export class PreviewComponent implements OnInit {
         "Veuillez completer l'information de la livaison de votre commmande ! Merci.";
       console.log(ErrorMessage);
     } else {
-      // Save Delivery Param
-      console.log(
-        'delivery_location = ' +
-          this.deliveryService.selectedDelivery.delivery_location
-      );
-      console.log(
-        'delivery_date = ' + this.deliveryService.selectedDelivery.delivery_date
-      );
-      console.log('___________________________________');
-
-
-
-      // delivery_date
-      // delivery_client
-      // delivery_location
-      // delivery_price
-      // id_order
-
       //Save Order and OrderDetails and Delivery
-      var data = { id_user: this.newStrIdUser, order_price: this.totalPrice, cart : this.panier }; // Set JSON Data      
+      var data = {
+        id_user: this.newStrIdUser,
+        order_price: this.totalPrice,
+        cart: this.panier,
+        delivery_date: this.deliveryService.selectedDelivery.delivery_date,
+        delivery_location:
+          this.deliveryService.selectedDelivery.delivery_location,
+        delivery_price: this.ShippingCost,
+      }; // Set JSON Data
       this.orderService.postOrder(data).subscribe((res) => {
         this._router.navigateByUrl('orderList');
       });
+
+      await localStorage.removeItem('panier');
     }
   }
 }
