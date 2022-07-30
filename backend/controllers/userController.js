@@ -28,19 +28,15 @@ router.get('/:id', (req, res) => {
 
 });
 
-// => localhost:3000/users/
+// => localhost:3000/users/ ---------- SIMPLE SAVE USER
 router.post('/', async (req, res) => {
-
-    const salt = await bcrypt.genSalt(10);
-    const password = await bcrypt.hash(req.body.password, salt);
-
     var user = new User({
         created_at: null,
         updated_at: null,
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
-        password: password,
+        password: req.body.password,
         id_profile: req.body.id_profile,
     });
 
@@ -49,6 +45,30 @@ router.post('/', async (req, res) => {
         else { console.log('Error in User Save :' + JSON.stringify(err, undefined, 2)); }
     });
 });
+
+// => localhost:3000/users/ ----------SAVE USER WITH B-CRYPT
+// router.post('/', async (req, res) => {
+
+//     const salt = await bcrypt.genSalt(10);
+//     const password = await bcrypt.hash(req.body.password, salt);
+
+//     var user = new User({
+//         created_at: null,
+//         updated_at: null,
+//         name: req.body.name,
+//         email: req.body.email,
+//         phone: req.body.phone,
+//         password: password,
+//         id_profile: req.body.id_profile,
+//     });
+
+//     user.save((err, docs) => {
+//         if (!err) { res.send(docs); }
+//         else { console.log('Error in User Save :' + JSON.stringify(err, undefined, 2)); }
+//     });
+// });
+
+
 
 // => localhost:3000/users/_id
 router.put('/:id', (req, res) => {
@@ -95,6 +115,7 @@ router.get('/check_user/:email/user/:password', (req, res) => {
 // CheckUserPassword
 router.post('/login', async(req, res) => {
   var query = { "email": req.body.email };
+  console.log("query =" + query);
   const user = await User.find(query);
     if (user[0]) {
       // check user password with hashed password stored in the database
