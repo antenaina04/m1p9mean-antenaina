@@ -20,6 +20,13 @@ import {
   providers: [DishesService],
 })
 export class DishesComponent implements OnInit {
+  // totalPrice!: number;
+  // obj!: any;
+  // nbDishes!: any;
+  // panier = localStorage.getItem('panier');
+  // cart!:any;
+
+
   constructor(
     private _Activatedroute: ActivatedRoute,
     public dishesService: DishesService,
@@ -48,6 +55,23 @@ export class DishesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.obj = JSON.parse(String(this.panier));
+    // console.log(this.obj);
+    // this.sum();
+    // if (
+    //   this.obj == null ||
+    //   this.obj == undefined ||
+    //   this.obj == '' ||
+    //   this.obj == '[]'
+    // ) {
+    //   this.nbDishes = 0;
+    //   this.totalPrice = 0;
+    // } else {
+    //   this.nbDishes = this.obj.length;
+    //   this.totalPrice = this.totalPrice;
+    // }
+
+
     this.getAllDishesByRestaurant();
     this.getRestaurantByIdRestaurant();
   }
@@ -88,4 +112,15 @@ export class DishesComponent implements OnInit {
   orderPage() {
     this._router.navigateByUrl('/order');
   }
+
+  // sum(): void {
+  //   this.totalPrice = 0;
+  //   if (this.obj) {
+  //     this.obj.map((_dishes: any) => {
+  //       const price: number = _dishes.dishes_price || 0;
+  //       this.totalPrice += price;
+  //     });
+  //   }
+  // }
+  
 }

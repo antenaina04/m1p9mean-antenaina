@@ -11,6 +11,11 @@ var core_1 = require("@angular/core");
 var dishes_service_1 = require("../shared/dishes.service");
 var drag_drop_1 = require("@angular/cdk/drag-drop");
 var DishesComponent = /** @class */ (function () {
+    // totalPrice!: number;
+    // obj!: any;
+    // nbDishes!: any;
+    // panier = localStorage.getItem('panier');
+    // cart!:any;
     function DishesComponent(_Activatedroute, dishesService, restaurantService, cartService, _router) {
         this._Activatedroute = _Activatedroute;
         this.dishesService = dishesService;
@@ -35,6 +40,21 @@ var DishesComponent = /** @class */ (function () {
         });
     };
     DishesComponent.prototype.ngOnInit = function () {
+        // this.obj = JSON.parse(String(this.panier));
+        // console.log(this.obj);
+        // this.sum();
+        // if (
+        //   this.obj == null ||
+        //   this.obj == undefined ||
+        //   this.obj == '' ||
+        //   this.obj == '[]'
+        // ) {
+        //   this.nbDishes = 0;
+        //   this.totalPrice = 0;
+        // } else {
+        //   this.nbDishes = this.obj.length;
+        //   this.totalPrice = this.totalPrice;
+        // }
         this.getAllDishesByRestaurant();
         this.getRestaurantByIdRestaurant();
     };
