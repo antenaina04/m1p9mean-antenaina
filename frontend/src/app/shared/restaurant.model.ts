@@ -5,6 +5,8 @@ export class Restaurant {
     restaurant_name?: string;
     restaurant_location?: string;
     restaurant_phone?: string;
+    restaurant_email?: string;
+    restaurant_password?: string;
     restaurant_logo?: string;
   
     constructor() {

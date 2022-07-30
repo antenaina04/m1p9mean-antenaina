@@ -25,6 +25,8 @@ export class InsertRestaurantComponent implements OnInit {
       restaurant_name: '',
       restaurant_location: '',
       restaurant_phone: '',
+      restaurant_email: '',
+      restaurant_password: '',
     };
   }
 
@@ -47,7 +49,20 @@ export class InsertRestaurantComponent implements OnInit {
       this.restaurantService.selectedRestaurant.restaurant_phone == undefined
     ) {
       console.log('Veuillez remplir restaurant_phone');
-    } else {
+    } 
+    else if (
+      this.restaurantService.selectedRestaurant.restaurant_email == null ||
+      this.restaurantService.selectedRestaurant.restaurant_email == undefined
+    ) {
+      console.log('Veuillez remplir restaurant_email');
+    } 
+    else if (
+      this.restaurantService.selectedRestaurant.restaurant_password == null ||
+      this.restaurantService.selectedRestaurant.restaurant_password == undefined
+    ) {
+      console.log('Veuillez remplir restaurant_password');
+    } 
+    else {
       console.log(
         'okaaayyy eee===' +
           JSON.stringify(this.restaurantService.selectedRestaurant._id)

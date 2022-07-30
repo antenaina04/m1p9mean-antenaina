@@ -1,10 +1,16 @@
-<div class="card card-warning">
-    <div class="card-header">
+<div class="card card-outline card-light">
+    <!-- <div class="card-header">
       <h3 class="card-title">Inserer un restaurant</h3>
+    </div> -->
+    <div class="card-header text-center">
+      <img src="../../assets/img/logo-ekaly.png" width="200px" height="100px">
     </div>
+    <div class="card-body">
+      <p class="login-box-msg">Formulaire d'inscription de restaurant</p>
+
     <form #restaurantForm="ngForm" (ngSubmit)="onSubmit(restaurantForm)">
       <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="restaurantService.selectedRestaurant._id">
-      <div class="card-body">
+      <!-- <div class="card-body"> -->
 
         <div *ngIf="restaurant_name.invalid && (restaurant_name.dirty || restaurant_name.touched)" class="">
           <div *ngIf="restaurant_name.errors?.['required']">
@@ -42,6 +48,31 @@
             placeholder="Entrer le numero telephone" required>
         </div>
 
+
+        <div *ngIf="restaurant_email.invalid && (restaurant_email.dirty || restaurant_email.touched)" class="">
+          <div *ngIf="restaurant_email.errors?.['required']">
+            <h6><small>Veuillez saisir [restaurant_email].</small></h6>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="restaurant_email">Adresse email du restaurant</label>
+          <input name="restaurant_email" type="email" class="form-control"
+            [(ngModel)]="restaurantService.selectedRestaurant.restaurant_email" #restaurant_email="ngModel"
+            placeholder="Entrer l'adresse email" required>
+        </div>
+
+        <div *ngIf="restaurant_password.invalid && (restaurant_password.dirty || restaurant_password.touched)" class="">
+          <div *ngIf="restaurant_password.errors?.['required']">
+            <h6><small>Veuillez saisir [restaurant_password].</small></h6>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="restaurant_password">Mot de passe</label>
+          <input name="restaurant_password" type="password" class="form-control"
+            [(ngModel)]="restaurantService.selectedRestaurant.restaurant_password" #restaurant_password="ngModel"
+            placeholder="Entrer le mot de passe" required>
+        </div>
+
         <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
                   <div *ngIf="email.errors?.['required']">
                     <h6><small>Veuillez saisir votre adresse e-mail.</small></h6>
@@ -71,9 +102,20 @@
               </div> -->
 
 
-      </div>
-      <div class="card-footer">
+      <!-- </div> -->
+      <!-- <div class="card-footer">
         <button type="submit" class="btn btn-warning">Enregistrer</button>
+      </div> -->
+
+      <div class="row">
+        <div class="col-6">
+          <button type="button" class="btn btn-block btn-outline-light btn-sm" (click)="resetForm(restaurantForm)">Annuler</button>
+        </div>
+        <div class="col-6">
+          <button type="submit" class="btn btn-block btn-outline-warning btn-sm">S'inscrire</button>
+        </div>
       </div>
+
     </form>
   </div>
+</div>
