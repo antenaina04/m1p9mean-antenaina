@@ -1,5 +1,6 @@
 // import escapeStringRegexp from 'escape-string-regexp';
 var express = require('express');
+var bcrypt = require('bcrypt');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
@@ -40,7 +41,12 @@ router.get('/GetRestaurantByRestaurantName/:restaurant_name', (req, res) => {
 });
 
 // => localhost:3000/restaurants/
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+
+
+    const salt = await bcrypt.genSalt(10);
+    const password = await bcrypt.hash(req.body.restaurant_password, salt);
+
     var restaurant = new Restaurant({
         created_at: null,
         updated_at: null,
@@ -48,7 +54,7 @@ router.post('/', (req, res) => {
         restaurant_location: req.body.restaurant_location,
         restaurant_phone: req.body.restaurant_phone,
         restaurant_email: req.body.restaurant_email,
-        restaurant_password: req.body.restaurant_password,
+        restaurant_password: password,
         restaurant_logo: req.body.restaurant_logo,
     });
 

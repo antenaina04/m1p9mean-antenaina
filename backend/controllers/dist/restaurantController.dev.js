@@ -3,6 +3,8 @@
 // import escapeStringRegexp from 'escape-string-regexp';
 var express = require('express');
 
+var bcrypt = require('bcrypt');
+
 var router = express.Router();
 
 var ObjectId = require('mongoose').Types.ObjectId; // const escapeRegex = require('escape-string-regexp');
@@ -51,22 +53,44 @@ router.get('/GetRestaurantByRestaurantName/:restaurant_name', function (req, res
   });
 }); // => localhost:3000/restaurants/
 
-router.post('/', function (req, res) {
-  var restaurant = new Restaurant({
-    created_at: null,
-    updated_at: null,
-    restaurant_name: req.body.restaurant_name,
-    restaurant_location: req.body.restaurant_location,
-    restaurant_phone: req.body.restaurant_phone,
-    restaurant_email: req.body.restaurant_email,
-    restaurant_password: req.body.restaurant_password,
-    restaurant_logo: req.body.restaurant_logo
-  });
-  restaurant.save(function (err, docs) {
-    if (!err) {
-      res.send(docs);
-    } else {
-      console.log('Error in Restaurant Save :' + JSON.stringify(err, undefined, 2));
+router.post('/', function _callee(req, res) {
+  var salt, password, restaurant;
+  return regeneratorRuntime.async(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return regeneratorRuntime.awrap(bcrypt.genSalt(10));
+
+        case 2:
+          salt = _context.sent;
+          _context.next = 5;
+          return regeneratorRuntime.awrap(bcrypt.hash(req.body.restaurant_password, salt));
+
+        case 5:
+          password = _context.sent;
+          restaurant = new Restaurant({
+            created_at: null,
+            updated_at: null,
+            restaurant_name: req.body.restaurant_name,
+            restaurant_location: req.body.restaurant_location,
+            restaurant_phone: req.body.restaurant_phone,
+            restaurant_email: req.body.restaurant_email,
+            restaurant_password: password,
+            restaurant_logo: req.body.restaurant_logo
+          });
+          restaurant.save(function (err, docs) {
+            if (!err) {
+              res.send(docs);
+            } else {
+              console.log('Error in Restaurant Save :' + JSON.stringify(err, undefined, 2));
+            }
+          });
+
+        case 8:
+        case "end":
+          return _context.stop();
+      }
     }
   });
 }); // => localhost:3000/restaurants/_id
