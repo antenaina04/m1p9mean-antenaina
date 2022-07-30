@@ -34,4 +34,15 @@ export class RestaurantService {
   ): Observable<Restaurant> {
     return this.http.get<Restaurant>(this.baseURL + `/GetRestaurantByRestaurantName/` + restaurant_name);
   }
+
+  GetRestaurantByEmailAndPassword(
+    restaurant_email: string | null,
+    restaurant_password: string | null
+  ): Observable<Restaurant[]> {
+    // console.log('email ------' + email);
+    // console.log('password ------' + password);
+    return this.http.get<Restaurant[]>(
+      this.baseURL + `/check_restaurant/` + restaurant_email + `/restaurant/` + restaurant_password
+    );
+  }
 }

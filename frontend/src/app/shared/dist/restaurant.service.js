@@ -28,6 +28,11 @@ var RestaurantService = /** @class */ (function () {
     RestaurantService.prototype.GetRestaurantByRestaurantName = function (restaurant_name) {
         return this.http.get(this.baseURL + "/GetRestaurantByRestaurantName/" + restaurant_name);
     };
+    RestaurantService.prototype.GetRestaurantByEmailAndPassword = function (restaurant_email, restaurant_password) {
+        // console.log('email ------' + email);
+        // console.log('password ------' + password);
+        return this.http.get(this.baseURL + "/check_restaurant/" + restaurant_email + "/restaurant/" + restaurant_password);
+    };
     RestaurantService = __decorate([
         core_1.Injectable({
             providedIn: 'root'

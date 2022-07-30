@@ -56,10 +56,10 @@ export class UserComponent implements OnInit {
       console.log('Veuillez remplir votre mot de passe');
     }    
     else {
-      // this.userService.postUser(form?.value).subscribe((res) => {
-        //   console.log('-- INSERT USER SUCCEEDED --');
-        //   this.resetForm(form);
-        // });
+      this.userService.postUser(form?.value).subscribe((res) => {
+          console.log('-- INSERT USER SUCCEEDED --');
+          this.resetForm(form);
+        });
         console.log('INSERT OK');
     }
   }
