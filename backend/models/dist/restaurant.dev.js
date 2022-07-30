@@ -18,6 +18,12 @@ var Restaurant = mongoose.model('Restaurant', {
   restaurant_phone: {
     type: String
   },
+  restaurant_email: {
+    type: String
+  },
+  restaurant_password: {
+    type: String
+  },
   restaurant_logo: {
     type: String
   }

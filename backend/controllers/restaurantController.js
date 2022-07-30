@@ -47,6 +47,8 @@ router.post('/', (req, res) => {
         restaurant_name: req.body.restaurant_name,
         restaurant_location: req.body.restaurant_location,
         restaurant_phone: req.body.restaurant_phone,
+        restaurant_email: req.body.restaurant_email,
+        restaurant_password: req.body.restaurant_password,
         restaurant_logo: req.body.restaurant_logo,
     });
 
@@ -67,6 +69,8 @@ router.put('/:id', (req, res) => {
         restaurant_name: req.body.restaurant_name,
         restaurant_location: req.body.restaurant_location,
         restaurant_phone: req.body.restaurant_phone,
+        restaurant_email: req.body.restaurant_email, //optional
+        restaurant_password: req.body.restaurant_password,//optional
         restaurant_logo: req.body.restaurant_logo,
     };
 
