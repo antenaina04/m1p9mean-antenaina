@@ -25,6 +25,7 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { RestaurantLoginComponent } from './restaurant-login/restaurant-login.component';
+import { ServiceDeliveryLoginComponent } from './service-delivery-login/service-delivery-login.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { RestaurantLoginComponent } from './restaurant-login/restaurant-login.co
     OrderListComponent,
     PagenotfoundComponent,
     AdminMenuComponent,
-    RestaurantLoginComponent
+    RestaurantLoginComponent,
+    ServiceDeliveryLoginComponent
   ],
   imports: [
     BrowserModule,
