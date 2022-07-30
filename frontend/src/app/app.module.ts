@@ -24,6 +24,7 @@ import { PreviewComponent } from './preview/preview.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { RestaurantLoginComponent } from './restaurant-login/restaurant-login.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
     PreviewComponent,
     OrderListComponent,
     PagenotfoundComponent,
-    AdminMenuComponent
+    AdminMenuComponent,
+    RestaurantLoginComponent
   ],
   imports: [
     BrowserModule,

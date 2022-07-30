@@ -15,6 +15,8 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { PreviewComponent } from './preview/preview.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { RestaurantLoginComponent } from './restaurant-login/restaurant-login.component';
+
 
 import { PagenotfoundComponent } from 
     './pagenotfound/pagenotfound.component';
@@ -36,6 +38,7 @@ const routes: Routes = [
   { path: 'saveOrUpdateDishes', component: InsertDishesComponent },
   { path: 'saveOrUpdateRestaurant', component: InsertRestaurantComponent },
   { path: 'adminMenu-ekaly', component: AdminMenuComponent },
+  { path: 'loginRestaurant-ekaly', component: RestaurantLoginComponent },
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'contactUs', component: ContactUsComponent },
   { path: '**', pathMatch: 'full', 

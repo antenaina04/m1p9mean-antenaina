@@ -23,6 +23,7 @@ var delivery_component_1 = require("./delivery/delivery.component");
 var preview_component_1 = require("./preview/preview.component");
 var order_list_component_1 = require("./order-list/order-list.component");
 var admin_menu_component_1 = require("./admin-menu/admin-menu.component");
+var restaurant_login_component_1 = require("./restaurant-login/restaurant-login.component");
 var pagenotfound_component_1 = require("./pagenotfound/pagenotfound.component");
 var routes = [
     { path: '', component: restaurant_component_1.RestaurantComponent },
@@ -39,6 +40,7 @@ var routes = [
     { path: 'saveOrUpdateDishes', component: insert_dishes_component_1.InsertDishesComponent },
     { path: 'saveOrUpdateRestaurant', component: insert_restaurant_component_1.InsertRestaurantComponent },
     { path: 'adminMenu-ekaly', component: admin_menu_component_1.AdminMenuComponent },
+    { path: 'loginRestaurant-ekaly', component: restaurant_login_component_1.RestaurantLoginComponent },
     { path: 'aboutUs', component: about_us_component_1.AboutUsComponent },
     { path: 'contactUs', component: contact_us_component_1.ContactUsComponent },
     { path: '**', pathMatch: 'full',
