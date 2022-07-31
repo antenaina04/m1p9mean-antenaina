@@ -16,10 +16,10 @@
               <p class="login-box-msg">Connexion en tant que livreur</p>
               <div class="row">
                 <div class="col">
-                  <!-- <form #userTest="ngForm" (ngSubmit)="GetUserByEmailAndPassword(userTest)" method="get"> -->
+                  <form #delivererTest="ngForm" (ngSubmit)="GetDelivererByEmailAndPassword(delivererTest)" method="get">
                     <div class="input-group mb-3">
-                      <input name="email" type="email" class="form-control form-control-border" placeholder="Adresse E-mail"
-                        required>
+                      <input name="deliverer_email" type="email" class="form-control form-control-border" placeholder="Adresse E-mail"
+                      [(ngModel)]="delivererService.selectedDeliverer.deliverer_email" #deliverer_email="ngModel" required>
                       <div class="input-group-append">
                         <!-- <div class="input-group-text"> -->
                           <span class="fas fa-envelope"></span>
@@ -27,8 +27,8 @@
                       </div>
                     </div>
                     <div class="input-group mb-3">
-                      <input name="password" type="password" class="form-control form-control-border" placeholder="Mot de passe"
-                        required>
+                      <input name="deliverer_password" type="password" class="form-control form-control-border" placeholder="Mot de passe"
+                      [(ngModel)]="delivererService.selectedDeliverer.deliverer_password" #deliverer_password="ngModel" required>
                       <div class="input-group-append">
                         <!-- <div class="input-group-text"> -->
                           <span class="fas fa-lock"></span>
@@ -36,7 +36,7 @@
                       </div>
                     </div>
                     <div class="loginErrorMessage">
-                      <!-- {{loginError}} -->
+                      {{loginError}}
                     </div>
                     <div class="row">
                       <div class="col-xl">
@@ -47,7 +47,7 @@
                           role="button">S'inscrire</a>
                       </div>
                     </div>
-                  <!-- </form> -->
+                  </form>
                 </div>
               </div>
             </div>
