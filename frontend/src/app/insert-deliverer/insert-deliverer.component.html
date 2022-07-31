@@ -1,0 +1,111 @@
+<div class="card card-outline card-light">
+    <!-- <div class="card-header">
+      <h3 class="card-title">Inserer un deliverer</h3>
+    </div> -->
+    <div class="card-header text-center">
+      <img src="../../assets/img/logo-ekaly.png" width="200px" height="100px">
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Formulaire d'inscription du livreur</p>
+
+    <form #delivererForm="ngForm" (ngSubmit)="onSubmit(delivererForm)">
+      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="delivererService.selectedDeliverer._id">
+      <!-- <div class="card-body"> -->
+
+        <div *ngIf="deliverer_name.invalid && (deliverer_name.dirty || deliverer_name.touched)" class="">
+          <div *ngIf="deliverer_name.errors?.['required']">
+            <h6><small>Veuillez saisir [deliverer_name].</small></h6>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="deliverer_name">Nom du livreur</label>
+          <input name="deliverer_name" type="text" class="form-control"
+            [(ngModel)]="delivererService.selectedDeliverer.deliverer_name" #deliverer_name="ngModel"
+            placeholder="Entrer le nom du livreur" required>
+        </div>
+
+        <div *ngIf="deliverer_email.invalid && (deliverer_email.dirty || deliverer_email.touched)" class="">
+            <div *ngIf="deliverer_email.errors?.['required']">
+              <h6><small>Veuillez saisir [deliverer_email].</small></h6>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="deliverer_email">Adresse email du livreur</label>
+            <input name="deliverer_email" type="email" class="form-control"
+              [(ngModel)]="delivererService.selectedDeliverer.deliverer_email" #deliverer_email="ngModel"
+              placeholder="Entrer l'adresse email" required>
+          </div>
+        
+        <div *ngIf="deliverer_phone.invalid && (deliverer_phone.dirty || deliverer_phone.touched)" class="">
+          <div *ngIf="deliverer_phone.errors?.['required']">
+            <h6><small>Veuillez saisir [deliverer_phone].</small></h6>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="deliverer_phone">Numero telephone du livreur</label>
+          <input name="deliverer_phone" type="phone" class="form-control"
+            [(ngModel)]="delivererService.selectedDeliverer.deliverer_phone" #deliverer_phone="ngModel"
+            placeholder="Entrer le numero telephone" required>
+        </div>
+
+
+        
+
+        <div *ngIf="deliverer_password.invalid && (deliverer_password.dirty || deliverer_password.touched)" class="">
+          <div *ngIf="deliverer_password.errors?.['required']">
+            <h6><small>Veuillez saisir [deliverer_password].</small></h6>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="deliverer_password">Mot de passe</label>
+          <input name="deliverer_password" type="password" class="form-control"
+            [(ngModel)]="delivererService.selectedDeliverer.deliverer_password" #deliverer_password="ngModel"
+            placeholder="Entrer le mot de passe" required>
+        </div>
+
+        <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
+                  <div *ngIf="email.errors?.['required']">
+                    <h6><small>Veuillez saisir votre adresse e-mail.</small></h6>
+                  </div>
+                </div>
+              <div class="form-group">
+                  <label for="deliverer_photo">Photo du deliverer</label>
+                  <div class="input-group">
+                      <div class="custom-file">
+                          <input name="deliverer_photo" type="file" class="custom-file-input" [(ngModel)]="delivererService.selectedDeliverer.deliverer_photo" #deliverer_photo="ngModel">
+                          <label class="custom-file-label" for="deliverer_photo">Parcourir</label>
+                      </div>
+                      <div class="input-group-append">
+                          <span class="input-group-text">Telecharger</span>
+                      </div>
+                  </div>
+              </div> -->
+
+        <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
+                  <div *ngIf="email.errors?.['required']">
+                    <h6><small>Veuillez saisir votre adresse e-mail.</small></h6>
+                  </div>
+                </div>
+              <div class="form-check">
+                  <input name="deliverer_status" type="checkbox" class="form-check-input" [(ngModel)]="delivererService.selectedDeliverer.deliverer_status" #deliverer_status="ngModel">
+                  <label class="form-check-label" for="deliverer_status">Disponible de suite</label>
+              </div> -->
+
+
+      <!-- </div> -->
+      <!-- <div class="card-footer">
+        <button type="submit" class="btn btn-warning">Enregistrer</button>
+      </div> -->
+
+      <div class="row">
+        <div class="col-6">
+          <button type="button" class="btn btn-block btn-outline-light btn-sm" (click)="resetForm(delivererForm)">Annuler</button>
+        </div>
+        <div class="col-6">
+          <button type="submit" class="btn btn-block btn-outline-success btn-sm">S'inscrire</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

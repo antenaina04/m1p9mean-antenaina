@@ -26,6 +26,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { RestaurantLoginComponent } from './restaurant-login/restaurant-login.component';
 import { ServiceDeliveryLoginComponent } from './service-delivery-login/service-delivery-login.component';
+import { InsertDelivererComponent } from './insert-deliverer/insert-deliverer.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ServiceDeliveryLoginComponent } from './service-delivery-login/service-
     PagenotfoundComponent,
     AdminMenuComponent,
     RestaurantLoginComponent,
-    ServiceDeliveryLoginComponent
+    ServiceDeliveryLoginComponent,
+    InsertDelivererComponent
   ],
   imports: [
     BrowserModule,
