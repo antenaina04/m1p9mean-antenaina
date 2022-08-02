@@ -4,6 +4,7 @@ export class Order {
   updated_at?: string;
   order_price?: number;
   order_status?: string;
+  id_restaurant?: string;
   id_user?: string;
 
   constructor() {}
