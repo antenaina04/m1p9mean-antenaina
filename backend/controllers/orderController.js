@@ -40,6 +40,19 @@ router.get('/GetOrderByIdUserAndStatus/:id_user/:order_status', (req, res) => {
 
 });
 
+
+// => localhost:3000/admin-restaurant-ekaly/order/id_restaurant [getOrdersByIdRestaurant]
+router.get('/admin-restaurant-ekaly/order/:id_restaurant', (req, res) => {
+    if (!ObjectId.isValid(req.params.id_restaurant))
+        return res.status(400).send(`No record with given id : ${req.params.id_restaurant}`);
+
+    Order.find({ id_restaurant: req.params.id_restaurant }, (err, doc) => {
+        if (!err) { res.send(doc); }
+        else { console.log('Error in Retriving Order :' + JSON.stringify(err, undefined, 2)); }
+    });
+
+});
+
 // => localhost:3000/order/
 router.post('/', async (req, res) => {
     var order = new Order({

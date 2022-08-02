@@ -50,6 +50,19 @@ router.get('/GetOrderByIdUserAndStatus/:id_user/:order_status', function (req, r
       console.log('Error in Retriving Order :' + JSON.stringify(err, undefined, 2));
     }
   });
+}); // => localhost:3000/admin-restaurant-ekaly/order/id_restaurant [getOrdersByIdRestaurant]
+
+router.get('/admin-restaurant-ekaly/order/:id_restaurant', function (req, res) {
+  if (!ObjectId.isValid(req.params.id_restaurant)) return res.status(400).send("No record with given id : ".concat(req.params.id_restaurant));
+  Order.find({
+    id_restaurant: req.params.id_restaurant
+  }, function (err, doc) {
+    if (!err) {
+      res.send(doc);
+    } else {
+      console.log('Error in Retriving Order :' + JSON.stringify(err, undefined, 2));
+    }
+  });
 }); // => localhost:3000/order/
 
 router.post('/', function _callee(req, res) {
