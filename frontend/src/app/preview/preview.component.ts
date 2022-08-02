@@ -191,8 +191,10 @@ export class PreviewComponent implements OnInit {
         "Veuillez completer l'information de la livaison de votre commmande ! Merci.";
       console.log(ErrorMessage);
     } else {
+
       //Save Order and OrderDetails and Delivery
       var data = {
+        id_restaurant : this.restaurantService.selectedRestaurant._id,
         id_user: this.newStrIdUser,
         order_price: this.totalPrice,
         cart: this.panier,

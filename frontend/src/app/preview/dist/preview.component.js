@@ -187,6 +187,7 @@ var PreviewComponent = /** @class */ (function () {
                         return [3 /*break*/, 3];
                     case 1:
                         data = {
+                            id_restaurant: this.restaurantService.selectedRestaurant._id,
                             id_user: this.newStrIdUser,
                             order_price: this.totalPrice,
                             cart: this.panier,

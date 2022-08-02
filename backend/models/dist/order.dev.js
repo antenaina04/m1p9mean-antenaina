@@ -15,6 +15,9 @@ var Order = mongoose.model('Order', {
   order_status: {
     type: String
   },
+  id_restaurant: {
+    type: String
+  },
   id_user: {
     type: String
   }

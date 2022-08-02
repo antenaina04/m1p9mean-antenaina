@@ -47,6 +47,7 @@ router.post('/', async (req, res) => {
         updated_at: null,
         order_price: req.body.order_price,
         order_status: "COMMANDE ENVOYE",
+        id_restaurant: req.body.id_restaurant, 
         id_user: req.body.id_user,
     });
 
