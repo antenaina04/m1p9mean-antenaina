@@ -27,6 +27,8 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { RestaurantLoginComponent } from './restaurant-login/restaurant-login.component';
 import { ServiceDeliveryLoginComponent } from './service-delivery-login/service-delivery-login.component';
 import { InsertDelivererComponent } from './insert-deliverer/insert-deliverer.component';
+import { RestaurantAdminMenuComponent } from './restaurant-admin-menu/restaurant-admin-menu.component';
+import { GetAllOrdersByRestaurantComponent } from './get-all-orders-by-restaurant/get-all-orders-by-restaurant.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { InsertDelivererComponent } from './insert-deliverer/insert-deliverer.co
     AdminMenuComponent,
     RestaurantLoginComponent,
     ServiceDeliveryLoginComponent,
-    InsertDelivererComponent
+    InsertDelivererComponent,
+    RestaurantAdminMenuComponent,
+    GetAllOrdersByRestaurantComponent
   ],
   imports: [
     BrowserModule,

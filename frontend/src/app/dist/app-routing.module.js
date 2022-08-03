@@ -26,6 +26,7 @@ var admin_menu_component_1 = require("./admin-menu/admin-menu.component");
 var restaurant_login_component_1 = require("./restaurant-login/restaurant-login.component");
 var service_delivery_login_component_1 = require("./service-delivery-login/service-delivery-login.component");
 var insert_deliverer_component_1 = require("./insert-deliverer/insert-deliverer.component");
+var restaurant_admin_menu_component_1 = require("./restaurant-admin-menu/restaurant-admin-menu.component");
 var pagenotfound_component_1 = require("./pagenotfound/pagenotfound.component");
 var routes = [
     { path: '', component: restaurant_component_1.RestaurantComponent },
@@ -43,6 +44,7 @@ var routes = [
     { path: 'saveOrUpdateRestaurant', component: insert_restaurant_component_1.InsertRestaurantComponent },
     { path: 'adminMenu-ekaly', component: admin_menu_component_1.AdminMenuComponent },
     { path: 'loginRestaurant-ekaly', component: restaurant_login_component_1.RestaurantLoginComponent },
+    { path: 'restaurantAdminMenu-ekaly', component: restaurant_admin_menu_component_1.RestaurantAdminMenuComponent },
     { path: 'loginServiceDelivery-ekaly', component: service_delivery_login_component_1.ServiceDeliveryLoginComponent },
     { path: 'registerDeliverer-ekaly', component: insert_deliverer_component_1.InsertDelivererComponent },
     { path: 'aboutUs', component: about_us_component_1.AboutUsComponent },
