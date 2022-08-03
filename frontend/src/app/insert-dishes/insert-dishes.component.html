@@ -17,7 +17,8 @@
             <label for="id_restaurant">Restaurant</label>
             <input name="id_restaurant" type="text" class="form-control"
               [(ngModel)]="dishesService.selectedDishes.id_restaurant" #id_restaurant="ngModel"
-              placeholder="[id_restaurant]" required>
+              placeholder={{this.newStrIdRestaurant}}
+               disabled>
           </div>
 
           <div *ngIf="dishes_name.invalid && (dishes_name.dirty || dishes_name.touched)" class="">

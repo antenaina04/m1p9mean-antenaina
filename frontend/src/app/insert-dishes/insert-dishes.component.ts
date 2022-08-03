@@ -16,12 +16,18 @@ let dishes_price: string;
   styleUrls: ['./insert-dishes.component.css'],
 })
 export class InsertDishesComponent implements OnInit {
+  IdRestaurant = localStorage.getItem('IdRestaurant');
+  objIdRestaurant = String(this.IdRestaurant).replace('[', '');
+  strIdRestaurant = this.objIdRestaurant.replace('"', '');
+  lastRemovedCharStrIdRestaurant = this.strIdRestaurant.replace(']', '');
+  newStrIdRestaurant = this.lastRemovedCharStrIdRestaurant.replace('"', '');
+  
   constructor(
     private _Activatedroute: ActivatedRoute,
     public dishesService: DishesService
-  ) {}
-
-  ngOnInit(): void {
+    ) {}
+    
+    ngOnInit(): void {
     this.refreshDishesList();
   }
 
@@ -57,37 +63,46 @@ export class InsertDishesComponent implements OnInit {
       this.dishesService.selectedDishes.dishes_price == undefined
     ) {
       console.log('Veuillez remplir dishes_price');
-    } else if (
-      this.dishesService.selectedDishes.id_restaurant == '' ||
-      this.dishesService.selectedDishes.id_restaurant == undefined
-    ) {
-      console.log('Veuillez remplir id_restaurant');
-    } else {
-      console.log("okaaayyy eee==="+JSON.stringify(this.dishesService.selectedDishes._id));
+    }
+    else {
+      console.log(
+        'okaaayyy eee===' +
+          JSON.stringify(this.dishesService.selectedDishes._id)
+      );
 
       if (
         this.dishesService.selectedDishes._id == '' ||
         this.dishesService.selectedDishes._id == undefined
       ) {
-        this.dishesService.postDishes(form?.value).subscribe((res) => {
+
+        var data = {
+          id_restaurant :this.newStrIdRestaurant,
+          dishes_name :this.dishesService.selectedDishes.dishes_name,
+          dishes_desc :this.dishesService.selectedDishes.dishes_desc,
+          dishes_price :this.dishesService.selectedDishes.dishes_price,
+        };
+        this.dishesService.postDishes(data).subscribe((res) => {
           console.log('-- INSERT DISHES SUCCEEDED --');
           this.resetForm(form);
           this.refreshDishesList();
         });
         console.log('INSERT {[Dishes]} OK');
       } else {
-        this.dishesService.putDishes(form?.value, this.dishesService.selectedDishes._id).subscribe((res) => { //Doesn't work
-          console.log('-- UPDATE DISHES SUCCEEDED --');
-          this.resetForm(form);
-          this.refreshDishesList();
-        });
+        this.dishesService
+          .putDishes(form?.value, this.dishesService.selectedDishes._id)
+          .subscribe((res) => {
+            //Doesn't work
+            console.log('-- UPDATE DISHES SUCCEEDED --');
+            this.resetForm(form);
+            this.refreshDishesList();
+          });
         console.log('UPDATE {[Dishes]} OK');
       }
     }
   }
 
   refreshDishesList() {
-    this.dishesService.getDishesList().subscribe((res) => {
+    this.dishesService.getDishesByRestaurant(this.newStrIdRestaurant).subscribe((res) => {
       this.dishesService.dishes = res as Dishes[];
     });
   }
@@ -116,6 +131,4 @@ export class InsertDishesComponent implements OnInit {
         });
     }
   }
-
-  
 }

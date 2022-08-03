@@ -16,6 +16,11 @@ var InsertDishesComponent = /** @class */ (function () {
     function InsertDishesComponent(_Activatedroute, dishesService) {
         this._Activatedroute = _Activatedroute;
         this.dishesService = dishesService;
+        this.IdRestaurant = localStorage.getItem('IdRestaurant');
+        this.objIdRestaurant = String(this.IdRestaurant).replace('[', '');
+        this.strIdRestaurant = this.objIdRestaurant.replace('"', '');
+        this.lastRemovedCharStrIdRestaurant = this.strIdRestaurant.replace(']', '');
+        this.newStrIdRestaurant = this.lastRemovedCharStrIdRestaurant.replace('"', '');
     }
     InsertDishesComponent.prototype.ngOnInit = function () {
         this.refreshDishesList();
@@ -50,15 +55,18 @@ var InsertDishesComponent = /** @class */ (function () {
             this.dishesService.selectedDishes.dishes_price == undefined) {
             console.log('Veuillez remplir dishes_price');
         }
-        else if (this.dishesService.selectedDishes.id_restaurant == '' ||
-            this.dishesService.selectedDishes.id_restaurant == undefined) {
-            console.log('Veuillez remplir id_restaurant');
-        }
         else {
-            console.log("okaaayyy eee===" + JSON.stringify(this.dishesService.selectedDishes._id));
+            console.log('okaaayyy eee===' +
+                JSON.stringify(this.dishesService.selectedDishes._id));
             if (this.dishesService.selectedDishes._id == '' ||
                 this.dishesService.selectedDishes._id == undefined) {
-                this.dishesService.postDishes(form === null || form === void 0 ? void 0 : form.value).subscribe(function (res) {
+                var data = {
+                    id_restaurant: this.newStrIdRestaurant,
+                    dishes_name: this.dishesService.selectedDishes.dishes_name,
+                    dishes_desc: this.dishesService.selectedDishes.dishes_desc,
+                    dishes_price: this.dishesService.selectedDishes.dishes_price
+                };
+                this.dishesService.postDishes(data).subscribe(function (res) {
                     console.log('-- INSERT DISHES SUCCEEDED --');
                     _this.resetForm(form);
                     _this.refreshDishesList();
@@ -66,7 +74,10 @@ var InsertDishesComponent = /** @class */ (function () {
                 console.log('INSERT {[Dishes]} OK');
             }
             else {
-                this.dishesService.putDishes(form === null || form === void 0 ? void 0 : form.value, this.dishesService.selectedDishes._id).subscribe(function (res) {
+                this.dishesService
+                    .putDishes(form === null || form === void 0 ? void 0 : form.value, this.dishesService.selectedDishes._id)
+                    .subscribe(function (res) {
+                    //Doesn't work
                     console.log('-- UPDATE DISHES SUCCEEDED --');
                     _this.resetForm(form);
                     _this.refreshDishesList();
@@ -77,7 +88,7 @@ var InsertDishesComponent = /** @class */ (function () {
     };
     InsertDishesComponent.prototype.refreshDishesList = function () {
         var _this = this;
-        this.dishesService.getDishesList().subscribe(function (res) {
+        this.dishesService.getDishesByRestaurant(this.newStrIdRestaurant).subscribe(function (res) {
             _this.dishesService.dishes = res;
         });
     };
