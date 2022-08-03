@@ -30,6 +30,14 @@ export class OrderService {
     return this.http.get(this.baseURL);
   }
 
+  getOrdersByRestaurant(id_restaurant: string | null): Observable<Order[]> {
+    console.log("LINK =" + this.baseURL + `/admin-restaurant-ekaly/order/` + id_restaurant);
+    return this.http.get<Order[]>(
+      this.baseURL + `/admin-restaurant-ekaly/order/` + id_restaurant
+    );
+  }
+
+
   GetOrderByIdUserAndStatus(
     id_user: string | null,
     order_status: string | null

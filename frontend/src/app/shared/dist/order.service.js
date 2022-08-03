@@ -23,6 +23,10 @@ var OrderService = /** @class */ (function () {
     OrderService.prototype.getOrderList = function () {
         return this.http.get(this.baseURL);
     };
+    OrderService.prototype.getOrdersByRestaurant = function (id_restaurant) {
+        console.log("LINK =" + this.baseURL + "/admin-restaurant-ekaly/order/" + id_restaurant);
+        return this.http.get(this.baseURL + "/admin-restaurant-ekaly/order/" + id_restaurant);
+    };
     OrderService.prototype.GetOrderByIdUserAndStatus = function (id_user, order_status) {
         // console.log('id_user ------' + id_user);
         // console.log('order_status ------' + order_status);
