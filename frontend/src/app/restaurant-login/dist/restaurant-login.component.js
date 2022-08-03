@@ -14,6 +14,9 @@ var RestaurantLoginComponent = /** @class */ (function () {
         this.restaurantService = restaurantService;
     }
     RestaurantLoginComponent.prototype.ngOnInit = function () {
+        // Remove LocalStorage.getItem('IdRestaurant')
+        localStorage.removeItem('IdRestaurant');
+        localStorage.removeItem('restaurant_name');
     };
     RestaurantLoginComponent.prototype.GetRestaurantByEmailAndPassword = function (form) {
         var _this = this;
@@ -33,7 +36,7 @@ var RestaurantLoginComponent = /** @class */ (function () {
                 //=> CreateSessions
                 localStorage.setItem('restaurant_name', JSON.stringify(restaurant_name));
                 localStorage.setItem('IdRestaurant', JSON.stringify(IdRestaurant));
-                // this._router.navigateByUrl('/restaurant');
+                _this._router.navigateByUrl('/restaurantAdminMenu-ekaly');
             }
             // => If there is an error on login
             else {
