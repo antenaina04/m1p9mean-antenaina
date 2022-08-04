@@ -25,6 +25,9 @@ var DeliveryService = /** @class */ (function () {
     DeliveryService.prototype.getDeliveryList = function () {
         return this.http.get(this.baseURL);
     };
+    DeliveryService.prototype.GetOrderDeliveryList = function () {
+        return this.http.get(this.baseURL + "/GetOrderDelivery/Non-choisi");
+    };
     DeliveryService.prototype.GetDeliveryByDelivererName = function (delivery_deliverer) {
         return this.http.get(this.baseURL + "/GetDeliveryByDelivererName/" + delivery_deliverer);
     };

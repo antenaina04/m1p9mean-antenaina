@@ -24,6 +24,9 @@ export class DeliveryService {
   getDeliveryList() {
     return this.http.get(this.baseURL);
   }
+  GetOrderDeliveryList() {
+    return this.http.get(this.baseURL+ `/GetOrderDelivery/Non-choisi`);
+  }
 
   GetDeliveryByDelivererName(
     delivery_deliverer: string | null

@@ -103,5 +103,18 @@ router["delete"]('/:id', function (req, res) {
       console.log('Error in Delivery Delete :' + JSON.stringify(err, undefined, 2));
     }
   });
+}); // GetOrderDelivery : FindLike
+
+router.get('/GetOrderDelivery/Non-choisi', function (req, res) {
+  var query = {
+    delivery_deliverer: "Non choisi"
+  };
+  Delivery.find(query, function (err, doc) {
+    if (!err) {
+      res.send(doc);
+    } else {
+      console.log('Error in Retriving Delivery :' + JSON.stringify(err, undefined, 2));
+    }
+  });
 });
 module.exports = router;

@@ -89,5 +89,14 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+// GetOrderDelivery : FindLike
+router.get('/GetOrderDelivery/Non-choisi', (req, res) => {
+    var query = { delivery_deliverer: "Non choisi" };
+    Delivery.find(query, (err, doc) => {
+        if (!err) { res.send(doc); }
+        else { console.log('Error in Retriving Delivery :' + JSON.stringify(err, undefined, 2)); }
+    });
+});
+
 
 module.exports = router;
