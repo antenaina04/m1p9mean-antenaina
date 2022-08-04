@@ -29,6 +29,7 @@ import { ServiceDeliveryLoginComponent } from './service-delivery-login/service-
 import { InsertDelivererComponent } from './insert-deliverer/insert-deliverer.component';
 import { RestaurantAdminMenuComponent } from './restaurant-admin-menu/restaurant-admin-menu.component';
 import { GetAllOrdersByRestaurantComponent } from './get-all-orders-by-restaurant/get-all-orders-by-restaurant.component';
+import { DelivererAdminMenuComponent } from './deliverer-admin-menu/deliverer-admin-menu.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { GetAllOrdersByRestaurantComponent } from './get-all-orders-by-restauran
     ServiceDeliveryLoginComponent,
     InsertDelivererComponent,
     RestaurantAdminMenuComponent,
-    GetAllOrdersByRestaurantComponent
+    GetAllOrdersByRestaurantComponent,
+    DelivererAdminMenuComponent
   ],
   imports: [
     BrowserModule,

@@ -13,8 +13,7 @@ var ServiceDeliveryLoginComponent = /** @class */ (function () {
         this._router = _router;
         this.delivererService = delivererService;
     }
-    ServiceDeliveryLoginComponent.prototype.ngOnInit = function () {
-    };
+    ServiceDeliveryLoginComponent.prototype.ngOnInit = function () { };
     ServiceDeliveryLoginComponent.prototype.GetDelivererByEmailAndPassword = function (form) {
         var _this = this;
         // this.obj = JSON.parse(String(this.panier));
@@ -33,7 +32,7 @@ var ServiceDeliveryLoginComponent = /** @class */ (function () {
                 //=> CreateSessions
                 localStorage.setItem('deliverer_name', JSON.stringify(deliverer_name));
                 localStorage.setItem('IdDeliverer', JSON.stringify(IdDeliverer));
-                // this._router.navigateByUrl('/restaurant');
+                _this._router.navigateByUrl('/delivererAdminMenu-ekaly');
             }
             // => If there is an error on login
             else {

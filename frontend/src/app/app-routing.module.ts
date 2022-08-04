@@ -19,6 +19,8 @@ import { RestaurantLoginComponent } from './restaurant-login/restaurant-login.co
 import { ServiceDeliveryLoginComponent } from './service-delivery-login/service-delivery-login.component';
 import { InsertDelivererComponent } from './insert-deliverer/insert-deliverer.component';
 import { RestaurantAdminMenuComponent } from './restaurant-admin-menu/restaurant-admin-menu.component';
+import { DelivererAdminMenuComponent } from './deliverer-admin-menu/deliverer-admin-menu.component';
+
 
 import { PagenotfoundComponent } from 
     './pagenotfound/pagenotfound.component';
@@ -38,12 +40,13 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'saveOrUpdateDishes', component: InsertDishesComponent },
-  { path: 'saveOrUpdateRestaurant', component: InsertRestaurantComponent },
   { path: 'adminMenu-ekaly', component: AdminMenuComponent },
   { path: 'loginRestaurant-ekaly', component: RestaurantLoginComponent },
+  { path: 'registerRestaurant-ekaly', component: InsertRestaurantComponent },
   { path: 'restaurantAdminMenu-ekaly', component: RestaurantAdminMenuComponent },
   { path: 'loginServiceDelivery-ekaly', component: ServiceDeliveryLoginComponent },
   { path: 'registerDeliverer-ekaly', component: InsertDelivererComponent },
+  { path: 'delivererAdminMenu-ekaly', component: DelivererAdminMenuComponent },
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'contactUs', component: ContactUsComponent },
   { path: '**', pathMatch: 'full', 
