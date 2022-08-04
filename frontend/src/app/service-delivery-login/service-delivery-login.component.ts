@@ -17,7 +17,10 @@ export class ServiceDeliveryLoginComponent implements OnInit {
     public delivererService: DelivererService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.removeItem('IdDeliverer');
+    localStorage.removeItem('deliverer_name');
+  }
 
   GetDelivererByEmailAndPassword(form?: NgForm) {
     // this.obj = JSON.parse(String(this.panier));

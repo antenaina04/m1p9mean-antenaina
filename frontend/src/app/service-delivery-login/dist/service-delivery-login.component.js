@@ -13,7 +13,10 @@ var ServiceDeliveryLoginComponent = /** @class */ (function () {
         this._router = _router;
         this.delivererService = delivererService;
     }
-    ServiceDeliveryLoginComponent.prototype.ngOnInit = function () { };
+    ServiceDeliveryLoginComponent.prototype.ngOnInit = function () {
+        localStorage.removeItem('IdDeliverer');
+        localStorage.removeItem('deliverer_name');
+    };
     ServiceDeliveryLoginComponent.prototype.GetDelivererByEmailAndPassword = function (form) {
         var _this = this;
         // this.obj = JSON.parse(String(this.panier));
