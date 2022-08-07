@@ -44,11 +44,11 @@
                       <span class="badge badge-warning">{{delivery.delivery_deliverer}}</span>
                   </td>
                   <td class="project-actions text-right">
-                      <a class="btn btn-block btn-outline-success btn-flat" href="#">
-                          <i class="fas fa-print">
-                          </i>
+                      <button (click)="onSubmit(delivery)" class="btn btn-block btn-outline-success btn-flat" >
+                        <i class="fa fa-arrow-circle-right fa-4"
+                        aria-hidden="true"></i> 
                           Livrer le plat
-                      </a>
+                      </button>
                   </td>
               </tr>
           </tbody>

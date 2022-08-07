@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="id_restaurant">Restaurant</label>
+            <label for="id_restaurant">#Restaurant</label>
             <input name="id_restaurant" type="text" class="form-control"
               [(ngModel)]="dishesService.selectedDishes.id_restaurant" #id_restaurant="ngModel"
               placeholder={{this.newStrIdRestaurant}}
@@ -130,7 +130,7 @@
           <tbody>
             <tr *ngFor="let dishes of dishesService.dishes">
               <td>{{dishes.dishes_name}}</td>
-              <td>{{dishes.dishes_price}}</td>
+              <td>{{dishes.dishes_price}} Ariary</td>
               <!-- <td>{{dishes.dishes_name}}</td> -->
               <td>
                 <a (click)="onEdit(dishes)" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
