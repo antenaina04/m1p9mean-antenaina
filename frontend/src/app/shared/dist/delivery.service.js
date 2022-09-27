@@ -19,9 +19,12 @@ var DeliveryService = /** @class */ (function () {
     DeliveryService.prototype.postDelivery = function (delivery) {
         return this.http.post(this.baseURL, delivery);
     };
-    DeliveryService.prototype.putDelivery = function (delivery, _id) {
-        return this.http.put(this.baseURL + "/" + _id, delivery);
+    DeliveryService.prototype.putDelivery = function (delivery, _id_delivery, _id_order) {
+        return this.http.put(this.baseURL + "/" + _id_delivery + "/" + _id_order, delivery);
     };
+    // putDelivery(delivery_deliverer: string | null, order_status: string | null, _id_delivery: string | null, _id_order: string | null) {
+    //   return this.http.put(this.baseURL + `/` + _id_delivery+ `/` + _id_order+ `/` + delivery_deliverer+ `/` + order_status);
+    // }
     DeliveryService.prototype.getDeliveryList = function () {
         return this.http.get(this.baseURL);
     };

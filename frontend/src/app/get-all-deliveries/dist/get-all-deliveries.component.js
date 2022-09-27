@@ -9,9 +9,10 @@ exports.__esModule = true;
 exports.GetAllDeliveriesComponent = void 0;
 var core_1 = require("@angular/core");
 var GetAllDeliveriesComponent = /** @class */ (function () {
-    function GetAllDeliveriesComponent(_Activatedroute, deliveryService, _router) {
+    function GetAllDeliveriesComponent(_Activatedroute, deliveryService, orderService, _router) {
         this._Activatedroute = _Activatedroute;
         this.deliveryService = deliveryService;
+        this.orderService = orderService;
         this._router = _router;
         this.IdDeliverer = localStorage.getItem('IdDeliverer');
     }
@@ -34,11 +35,20 @@ var GetAllDeliveriesComponent = /** @class */ (function () {
         var data = {
             delivery_deliverer: this.newStrIdDeliverer
         };
+        //Send delivery.id_order**Update-Orderstatus
         this.deliveryService
             .putDelivery(data, String(delivery._id))
             .subscribe(function (res) {
-            //Doesn't work
             console.log('-- UPDATE DELIVERY SUCCEEDED --');
+        });
+        // Update order_status
+        var data2 = {
+            order_status: 'Commande livrée'
+        };
+        this.orderService
+            .putOrder(data2, String(delivery.id_order))
+            .subscribe(function (res) {
+            console.log('-- UPDATE ORDER SUCCEEDED --');
         });
         this.refreshPage();
     };

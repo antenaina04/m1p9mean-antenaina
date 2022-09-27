@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DeliveryService } from '../shared/delivery.service';
+import { OrderService } from '../shared/order.service';
+
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Delivery } from '../shared/delivery.model';
+import { Order } from '../shared/order.model';
 
 @Component({
   selector: 'app-get-all-deliveries',
@@ -15,6 +18,7 @@ export class GetAllDeliveriesComponent implements OnInit {
   constructor(
     private _Activatedroute: ActivatedRoute,
     public deliveryService: DeliveryService,
+    public orderService: OrderService,
     private _router: Router
   ) {}
   sub: any;
@@ -38,15 +42,26 @@ export class GetAllDeliveriesComponent implements OnInit {
     var data = {
       delivery_deliverer: this.newStrIdDeliverer,
     };
+
+    //Send delivery.id_order**Update-Orderstatus
     this.deliveryService
       .putDelivery(data, String(delivery._id))
       .subscribe((res) => {
-        //Doesn't work
         console.log('-- UPDATE DELIVERY SUCCEEDED --');
       });
-      this.refreshPage();
-  }
 
+    // Update order_status
+    var data2 = {
+      order_status: 'Commande livrée',
+    };
+    this.orderService
+      .putOrder(data2, String(delivery.id_order))
+      .subscribe((res) => {
+        console.log('-- UPDATE ORDER SUCCEEDED --');
+      });
+
+    this.refreshPage();
+  }
   refreshPage() {
     //Refresh page in order to add dishes in order-line-components
     this.sub = this._Activatedroute.paramMap.subscribe((params) => {

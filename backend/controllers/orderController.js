@@ -56,11 +56,12 @@ router.get('/admin-restaurant-ekaly/order/:id_restaurant', (req, res) => {
 // => localhost:3000/order/
 router.post('/', async (req, res) => {
     var order = new Order({
-        created_at: null,
+        created_at: Date(),
         updated_at: null,
         order_price: req.body.order_price,
+        total_amount_to_pay: req.body.total_amount_to_pay,
         order_status: "COMMANDE ENVOYE",
-        id_restaurant: req.body.id_restaurant, 
+        id_restaurant: req.body.id_restaurant,
         id_user: req.body.id_user,
     });
 
@@ -88,6 +89,7 @@ router.post('/', async (req, res) => {
                 delivery_client: req.body.id_user,
                 delivery_location: req.body.delivery_location,
                 delivery_price: req.body.delivery_price,
+                delivery_count:req.body.delivery_count,
                 id_order: docs._id,
             });
             var DeliverySave = delivery.save((err, docs) => {
@@ -102,23 +104,26 @@ router.post('/', async (req, res) => {
 
 
 // => localhost:3000/order/_id
-// router.put('/:id', (req, res) => {
-//     if (!ObjectId.isValid(req.params.id))
-//         return res.status(400).send(`No record with given id : ${req.params.id}`);
+router.put('/:id', (req, res) => {
 
-//     var order = new Order({
-//         created_at: null,
-//         updated_at: null,
-//         order_price: req.body.order_price,
-//         order_status: req.body.order_status,
-//         id_user: req.body.id_user,
-//     });
-
-//     Order.findByIdAndUpdate(req.params.id, { $set: order }, { new: true }, (err, doc) => {
-//         if (!err) { res.send(doc); }
-//         else { console.log('Error in Order Update :' + JSON.stringify(err, undefined, 2)); }
-//     });
-// });
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`No record with given id : ${req.params.id}`);
+        
+    var order = {
+        // created_at: null,
+        updated_at: Date(),
+        order_price: req.body.order_price,
+        order_status: req.body.order_status,
+        id_restaurant: req.body.id_restaurant,
+        id_user: req.body.id_user,
+    };
+    
+    Order.findByIdAndUpdate(req.params.id, { $set: order }, { new: true }, (err, doc) => {
+        if (!err) { res.send(doc); }
+        else { console.log('Error in Order Update :' + JSON.stringify(err, undefined, 2)); }
+    });
+    // console.log("order ="+JSON.stringify(order));
+});
 
 // => localhost:3000/order/_id
 // router.delete('/:id', (req, res) => {

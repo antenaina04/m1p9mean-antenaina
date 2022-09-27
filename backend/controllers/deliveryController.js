@@ -42,7 +42,7 @@ router.get('/GetDeliveryByDelivererName/:delivery_deliverer', (req, res) => {
 // => localhost:3000/delivery/
 router.post('/', (req, res) => {
     var delivery = new Delivery({
-        created_at: null,
+        created_at: Date(),
         updated_at: null,
         delivery_deliverer: req.body.delivery_deliverer,
         delivery_client: req.body.delivery_client,
@@ -63,8 +63,8 @@ router.put('/:id', (req, res) => {
         return res.status(400).send(`No record with given id : ${req.params.id}`);
 
     var delivery = {
-        created_at: null,
-        updated_at: null,
+        // created_at: null,
+        updated_at: Date(),
         delivery_deliverer: req.body.delivery_deliverer,
         delivery_client: req.body.delivery_client,
         delivery_location: req.body.delivery_location,
