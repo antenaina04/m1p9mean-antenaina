@@ -193,7 +193,11 @@ var PreviewComponent = /** @class */ (function () {
                             cart: this.panier,
                             delivery_date: this.deliveryService.selectedDelivery.delivery_date,
                             delivery_location: this.deliveryService.selectedDelivery.delivery_location,
-                            delivery_price: this.ShippingCost
+                            delivery_price: this.ShippingCost,
+                            //New Data
+                            delivery_count: this.DeliveryCount,
+                            total_amount_to_pay: this.TotalAmountToPay,
+                            dishes_count: this.obj.length
                         };
                         this.orderService.postOrder(data).subscribe(function (res) {
                             _this._router.navigateByUrl('orderList');

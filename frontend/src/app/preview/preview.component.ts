@@ -202,6 +202,15 @@ export class PreviewComponent implements OnInit {
         delivery_location:
           this.deliveryService.selectedDelivery.delivery_location,
         delivery_price: this.ShippingCost,
+
+
+        //New Data
+        delivery_count: this.DeliveryCount, // Nombre de livraison
+        total_amount_to_pay: this.TotalAmountToPay, //Montant total a payer
+        dishes_count: this.obj.length, //Nombre de plats
+
+
+
       }; // Set JSON Data
       this.orderService.postOrder(data).subscribe((res) => {
         this._router.navigateByUrl('orderList');
