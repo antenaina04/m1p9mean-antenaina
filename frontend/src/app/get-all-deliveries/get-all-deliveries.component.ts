@@ -75,4 +75,17 @@ export class GetAllDeliveriesComponent implements OnInit {
         });
     });
   }
+
+  onClick(delivery: Delivery) {
+    this.sub = this._Activatedroute.paramMap.subscribe((params) => {
+      const url = 'GetDeliveryByIdDeliveryAdmin/' + String(delivery._id);
+      this._router
+        .navigateByUrl('/', {
+          skipLocationChange: true,
+        })
+        .then(() => {
+          this._router.navigate([url]);
+        });
+    });
+  }
 }

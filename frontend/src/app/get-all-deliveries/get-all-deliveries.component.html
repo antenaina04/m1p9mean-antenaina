@@ -1,72 +1,76 @@
-<h3><p> Liste des plats à livrer</p></h3>
+<h3>
+  <p> Liste des plats à livrer</p>
+</h3>
 <div class="card">
-    
-    <div class="card-body p-0">
-      <table class="table table-striped projects">
-          <thead>
-              <tr>
-                  <!-- <th style="width: 1%">
+
+  <div class="card-body p-0">
+    <table class="table table-striped projects">
+      <thead>
+        <tr>
+          <!-- <th style="width: 1%">
                       #
                   </th> -->
-                  <th style="width: 20%">
-                      Date de commande
-                  </th>
-                  <th style="width: 20%">
-                    Lieu de livraison
-                </th>
-                  <th style="width: 30%">
-                      Frais de livraison
-                  </th>
-                  <!-- <th>
+          <th style="width: 20%">
+            Date de commande
+          </th>
+          <th style="width: 20%">
+            Lieu de livraison
+          </th>
+          <th style="width: 30%">
+            Frais de livraison
+          </th>
+          <!-- <th>
                       Etat de la commande
                   </th> -->
-                  <th style="width: 20%">
-                  </th>
-                  <th style="width: 30%">
-                </th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let delivery of deliveryService.delivery">
-                  <!-- <td>
+          <th style="width: 20%">
+          </th>
+          <th style="width: 30%">
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let delivery of deliveryService.delivery">
+          <!-- <td>
                       #
                   </td> -->
-                  <td>
-                      
-                      <small>
-                        {{delivery.created_at}}
-                      </small>
-                  </td>
-                  <td>
-                    {{delivery.delivery_location}}
-                </td>
-                  <td>
-                    {{delivery.delivery_price}} Ariary
-                  </td>                  
-                  <!-- <td class="project-state">
+          <td>
+
+            <small>
+              {{delivery.created_at}}
+            </small>
+          </td>
+          <td>
+            {{delivery.delivery_location}}
+          </td>
+          <td>
+            {{delivery.delivery_price}} Ariary
+          </td>
+          <!-- <td class="project-state">
                       <span class="badge badge-warning">{{delivery.delivery_deliverer}}</span>
                   </td> -->
-                  <td class="project-actions text-right">
-                      <!-- <button (click)="onOpen(delivery)" class="btn btn-block btn-outline-success btn-flat" >
+          <td class="project-actions text-right">
+            <!-- <button (click)="onOpen(delivery)" class="btn btn-block btn-outline-success btn-flat" >
                         <i class="fa fa-arrow-circle-right fa-4"
                         aria-hidden="true"></i> 
                           Ouvrir
                       </button> -->
 
 
-                      <a [routerLink]="['/delivery/info/', delivery._id]"
-                                    class="btn btn-block btn-outline-success btn-flat"><b> Ouvrir</b></a>
-                  </td>
-                  <td class="project-actions text-right">
-                    <button (click)="onSubmit(delivery)" class="btn btn-block btn-info btn-xs" >
-                      <!-- <i class="fa fa-arrow-circle-right fa-4"
+            <button (click)="onClick(delivery)" class="btn btn-block btn-outline-success btn-flat">
+              <i class="fas fa-eye"></i> 
+              Voir la commande
+            </button>
+          </td>
+          <td class="project-actions text-right">
+            <button (click)="onSubmit(delivery)" class="btn btn-block btn-info btn-xs">
+              <!-- <i class="fa fa-arrow-circle-right fa-4"
                       aria-hidden="true"></i>  -->
-                        Livrer le plat
-                    </button>
-                </td>
-              </tr>
-          </tbody>
-      </table>
-    </div>
-    
+              Livrer le plat
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
+</div>

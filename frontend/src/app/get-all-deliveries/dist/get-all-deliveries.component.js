@@ -66,6 +66,19 @@ var GetAllDeliveriesComponent = /** @class */ (function () {
             });
         });
     };
+    GetAllDeliveriesComponent.prototype.onClick = function (delivery) {
+        var _this = this;
+        this.sub = this._Activatedroute.paramMap.subscribe(function (params) {
+            var url = 'GetDeliveryByIdDeliveryAdmin/' + String(delivery._id);
+            _this._router
+                .navigateByUrl('/', {
+                skipLocationChange: true
+            })
+                .then(function () {
+                _this._router.navigate([url]);
+            });
+        });
+    };
     GetAllDeliveriesComponent = __decorate([
         core_1.Component({
             selector: 'app-get-all-deliveries',
