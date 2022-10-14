@@ -9,17 +9,37 @@ exports.__esModule = true;
 exports.OrderListComponent = void 0;
 var core_1 = require("@angular/core");
 var OrderListComponent = /** @class */ (function () {
-    function OrderListComponent(orderService) {
+    function OrderListComponent(orderService, _Activatedroute, _router) {
         this.orderService = orderService;
+        this._Activatedroute = _Activatedroute;
+        this._router = _router;
+        this.IdUser = localStorage.getItem('IdUser');
     }
     OrderListComponent.prototype.ngOnInit = function () {
         this.GetOrderByUser();
     };
     OrderListComponent.prototype.GetOrderByUser = function () {
         var _this = this;
-        this.orderService.getOrderList().subscribe(function (res) {
+        var objIdUser = String(this.IdUser).replace('[', '');
+        var strIdUser = objIdUser.replace('"', '');
+        var lastRemovedCharStrIdUser = strIdUser.replace(']', '');
+        this.newStrIdUser = lastRemovedCharStrIdUser.replace('"', '');
+        this.orderService.GetOrderByIdUser(this.newStrIdUser).subscribe(function (res) {
             _this.orderService.order = res;
-            console.log("OrderList =" + _this.orderService.order);
+            console.log('OrderList =' + _this.orderService.order);
+        });
+    };
+    OrderListComponent.prototype.onClick = function (order) {
+        var _this = this;
+        this.sub = this._Activatedroute.paramMap.subscribe(function (params) {
+            var url = 'GetOrderByUser/' + String(order._id);
+            _this._router
+                .navigateByUrl('/', {
+                skipLocationChange: true
+            })
+                .then(function () {
+                _this._router.navigate([url]);
+            });
         });
     };
     OrderListComponent = __decorate([
