@@ -5,7 +5,8 @@ var OrderDetail = mongoose.model('OrderDetail', {
     updated_at: { type: String },
     quantity: { type: Number },
     id_order: { type: String },
-    id_dishes: { type: String }
+    id_dishes: { type: String },
+    dishes_price: { type: String }
 });
 module.exports = {
     OrderDetail: OrderDetail

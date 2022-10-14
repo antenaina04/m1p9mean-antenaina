@@ -17,6 +17,9 @@ var OrderDetail = mongoose.model('OrderDetail', {
   },
   id_dishes: {
     type: String
+  },
+  dishes_price: {
+    type: String
   }
 });
 module.exports = {

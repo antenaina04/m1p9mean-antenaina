@@ -6,7 +6,9 @@ var Delivery = mongoose.model('Delivery', {
     delivery_deliverer: { type: String },
     delivery_client: { type: String },
     delivery_location: { type: String },
+    delivery_date: { type: String },
     delivery_price: { type: Number },
+    delivery_count: { type: Number },
     id_order: { type: String }
 });
 module.exports = {

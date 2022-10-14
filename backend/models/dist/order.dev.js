@@ -15,6 +15,12 @@ var Order = mongoose.model('Order', {
   order_status: {
     type: String
   },
+  total_amount_to_pay: {
+    type: String
+  },
+  dishes_count: {
+    type: String
+  },
   id_restaurant: {
     type: String
   },
