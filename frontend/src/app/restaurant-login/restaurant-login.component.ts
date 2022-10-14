@@ -27,7 +27,7 @@ export class RestaurantLoginComponent implements OnInit {
         String(this.restaurantService.selectedRestaurant.restaurant_email),
         String(this.restaurantService.selectedRestaurant.restaurant_password)
       )
-      .subscribe((res) => {
+      .subscribe(async (res) => {
         this.restaurantService.restaurants = res as Restaurant[];
         console.log('RESPONSA = ' + JSON.stringify(this.restaurantService.restaurants));
         if (this.restaurantService.restaurants.length != 0) {
@@ -39,9 +39,10 @@ export class RestaurantLoginComponent implements OnInit {
           console.log('restaurant_email  == ' + restaurant_email);
 
           //=> CreateSessions
+          let url = '/restaurantAdminMenu-ekaly/'+IdRestaurant;
           localStorage.setItem('restaurant_name', JSON.stringify(restaurant_name));
-          localStorage.setItem('IdRestaurant', JSON.stringify(IdRestaurant));          
-            this._router.navigateByUrl('/restaurantAdminMenu-ekaly');
+          localStorage.setItem('IdRestaurant', JSON.stringify(IdRestaurant));
+           await this._router.navigateByUrl(url);
         }        
         // => If there is an error on login
         else {

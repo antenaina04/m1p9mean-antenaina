@@ -21,7 +21,11 @@ var RestaurantAdminMenuComponent = /** @class */ (function () {
             this._router.navigateByUrl('/loginRestaurant-ekaly');
         }
         else {
-            this._router.navigateByUrl('/restaurantAdminMenu-ekaly');
+            var objIdRestaurant = String(this.IdRestaurant).replace('[', '');
+            var strIdRestaurant = objIdRestaurant.replace('"', '');
+            var lastRemovedCharStrIdRestaurant = strIdRestaurant.replace(']', '');
+            this.newStrIdRestaurant = lastRemovedCharStrIdRestaurant.replace('"', '');
+            this._router.navigateByUrl('/restaurantAdminMenu-ekaly/' + this.newStrIdRestaurant);
         }
     };
     RestaurantAdminMenuComponent = __decorate([
