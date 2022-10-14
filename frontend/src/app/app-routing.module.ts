@@ -20,6 +20,10 @@ import { ServiceDeliveryLoginComponent } from './service-delivery-login/service-
 import { InsertDelivererComponent } from './insert-deliverer/insert-deliverer.component';
 import { RestaurantAdminMenuComponent } from './restaurant-admin-menu/restaurant-admin-menu.component';
 import { DelivererAdminMenuComponent } from './deliverer-admin-menu/deliverer-admin-menu.component';
+import { GetOrderByIdOrderAdminComponent } from './get-order-by-id-order-admin/get-order-by-id-order-admin.component';
+import { GetDeliveryByIdDeliveryAdminComponent } from './get-delivery-by-id-delivery-admin/get-delivery-by-id-delivery-admin.component';
+import { GetOrderByUserComponent } from './get-order-by-user/get-order-by-user.component';
+
 
 
 import { PagenotfoundComponent } from 
@@ -37,16 +41,19 @@ const routes: Routes = [
   { path: 'delivery', component: DeliveryComponent },
   { path: 'preview', component: PreviewComponent },
   { path: 'orderList', component: OrderListComponent },
+  { path: 'GetOrderByUser/:id_order', component: GetOrderByUserComponent },
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'saveOrUpdateDishes', component: InsertDishesComponent },
   { path: 'adminMenu-ekaly', component: AdminMenuComponent },
   { path: 'loginRestaurant-ekaly', component: RestaurantLoginComponent },
   { path: 'registerRestaurant-ekaly', component: InsertRestaurantComponent },
-  { path: 'restaurantAdminMenu-ekaly', component: RestaurantAdminMenuComponent },
+  { path: 'restaurantAdminMenu-ekaly/:id_restaurant', component: RestaurantAdminMenuComponent },
+  { path: 'GetOrderByIdOrderAdmin/:id_order', component: GetOrderByIdOrderAdminComponent },
   { path: 'loginServiceDelivery-ekaly', component: ServiceDeliveryLoginComponent },
   { path: 'registerDeliverer-ekaly', component: InsertDelivererComponent },
   { path: 'delivererAdminMenu-ekaly', component: DelivererAdminMenuComponent },
+  { path: 'GetDeliveryByIdDeliveryAdmin/:id_delivery', component: GetDeliveryByIdDeliveryAdminComponent },
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'contactUs', component: ContactUsComponent },
   { path: '**', pathMatch: 'full', 

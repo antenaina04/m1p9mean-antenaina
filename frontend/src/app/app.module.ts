@@ -31,6 +31,10 @@ import { RestaurantAdminMenuComponent } from './restaurant-admin-menu/restaurant
 import { GetAllOrdersByRestaurantComponent } from './get-all-orders-by-restaurant/get-all-orders-by-restaurant.component';
 import { DelivererAdminMenuComponent } from './deliverer-admin-menu/deliverer-admin-menu.component';
 import { GetAllDeliveriesComponent } from './get-all-deliveries/get-all-deliveries.component';
+import { GetOrderByIdOrderAdminComponent } from './get-order-by-id-order-admin/get-order-by-id-order-admin.component';
+import { GetDeliveryByIdDeliveryAdminComponent } from './get-delivery-by-id-delivery-admin/get-delivery-by-id-delivery-admin.component';
+import { GetOrderByUserComponent } from './get-order-by-user/get-order-by-user.component';
+import { GetBenefitsRestaurantsComponent } from './get-benefits-restaurants/get-benefits-restaurants.component';
 
 
 @NgModule({
@@ -60,7 +64,11 @@ import { GetAllDeliveriesComponent } from './get-all-deliveries/get-all-deliveri
     RestaurantAdminMenuComponent,
     GetAllOrdersByRestaurantComponent,
     DelivererAdminMenuComponent,
-    GetAllDeliveriesComponent
+    GetAllDeliveriesComponent,
+    GetOrderByIdOrderAdminComponent,
+    GetDeliveryByIdDeliveryAdminComponent,
+    GetOrderByUserComponent,
+    GetBenefitsRestaurantsComponent
   ],
   imports: [
     BrowserModule,

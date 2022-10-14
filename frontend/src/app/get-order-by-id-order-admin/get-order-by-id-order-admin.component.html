@@ -1,0 +1,139 @@
+<br>
+<br>
+<br>
+
+<div class="row">
+
+    <div class="col-12">
+        <div class="ribbon-wrapper ribbon-xl">
+            <div class="ribbon bg-danger text-xl">
+                {{OrderStatus}}
+            </div>
+          </div>
+        <div class="invoice p-3 mb-3">
+            <div class="row">
+                <div class="col-12">
+                    <h4>
+                        <i class="fas fa-globe"></i> e-Kaly, C<sup>ie</sup>.
+                    </h4>
+                    <img src="assets/img/logo-e-kaly-v2.png" width="200px" height="100px">
+                </div>
+            </div>
+            <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong> e-Kaly, C<sup>ie</sup></strong><br>
+                        LOT IIN 185, Analamahitsy<br>
+                        Antananarivo, Madagascar<br>
+                        Phone: +261 32 69 310 51<br>
+                        Email: antenainarandrianantoandro@gmail.com
+                    </address>
+                </div>
+                <div class="col-sm-4 invoice-col">
+                    <u>Information du client:</u>
+                    <address>
+                        <strong>{{name}}</strong><br>
+                        Adresse de livraison : <strong><i> "{{Delivery_location}},
+                                Antananarivo,
+                                Madagascar"</i></strong><br>
+
+                        Phone: <strong>{{phone}}</strong><br>
+                        Email: <strong>{{email}}</strong><a href="#"></a>
+                    </address>
+                </div>
+                <div class="col-sm-4 invoice-col">
+                    <br>
+                    <b>Restaurant: </b>{{restaurant_name}} <br>
+                    <b>Date de commande:</b> {{OrderDate}}<br>
+                    <b>Date de livraison:</b> {{Delivery_date}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr align="center">
+                                <th>Qté</th>
+                                <th>Plat</th>
+                                <th>Sous-total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr *ngFor="let orderDetails of orderDetailsService.orderDetails">
+                                <td align="center">1</td>
+                                <td align="center">{{orderDetails.id_dishes}}</td>
+                                <td align="right"><strong>{{orderDetails.id_order}}</strong><em>&nbsp;Ariary</em> </td>
+                            </tr> -->
+                            <tr *ngFor="let Obj of ObjectList">
+                                <td align="center">1</td>
+                                <td align="center">{{Obj.dishes_name}}</td>
+                                <td align="right"><strong>{{Obj.dishes_price}}</strong><em>&nbsp;Ariary</em> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- <div class="col-6">
+                    <br>
+                    <div class="callout callout-danger">
+                        <h5><i class="fas fa-info"></i> Note:</h5>
+                        <mark><strong>(2)deux plats au maximum</strong></mark> pour <mark><strong>(1)une
+                                livraison</strong></mark>.
+                    </div>
+                </div> -->
+                <div class="col-6">
+                    <br>
+                </div>
+                <div class="col-6">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th style="width:50%">Sous-total:</th>
+                                    <td align="right">{{OrderPrice}} Ariary</td>
+                                </tr>
+                                <tr>
+                                    <th>Nombre de livraison:</th>
+                                    <td align="right">{{Delivery_count}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Frais de livraison</th>
+                                    <td align="right">{{Delivery_price}} Ariary</td>
+                                </tr>
+                                <tr>
+                                    <th>Montant total à payer:</th>
+                                    <td align="right">{{TotalAmountToPay}} Ariary</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row no-print">
+                <div class="col-12">
+                    <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
+                            class="fas fa-print"></i> Imprimer</a>
+                    <a href="" [routerLink]="['/order']" class="btn btn-success btn-flat float-right"><i
+                            class="fas fa-tag"></i> Trouver un livreur
+                    </a>
+                    &ensp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <br>
+    </div>
+    <div class="center">
+        <a href="" [routerLink]="['/restaurantAdminMenu-ekaly' + '/' + RestaurantID]" class="btn btn-danger btn-flat float-left"><i class="fas fa-arrow-circle-left"></i>
+            Retour
+        </a>
+    </div>
+    <div class="col">
+        <br>
+    </div>
+</div>
