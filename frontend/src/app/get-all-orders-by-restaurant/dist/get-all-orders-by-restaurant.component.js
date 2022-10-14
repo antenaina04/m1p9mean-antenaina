@@ -9,30 +9,78 @@ exports.__esModule = true;
 exports.GetAllOrdersByRestaurantComponent = void 0;
 var core_1 = require("@angular/core");
 var GetAllOrdersByRestaurantComponent = /** @class */ (function () {
-    function GetAllOrdersByRestaurantComponent(_Activatedroute, orderService) {
+    function GetAllOrdersByRestaurantComponent(_Activatedroute, orderService, _router) {
         this._Activatedroute = _Activatedroute;
         this.orderService = orderService;
+        this._router = _router;
         this.IdRestaurant = localStorage.getItem('IdRestaurant');
+        this.show = false;
     }
     GetAllOrdersByRestaurantComponent.prototype.ngOnInit = function () {
         this.GetAllOrderByRestaurant();
     };
     GetAllOrdersByRestaurantComponent.prototype.GetAllOrderByRestaurant = function () {
         var _this = this;
-        this.orderService.getOrderList().subscribe(function (res) {
-            _this.orderService.order = res;
-            console.log("OrderList =" + _this.orderService.order);
-        });
-        // Esorina ny []
+        // Erase []
         var objIdRestaurant = String(this.IdRestaurant).replace('[', '');
         var strIdRestaurant = objIdRestaurant.replace('"', '');
         var lastRemovedCharStrIdRestaurant = strIdRestaurant.replace(']', '');
         this.newStrIdRestaurant = lastRemovedCharStrIdRestaurant.replace('"', '');
+        console.log('newStrIdRestaurant =' + this.newStrIdRestaurant);
         this.sub = this._Activatedroute.paramMap.subscribe(function (params) {
             _this.orderService
-                .getOrdersByRestaurant(_this.newStrIdRestaurant)
+                // .getOrdersByRestaurant(this.newStrIdRestaurant)
+                .getOrdersByRestaurant(params === null || params === void 0 ? void 0 : params.get('id_restaurant'))
                 .subscribe(function (res) {
                 _this.orderService.order = res;
+                // for (var i = 0; i < this.orderService.order.length; i++) {
+                //   console.log("ORDER STATUS ="+ this.orderService.order[i].order_status)
+                //   if (this.orderService.order[i].order_status == "COMMANDE ENVOYE") {
+                //     this.show = true;
+                //   } else if(this.orderService.order[i].order_status == "En cours de livraison"){
+                //     this.show = false;
+                //   }
+                //   else if(this.orderService.order[i].order_status == "Commande livrée"){
+                //     this.show = false;
+                //   }
+                // }
+            });
+        });
+    };
+    GetAllOrdersByRestaurantComponent.prototype.onSubmit = function (order) {
+        var data = {
+            order_status: 'En cours de livraison'
+        };
+        this.orderService.putOrder(data, String(order._id)).subscribe(function (res) {
+            console.log('-- UPDATE ORDER SUCCEEDED --');
+        });
+        this.refreshPage();
+    };
+    // Voir details
+    GetAllOrdersByRestaurantComponent.prototype.onClick = function (order) {
+        var _this = this;
+        this.sub = this._Activatedroute.paramMap.subscribe(function (params) {
+            var url = 'GetOrderByIdOrderAdmin/' + String(order._id);
+            _this._router
+                .navigateByUrl('/', {
+                skipLocationChange: true
+            })
+                .then(function () {
+                _this._router.navigate([url]);
+            });
+        });
+    };
+    GetAllOrdersByRestaurantComponent.prototype.refreshPage = function () {
+        var _this = this;
+        //Refresh page in order to add dishes in order-line-components
+        this.sub = this._Activatedroute.paramMap.subscribe(function (params) {
+            var url = 'restaurantAdminMenu-ekaly/' + (params === null || params === void 0 ? void 0 : params.get('id_restaurant'));
+            _this._router
+                .navigateByUrl('/', {
+                skipLocationChange: true
+            })
+                .then(function () {
+                _this._router.navigate([url]);
             });
         });
     };
