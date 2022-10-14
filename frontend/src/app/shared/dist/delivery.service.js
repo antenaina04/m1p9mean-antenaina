@@ -19,20 +19,25 @@ var DeliveryService = /** @class */ (function () {
     DeliveryService.prototype.postDelivery = function (delivery) {
         return this.http.post(this.baseURL, delivery);
     };
-    DeliveryService.prototype.putDelivery = function (delivery, _id_delivery, _id_order) {
-        return this.http.put(this.baseURL + "/" + _id_delivery + "/" + _id_order, delivery);
+    DeliveryService.prototype.putDelivery = function (delivery, _id) {
+        return this.http.put(this.baseURL + "/" + _id, delivery);
     };
-    // putDelivery(delivery_deliverer: string | null, order_status: string | null, _id_delivery: string | null, _id_order: string | null) {
-    //   return this.http.put(this.baseURL + `/` + _id_delivery+ `/` + _id_order+ `/` + delivery_deliverer+ `/` + order_status);
-    // }
     DeliveryService.prototype.getDeliveryList = function () {
         return this.http.get(this.baseURL);
+    };
+    DeliveryService.prototype.GetDeliveryByIdDelivery = function (id_delivery) {
+        console.log("LINK =" + this.baseURL + "/" + id_delivery);
+        return this.http.get(this.baseURL + "/" + id_delivery);
     };
     DeliveryService.prototype.GetOrderDeliveryList = function () {
         return this.http.get(this.baseURL + "/GetOrderDelivery/Non-choisi");
     };
     DeliveryService.prototype.GetDeliveryByDelivererName = function (delivery_deliverer) {
         return this.http.get(this.baseURL + "/GetDeliveryByDelivererName/" + delivery_deliverer);
+    };
+    DeliveryService.prototype.GetDeliveryByOrderId = function (id_order) {
+        console.log("LINK =" + this.baseURL + "/GetDeliveryByIdOrder/" + id_order);
+        return this.http.get(this.baseURL + "/GetDeliveryByIdOrder/" + id_order);
     };
     // Calculer nombre de livraison
     DeliveryService.prototype.DeliveryCount = function (dishes_count) {

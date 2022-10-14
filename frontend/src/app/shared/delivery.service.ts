@@ -24,6 +24,15 @@ export class DeliveryService {
   getDeliveryList() {
     return this.http.get(this.baseURL);
   }
+
+
+  GetDeliveryByIdDelivery(
+    id_delivery: string | null
+  ): Observable<Delivery> {
+    console.log("LINK =" + this.baseURL + `/` + id_delivery);
+    return this.http.get<Delivery>(this.baseURL + `/` + id_delivery);
+  } 
+
   GetOrderDeliveryList() {
     return this.http.get(this.baseURL+ `/GetOrderDelivery/Non-choisi`);
   }
@@ -35,6 +44,17 @@ export class DeliveryService {
       this.baseURL + `/GetDeliveryByDelivererName/` + delivery_deliverer
     );
   }
+
+  GetDeliveryByOrderId(
+    id_order: string | null
+  ): Observable<Delivery> {
+    console.log("LINK =" + this.baseURL + `/GetDeliveryByIdOrder/` + id_order);
+    return this.http.get<Delivery>(
+      this.baseURL + `/GetDeliveryByIdOrder/` + id_order
+    );
+  }
+
+  
 
   // Calculer nombre de livraison
   DeliveryCount(dishes_count: number) {

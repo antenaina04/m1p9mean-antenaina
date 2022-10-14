@@ -7,6 +7,7 @@ export class Delivery {
   delivery_location?: string;
   delivery_date?: string;
   delivery_price?: number;
+  delivery_count?: number;
   id_order?: string;
 
   constructor() {}

@@ -41,4 +41,11 @@ export class DishesService {
     return this.http.get<Restaurant>(this.baseURL + `/GetDishesByDishesName/` + dishes_name);
   }
 
+
+  getDishesByIdDishes(
+    id_dishes: string | null
+  ): Observable<Dishes> {
+    return this.http.get<Dishes>(this.baseURL + `/` + id_dishes);
+  }
+
 }

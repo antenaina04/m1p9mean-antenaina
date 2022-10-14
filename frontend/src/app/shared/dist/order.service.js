@@ -24,7 +24,12 @@ var OrderService = /** @class */ (function () {
         return this.http.get(this.baseURL);
     };
     OrderService.prototype.GetOrderByIdOrder = function (id_order) {
+        console.log("LINK =" + this.baseURL + "/" + id_order);
         return this.http.get(this.baseURL + "/" + id_order);
+    };
+    OrderService.prototype.GetOrderByIdUser = function (id_user) {
+        console.log("LINK =" + this.baseURL + "/GetOrderByIdUser/" + id_user);
+        return this.http.get(this.baseURL + "/GetOrderByIdUser/" + id_user);
     };
     OrderService.prototype.putOrder = function (order, _id) {
         return this.http.put(this.baseURL + "/" + _id, order);

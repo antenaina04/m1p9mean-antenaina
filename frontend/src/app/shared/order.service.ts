@@ -33,7 +33,15 @@ export class OrderService {
   GetOrderByIdOrder(
     id_order: string | null
   ): Observable<Order> {
+    console.log("LINK =" + this.baseURL + `/` + id_order);
     return this.http.get<Order>(this.baseURL + `/` + id_order);
+  }
+
+  GetOrderByIdUser(
+    id_user: string | null
+  ): Observable<Order[]> {
+    console.log("LINK =" + this.baseURL + `/GetOrderByIdUser/` + id_user);
+    return this.http.get<Order[]>(this.baseURL + `/GetOrderByIdUser/` + id_user);
   }
   
   putOrder(order: Order, _id: string | null) {

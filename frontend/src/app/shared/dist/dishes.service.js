@@ -33,6 +33,9 @@ var DishesService = /** @class */ (function () {
     DishesService.prototype.GetDishesByDishesName = function (dishes_name) {
         return this.http.get(this.baseURL + "/GetDishesByDishesName/" + dishes_name);
     };
+    DishesService.prototype.getDishesByIdDishes = function (id_dishes) {
+        return this.http.get(this.baseURL + "/" + id_dishes);
+    };
     DishesService = __decorate([
         core_1.Injectable({
             providedIn: 'root'
