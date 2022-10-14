@@ -40,6 +40,17 @@ router.get('/GetOrderByIdUserAndStatus/:id_user/:order_status', (req, res) => {
 
 });
 
+router.get('/GetOrderByIdUser/:id_user', (req, res) => {
+    if (!ObjectId.isValid(req.params.id_user))
+        return res.status(400).send(`No record with given id : ${req.params.id_user}`);
+    var query = { "id_user": req.params.id_user};
+    Order.find(query, (err, doc) => {
+        if (!err) { res.send(doc); }
+        else { console.log('Error in Retriving Order :' + JSON.stringify(err, undefined, 2)); }
+    });
+
+});
+
 
 // => localhost:3000/admin-restaurant-ekaly/order/id_restaurant [getOrdersByIdRestaurant]
 router.get('/admin-restaurant-ekaly/order/:id_restaurant', (req, res) => {
@@ -61,6 +72,7 @@ router.post('/', async (req, res) => {
         order_price: req.body.order_price,
         total_amount_to_pay: req.body.total_amount_to_pay,
         order_status: "COMMANDE ENVOYE",
+        dishes_count:req.body.dishes_count,
         id_restaurant: req.body.id_restaurant,
         id_user: req.body.id_user,
     });
@@ -77,6 +89,7 @@ router.post('/', async (req, res) => {
                     quantity: 0, //Unfinished
                     id_order: docs._id, //OrderId
                     id_dishes: JSON.parse(req.body.cart)[i]._id, // IdDishes
+                    dishes_price: JSON.parse(req.body.cart)[i].dishes_price, // IdDishes
                 });
                 var OrderDetailSave = orderDetail.save((err, docs) => {
                 });
@@ -88,6 +101,7 @@ router.post('/', async (req, res) => {
                 delivery_deliverer: "Non choisi",
                 delivery_client: req.body.id_user,
                 delivery_location: req.body.delivery_location,
+                delivery_date: req.body.delivery_date,
                 delivery_price: req.body.delivery_price,
                 delivery_count:req.body.delivery_count,
                 id_order: docs._id,

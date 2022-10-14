@@ -39,6 +39,17 @@ router.get('/GetDeliveryByDelivererName/:delivery_deliverer', (req, res) => {
     });
 });
 
+// GetDeliveryByIdOrder : FindLike IdOrder
+router.get('/GetDeliveryByIdOrder/:id_order', (req, res) => {
+    var toFind = req.params.id_order;
+    var tofind_regex = new RegExp(toFind);
+    var query = { id_order: { $regex: tofind_regex, $options: 'i'  } };
+    Delivery.findOne(query, (err, doc) => {
+        if (!err) { res.send(doc); }
+        else { console.log('Error in Retriving Delivery :' + JSON.stringify(err, undefined, 2)); }
+    });
+});
+
 // => localhost:3000/delivery/
 router.post('/', (req, res) => {
     var delivery = new Delivery({
@@ -47,7 +58,9 @@ router.post('/', (req, res) => {
         delivery_deliverer: req.body.delivery_deliverer,
         delivery_client: req.body.delivery_client,
         delivery_location: req.body.delivery_location,
+        delivery_date: req.body.delivery_date,
         delivery_price: req.body.delivery_price,
+        delivery_count: req.body.delivery_count,
         id_order: req.body.id_order,
     });
 

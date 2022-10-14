@@ -7,7 +7,10 @@ var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
 var _require = require('../models/orderDetails'),
-    OrderDetail = _require.OrderDetail; // => localhost:3000/orderDetail/
+    OrderDetail = _require.OrderDetail;
+
+var _require2 = require('../models/dishes'),
+    Dishes = _require2.Dishes; // => localhost:3000/orderDetail/
 
 
 router.get('/', function (req, res) {
@@ -33,7 +36,7 @@ router.get('/:id', function (req, res) {
 
 router.get('/order/:id_order', function (req, res) {
   if (!ObjectId.isValid(req.params.id_order)) return res.status(400).send("No record with given id : ".concat(req.params.id_order));
-  Dishes.find({
+  OrderDetail.find({
     id_order: req.params.id_order
   }, function (err, doc) {
     if (!err) {
