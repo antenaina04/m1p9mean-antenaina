@@ -49,9 +49,13 @@
 
 
       <li class="nav-item dropdown">
-        <a [routerLink]="['orderList',]" class="btn btn-block btn-outline-dark btn-flat">
+        <!-- <a [routerLink]="['orderList',]" class="btn btn-block btn-outline-dark btn-flat">
           <i class="fa fa-user-circle fa-4"></i>&nbsp; Mes commandes
-        </a>
+        </a> -->
+        <button (click)="GetOrderList()" class="btn btn-block btn-outline-dark btn-flat">
+          <i class="fa fa-user-circle fa-4"></i>&nbsp; Mes commandes
+        </button>
+
       </li>&nbsp;&nbsp;
       <li class="nav-item dropdown">
         <a [routerLink]="['order',]" class="btn btn-block btn-outline-warning btn-flat">

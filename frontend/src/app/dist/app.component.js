@@ -19,6 +19,17 @@ var AppComponent = /** @class */ (function () {
         localStorage.removeItem('Username');
         this._router.navigateByUrl('/login');
     };
+    AppComponent.prototype.GetOrderList = function () {
+        if (localStorage.getItem('IdUser') == null ||
+            localStorage.getItem('IdUser') == '' ||
+            localStorage.getItem('IdUser') == undefined) {
+            this._router.navigateByUrl('/login');
+        }
+        else {
+            // console.log("Info = " + "OrderList doit être affiché")
+            this._router.navigateByUrl('/orderList');
+        }
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app-root',
