@@ -35,6 +35,8 @@ import { GetOrderByIdOrderAdminComponent } from './get-order-by-id-order-admin/g
 import { GetDeliveryByIdDeliveryAdminComponent } from './get-delivery-by-id-delivery-admin/get-delivery-by-id-delivery-admin.component';
 import { GetOrderByUserComponent } from './get-order-by-user/get-order-by-user.component';
 import { GetBenefitsRestaurantsComponent } from './get-benefits-restaurants/get-benefits-restaurants.component';
+import { LoginEkalyComponent } from './login-ekaly/login-ekaly.component';
+import { AdminEkalyHomeComponent } from './admin-ekaly-home/admin-ekaly-home.component';
 
 
 @NgModule({
@@ -68,7 +70,9 @@ import { GetBenefitsRestaurantsComponent } from './get-benefits-restaurants/get-
     GetOrderByIdOrderAdminComponent,
     GetDeliveryByIdDeliveryAdminComponent,
     GetOrderByUserComponent,
-    GetBenefitsRestaurantsComponent
+    GetBenefitsRestaurantsComponent,
+    LoginEkalyComponent,
+    AdminEkalyHomeComponent
   ],
   imports: [
     BrowserModule,

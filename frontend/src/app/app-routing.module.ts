@@ -23,6 +23,9 @@ import { DelivererAdminMenuComponent } from './deliverer-admin-menu/deliverer-ad
 import { GetOrderByIdOrderAdminComponent } from './get-order-by-id-order-admin/get-order-by-id-order-admin.component';
 import { GetDeliveryByIdDeliveryAdminComponent } from './get-delivery-by-id-delivery-admin/get-delivery-by-id-delivery-admin.component';
 import { GetOrderByUserComponent } from './get-order-by-user/get-order-by-user.component';
+import { LoginEkalyComponent } from './login-ekaly/login-ekaly.component';
+import { AdminEkalyHomeComponent } from './admin-ekaly-home/admin-ekaly-home.component';
+
 
 
 
@@ -56,6 +59,11 @@ const routes: Routes = [
   { path: 'GetDeliveryByIdDeliveryAdmin/:id_delivery', component: GetDeliveryByIdDeliveryAdminComponent },
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'contactUs', component: ContactUsComponent },
+
+  { path: 'admin1234', component: LoginEkalyComponent },
+  { path: 'admin1234-home', component: AdminEkalyHomeComponent },
+
+  
   { path: '**', pathMatch: 'full', 
   component: PagenotfoundComponent },
 ];

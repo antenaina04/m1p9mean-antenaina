@@ -31,6 +31,8 @@ var deliverer_admin_menu_component_1 = require("./deliverer-admin-menu/deliverer
 var get_order_by_id_order_admin_component_1 = require("./get-order-by-id-order-admin/get-order-by-id-order-admin.component");
 var get_delivery_by_id_delivery_admin_component_1 = require("./get-delivery-by-id-delivery-admin/get-delivery-by-id-delivery-admin.component");
 var get_order_by_user_component_1 = require("./get-order-by-user/get-order-by-user.component");
+var login_ekaly_component_1 = require("./login-ekaly/login-ekaly.component");
+var admin_ekaly_home_component_1 = require("./admin-ekaly-home/admin-ekaly-home.component");
 var pagenotfound_component_1 = require("./pagenotfound/pagenotfound.component");
 var routes = [
     { path: '', component: restaurant_component_1.RestaurantComponent },
@@ -57,6 +59,8 @@ var routes = [
     { path: 'GetDeliveryByIdDeliveryAdmin/:id_delivery', component: get_delivery_by_id_delivery_admin_component_1.GetDeliveryByIdDeliveryAdminComponent },
     { path: 'aboutUs', component: about_us_component_1.AboutUsComponent },
     { path: 'contactUs', component: contact_us_component_1.ContactUsComponent },
+    { path: 'admin1234', component: login_ekaly_component_1.LoginEkalyComponent },
+    { path: 'admin1234-home', component: admin_ekaly_home_component_1.AdminEkalyHomeComponent },
     { path: '**', pathMatch: 'full',
         component: pagenotfound_component_1.PagenotfoundComponent },
 ];
