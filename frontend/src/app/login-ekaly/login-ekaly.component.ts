@@ -10,6 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login-ekaly.component.css'],
 })
 export class LoginEkalyComponent implements OnInit {
+
+
   obj!: any;
   loginError: any;
   sub: any;
