@@ -169,7 +169,7 @@ export class GetDeliveryByIdDeliveryAdminComponent implements OnInit {
             this.id_dishes = this.orderDetailsService.orderDetails[i].id_dishes;
             this.sub = this._Activatedroute.paramMap.subscribe(
               async (params) => {
-                -this.dishesService
+                this.dishesService
                   .getDishesByIdDishes(this.id_dishes)
                   .subscribe((res) => {
                     this.dishesService;

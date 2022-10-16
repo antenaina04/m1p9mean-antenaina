@@ -157,7 +157,7 @@ var GetDeliveryByIdDeliveryAdminComponent = /** @class */ (function () {
                             _this.sub = _this._Activatedroute.paramMap.subscribe(function (params) { return __awaiter(_this, void 0, void 0, function () {
                                 var _this = this;
                                 return __generator(this, function (_a) {
-                                    -this.dishesService
+                                    this.dishesService
                                         .getDishesByIdDishes(this.id_dishes)
                                         .subscribe(function (res) {
                                         _this.dishesService;
