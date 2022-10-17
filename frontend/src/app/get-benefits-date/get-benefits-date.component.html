@@ -1,0 +1,40 @@
+<div class="card">
+    <br>
+    <h2 class="text-center display-5">Bénéfices par date</h2>
+    <br>
+    <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th style="width: 20%">
+                        Date
+                    </th>
+                    <th class="text-center">
+                        Recette
+                    </th>
+                    <th style="width: 8%" class="text-center">
+                        Benefice (= 20%)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Obj of ObjectList">
+                    <td>
+                        <small>
+                            {{Obj.order_date}}
+                        </small>
+                    </td>
+                    <td class="text-center">
+                        <small>
+                            {{Obj.order_price}} Ariary
+                        </small>
+                    </td>
+                    <td class="project-state">
+                        <span class="badge badge-success">{{Obj.benefits}} Ariary</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
