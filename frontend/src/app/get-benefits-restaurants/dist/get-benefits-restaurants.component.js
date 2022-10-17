@@ -59,36 +59,56 @@ var GetBenefitsRestaurantsComponent = /** @class */ (function () {
         var _this = this;
         this.orderService.getOrderList().subscribe(function (res) {
             _this.orderService.order = res;
+            var RESULT;
             var Obj;
             var ObjList = new Array();
             var _loop_1 = function (i) {
-                // this.Benefits = this.deliveryService.GetBenefits(
-                //   parseInt(String(this.orderService.order[i].order_price)),
-                //   20
-                // );
                 _this.restaurant_id = String(_this.orderService.order[i].id_restaurant);
                 _this.sub = _this._Activatedroute.paramMap.subscribe(function (params) { return __awaiter(_this, void 0, void 0, function () {
                     var _this = this;
                     return __generator(this, function (_a) {
-                        this.restaurantService.getRestaurantByIdRestaurant(this.restaurant_id)
-                            .subscribe(function (res) {
-                            _this.restaurantService;
-                            _this.restaurantService.restaurants = res;
-                            // Create Obj
-                            Obj = {
-                                order_date: String(_this.orderService.order[i].created_at),
-                                restaurant_name: String(res.restaurant_name),
-                                order_price: String(_this.orderService.order[i].order_price),
-                                benefits: _this.deliveryService.GetBenefits(parseInt(String(_this.orderService.order[i].order_price)), 20)
-                            };
-                            if (Array.isArray(ObjList)) {
-                                ObjList.push(Obj); // this will work fine
-                            }
-                            else {
-                                console.log('ObjList is not an array!');
-                            }
-                            _this.ObjectList = ObjList;
-                        });
+                        this.restaurantService
+                            .getRestaurantByIdRestaurant(this.restaurant_id)
+                            .subscribe(function (res) { return __awaiter(_this, void 0, void 0, function () {
+                            var map;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        this.restaurantService;
+                                        this.restaurantService.restaurants = res;
+                                        // Create Obj
+                                        Obj = {
+                                            order_date: String(this.orderService.order[i].created_at),
+                                            restaurant_name: String(res.restaurant_name),
+                                            order_price: parseInt(String(this.orderService.order[i].order_price)),
+                                            benefits: this.deliveryService.GetBenefits(parseInt(String(this.orderService.order[i].order_price)), 20)
+                                        };
+                                        if (!Array.isArray(ObjList)) return [3 /*break*/, 2];
+                                        return [4 /*yield*/, ObjList.push(Obj)];
+                                    case 1:
+                                        _a.sent(); // this will work fine
+                                        return [3 /*break*/, 3];
+                                    case 2:
+                                        console.log('ObjList is not an array!');
+                                        _a.label = 3;
+                                    case 3:
+                                        map = ObjList === null || ObjList === void 0 ? void 0 : ObjList.reduce(function (prev, next) {
+                                            if (next.restaurant_name in prev) {
+                                                prev[next.restaurant_name].benefits += next.benefits;
+                                                prev[next.restaurant_name].order_price += next.order_price;
+                                            }
+                                            else {
+                                                prev[next.restaurant_name] = next;
+                                            }
+                                            return prev;
+                                        }, {});
+                                        RESULT = Object.keys(map).map(function (restaurant_name) { return map[restaurant_name]; });
+                                        console.log('resultat =' + JSON.stringify(RESULT));
+                                        this.ObjectList = RESULT;
+                                        return [2 /*return*/];
+                                }
+                            });
+                        }); });
                         return [2 /*return*/];
                     });
                 }); });
@@ -97,17 +117,6 @@ var GetBenefitsRestaurantsComponent = /** @class */ (function () {
                 _loop_1(i);
             }
         });
-    };
-    GetBenefitsRestaurantsComponent.prototype.Test = function () {
-        // let Obj: any;
-        // var ObjList = new Array();
-        // for (
-        //   let i = 0;
-        //   i < this.orderService.order.length;
-        //   i++
-        // ) {
-        //   this.Benefits = this.deliveryService.GetBenefits(parseInt(String(this.orderService.order[i].order_price)), 20);
-        // }
     };
     GetBenefitsRestaurantsComponent = __decorate([
         core_1.Component({
