@@ -62,7 +62,10 @@ var GetBenefitsRestaurantsComponent = /** @class */ (function () {
             var Obj;
             var ObjList = new Array();
             var _loop_1 = function (i) {
-                _this.Benefits = _this.deliveryService.GetBenefits(parseInt(String(_this.orderService.order[i].order_price)), 20);
+                // this.Benefits = this.deliveryService.GetBenefits(
+                //   parseInt(String(this.orderService.order[i].order_price)),
+                //   20
+                // );
                 _this.restaurant_id = String(_this.orderService.order[i].id_restaurant);
                 _this.sub = _this._Activatedroute.paramMap.subscribe(function (params) { return __awaiter(_this, void 0, void 0, function () {
                     var _this = this;
@@ -76,7 +79,7 @@ var GetBenefitsRestaurantsComponent = /** @class */ (function () {
                                 order_date: String(_this.orderService.order[i].created_at),
                                 restaurant_name: String(res.restaurant_name),
                                 order_price: String(_this.orderService.order[i].order_price),
-                                benefits: _this.Benefits
+                                benefits: _this.deliveryService.GetBenefits(parseInt(String(_this.orderService.order[i].order_price)), 20)
                             };
                             if (Array.isArray(ObjList)) {
                                 ObjList.push(Obj); // this will work fine

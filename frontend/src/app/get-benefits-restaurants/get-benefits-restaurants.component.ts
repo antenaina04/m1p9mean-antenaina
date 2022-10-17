@@ -38,10 +38,14 @@ export class GetBenefitsRestaurantsComponent implements OnInit {
       let Obj: any;
       var ObjList = new Array();
       for (let i = 0; i < this.orderService.order.length; i++) {
-        this.Benefits = this.deliveryService.GetBenefits(
-          parseInt(String(this.orderService.order[i].order_price)),
-          20
-        );
+        
+        
+        // this.Benefits = this.deliveryService.GetBenefits(
+        //   parseInt(String(this.orderService.order[i].order_price)),
+        //   20
+        // );
+
+
         this.restaurant_id = String(this.orderService.order[i].id_restaurant)
 
         this.sub = this._Activatedroute.paramMap.subscribe(
@@ -56,7 +60,10 @@ export class GetBenefitsRestaurantsComponent implements OnInit {
                   order_date: String(this.orderService.order[i].created_at),
                   restaurant_name: String(res.restaurant_name),
                   order_price: String(this.orderService.order[i].order_price),
-                  benefits: this.Benefits,
+                  benefits: this.deliveryService.GetBenefits(
+                    parseInt(String(this.orderService.order[i].order_price)),
+                    20
+                  ),
                 };
 
                 if (Array.isArray(ObjList)) {
