@@ -70,15 +70,24 @@ var GetBenefitsRestaurantsComponent = /** @class */ (function () {
                         this.restaurantService
                             .getRestaurantByIdRestaurant(this.restaurant_id)
                             .subscribe(function (res) { return __awaiter(_this, void 0, void 0, function () {
-                            var map;
+                            var created_date, months, year, month, date, map;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
                                         this.restaurantService;
                                         this.restaurantService.restaurants = res;
+                                        created_date = new Date(this.orderService.order[i].created_at);
+                                        months = ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'decembre'];
+                                        year = created_date.getFullYear() + ' ';
+                                        month = months[created_date.getMonth()] + ' ';
+                                        date = created_date.getDate() + ' ';
+                                        //  var hour = created_date.getHours()+'h';
+                                        //  var min = created_date.getMinutes();
+                                        //  var sec = created_date.getSeconds();
                                         // Create Obj
                                         Obj = {
-                                            order_date: String(this.orderService.order[i].created_at),
+                                            // order_date: this.orderService.order[i].created_at,
+                                            order_date: date + month + year,
                                             restaurant_name: String(res.restaurant_name),
                                             order_price: parseInt(String(this.orderService.order[i].order_price)),
                                             benefits: this.deliveryService.GetBenefits(parseInt(String(this.orderService.order[i].order_price)), 20)

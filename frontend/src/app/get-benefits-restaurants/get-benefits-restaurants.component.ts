@@ -44,9 +44,21 @@ export class GetBenefitsRestaurantsComponent implements OnInit {
             .subscribe(async (res) => {
               this.restaurantService;
               this.restaurantService.restaurants = res as Restaurant[];
+
+             var created_date = new Date(this.orderService.order[i].created_at);
+
+             var months = ['janvier','fevrier','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','decembre'];
+             var year = created_date.getFullYear() + ' ';
+             var month = months[created_date.getMonth()] + ' ';
+             var date = created_date.getDate()+' ';
+            //  var hour = created_date.getHours()+'h';
+            //  var min = created_date.getMinutes();
+            //  var sec = created_date.getSeconds();
+
               // Create Obj
               Obj = {
-                order_date: String(this.orderService.order[i].created_at),
+                // order_date: this.orderService.order[i].created_at,
+                order_date: date + month + year,
                 restaurant_name: String(res.restaurant_name),
                 order_price: parseInt(
                   String(this.orderService.order[i].order_price)
