@@ -37,6 +37,8 @@ import { GetOrderByUserComponent } from './get-order-by-user/get-order-by-user.c
 import { GetBenefitsRestaurantsComponent } from './get-benefits-restaurants/get-benefits-restaurants.component';
 import { LoginEkalyComponent } from './login-ekaly/login-ekaly.component';
 import { AdminEkalyHomeComponent } from './admin-ekaly-home/admin-ekaly-home.component';
+import { GetBenefitsDateComponent } from './get-benefits-date/get-benefits-date.component';
+import { GetDetailedBenefitsComponent } from './get-detailed-benefits/get-detailed-benefits.component';
 
 
 @NgModule({
@@ -72,7 +74,9 @@ import { AdminEkalyHomeComponent } from './admin-ekaly-home/admin-ekaly-home.com
     GetOrderByUserComponent,
     GetBenefitsRestaurantsComponent,
     LoginEkalyComponent,
-    AdminEkalyHomeComponent
+    AdminEkalyHomeComponent,
+    GetBenefitsDateComponent,
+    GetDetailedBenefitsComponent
   ],
   imports: [
     BrowserModule,
