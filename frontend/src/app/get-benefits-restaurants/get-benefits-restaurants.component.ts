@@ -24,7 +24,7 @@ export class GetBenefitsRestaurantsComponent implements OnInit {
   Benefits: any;
   restaurant_id: any;
   ObjectList: any;
-  
+
   ngOnInit(): void {
     this.GetOrder();
   }
@@ -45,15 +45,30 @@ export class GetBenefitsRestaurantsComponent implements OnInit {
               this.restaurantService;
               this.restaurantService.restaurants = res as Restaurant[];
 
-             var created_date = new Date(this.orderService.order[i].created_at);
+              var created_date = new Date(
+                this.orderService.order[i].created_at
+              );
 
-             var months = ['janvier','fevrier','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','decembre'];
-             var year = created_date.getFullYear() + ' ';
-             var month = months[created_date.getMonth()] + ' ';
-             var date = created_date.getDate()+' ';
-            //  var hour = created_date.getHours()+'h';
-            //  var min = created_date.getMinutes();
-            //  var sec = created_date.getSeconds();
+              var months = [
+                'janvier',
+                'fevrier',
+                'mars',
+                'avril',
+                'mai',
+                'juin',
+                'juillet',
+                'août',
+                'septembre',
+                'octobre',
+                'novembre',
+                'decembre',
+              ];
+              var year = created_date.getFullYear() + ' ';
+              var month = months[created_date.getMonth()] + ' ';
+              var date = created_date.getDate() + ' ';
+              //  var hour = created_date.getHours()+'h';
+              //  var min = created_date.getMinutes();
+              //  var sec = created_date.getSeconds();
 
               // Create Obj
               Obj = {
@@ -63,9 +78,13 @@ export class GetBenefitsRestaurantsComponent implements OnInit {
                 order_price: parseInt(
                   String(this.orderService.order[i].order_price)
                 ),
-                benefits: this.deliveryService.GetBenefits(
-                  parseInt(String(this.orderService.order[i].order_price)),
-                  20
+                benefits: parseInt(
+                  String(
+                    this.deliveryService.GetBenefits(
+                      parseInt(String(this.orderService.order[i].order_price)),
+                      20
+                    )
+                  )
                 ),
               };
 
@@ -75,7 +94,7 @@ export class GetBenefitsRestaurantsComponent implements OnInit {
                 console.log('ObjList is not an array!');
               }
 
-              //REDUCE AND MAP FUNCTION => GROUPBY
+              //REDUCE AND MAP FUNCTION => GROUP-BY restaurant
               let map = ObjList?.reduce((prev, next) => {
                 if (next.restaurant_name in prev) {
                   prev[next.restaurant_name].benefits += next.benefits;
@@ -91,6 +110,28 @@ export class GetBenefitsRestaurantsComponent implements OnInit {
               );
               console.log('resultat =' + JSON.stringify(RESULT));
               this.ObjectList = RESULT;
+
+              // // //REDUCE AND MAP FUNCTION => GROUP-BY date
+              // var result = ObjList?.reduce(function (h, obj) {
+              //   h[obj.order_date] = (h[obj.order_date] || []).concat(obj);
+
+              //   return h;
+              // }, {});
+              // result = Object.keys(result).map((key) => {
+              //   return {
+              //     order_date: key,
+              //     // restaurant_name : result[key].reduce((a, b) => b.restaurant_name || 0, 0),
+              //     order_price: result[key].reduce(
+              //       (a, b) => a + (b.order_price || 0),
+              //       0
+              //     ),
+              //     benefits: result[key].reduce(
+              //       (a, b) => a + (b.benefits || 0),
+              //       0
+              //     ),
+              //   };
+              // });
+              // console.log('RESULT =' + JSON.stringify(result));
             });
         });
       }

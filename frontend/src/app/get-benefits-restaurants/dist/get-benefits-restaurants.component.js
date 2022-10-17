@@ -77,7 +77,20 @@ var GetBenefitsRestaurantsComponent = /** @class */ (function () {
                                         this.restaurantService;
                                         this.restaurantService.restaurants = res;
                                         created_date = new Date(this.orderService.order[i].created_at);
-                                        months = ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'decembre'];
+                                        months = [
+                                            'janvier',
+                                            'fevrier',
+                                            'mars',
+                                            'avril',
+                                            'mai',
+                                            'juin',
+                                            'juillet',
+                                            'août',
+                                            'septembre',
+                                            'octobre',
+                                            'novembre',
+                                            'decembre',
+                                        ];
                                         year = created_date.getFullYear() + ' ';
                                         month = months[created_date.getMonth()] + ' ';
                                         date = created_date.getDate() + ' ';
@@ -90,7 +103,7 @@ var GetBenefitsRestaurantsComponent = /** @class */ (function () {
                                             order_date: date + month + year,
                                             restaurant_name: String(res.restaurant_name),
                                             order_price: parseInt(String(this.orderService.order[i].order_price)),
-                                            benefits: this.deliveryService.GetBenefits(parseInt(String(this.orderService.order[i].order_price)), 20)
+                                            benefits: parseInt(String(this.deliveryService.GetBenefits(parseInt(String(this.orderService.order[i].order_price)), 20)))
                                         };
                                         if (!Array.isArray(ObjList)) return [3 /*break*/, 2];
                                         return [4 /*yield*/, ObjList.push(Obj)];
