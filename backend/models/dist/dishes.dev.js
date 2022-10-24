@@ -18,6 +18,7 @@ var Dishes = mongoose.model('Dishes', {
   dishes_price: {
     type: Number
   },
+  // dishes_img: { type: String },
   id_restaurant: {
     type: String
   }
