@@ -39,7 +39,7 @@ export class DishesComponent implements OnInit {
 
   addToCart(dishes: Dishes) {
     this.cartService.addToCart(dishes);
-    window.alert(dishes.dishes_name + ' ajouté dans le panier!');
+    // window.alert(dishes.dishes_name + ' ajouté dans le panier!');
 
     //Refresh page in order to add dishes in order-line-components
     this.sub = this._Activatedroute.paramMap.subscribe((params) => {

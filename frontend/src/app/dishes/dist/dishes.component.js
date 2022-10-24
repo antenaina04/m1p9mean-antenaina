@@ -26,7 +26,7 @@ var DishesComponent = /** @class */ (function () {
     DishesComponent.prototype.addToCart = function (dishes) {
         var _this = this;
         this.cartService.addToCart(dishes);
-        window.alert(dishes.dishes_name + ' ajouté dans le panier!');
+        // window.alert(dishes.dishes_name + ' ajouté dans le panier!');
         //Refresh page in order to add dishes in order-line-components
         this.sub = this._Activatedroute.paramMap.subscribe(function (params) {
             var url = 'dishes/restaurant/' + (params === null || params === void 0 ? void 0 : params.get('id_restaurant'));
