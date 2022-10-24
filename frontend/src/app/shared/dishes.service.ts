@@ -13,8 +13,8 @@ export class DishesService {
   selectedRestaurant: Restaurant = new Restaurant();
   dishes: Dishes[] = [];
   id_restaurant: any;
-  readonly baseURL: 'http://localhost:3000/dishes' =
-    'http://localhost:3000/dishes';
+  readonly baseURL: 'https://m1p9mean-antenaina-backend.herokuapp.com/dishes' =
+    'https://m1p9mean-antenaina-backend.herokuapp.com/dishes';
 
   constructor(private http: HttpClient) {}
 

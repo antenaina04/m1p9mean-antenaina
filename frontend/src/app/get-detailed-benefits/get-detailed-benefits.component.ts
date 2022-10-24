@@ -9,7 +9,7 @@ import { Restaurant } from '../shared/restaurant.model';
 @Component({
   selector: 'app-get-detailed-benefits',
   templateUrl: './get-detailed-benefits.component.html',
-  styleUrls: ['./get-detailed-benefits.component.css'],
+  // styleUrls: ['./get-detailed-benefits.component.css'],
 })
 export class GetDetailedBenefitsComponent implements OnInit {
   constructor(

@@ -14,7 +14,7 @@ var OrderDetailsService = /** @class */ (function () {
         this.http = http;
         this.selectedOrderDetails = new order_details_model_1.OrderDetails();
         this.orderDetails = [];
-        this.baseURL = 'http://localhost:3000/orderDetails';
+        this.baseURL = 'https://m1p9mean-antenaina-backend.herokuapp.com/orderDetails';
     }
     OrderDetailsService.prototype.getOrderDetailsByIdOrder = function (id_order) {
         return this.http.get(this.baseURL + "/order/" + id_order);

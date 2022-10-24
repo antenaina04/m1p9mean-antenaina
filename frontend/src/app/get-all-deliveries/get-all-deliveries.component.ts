@@ -10,7 +10,7 @@ import { Order } from '../shared/order.model';
 @Component({
   selector: 'app-get-all-deliveries',
   templateUrl: './get-all-deliveries.component.html',
-  styleUrls: ['./get-all-deliveries.component.css'],
+  // styleUrls: ['./get-all-deliveries.component.css'],
 })
 export class GetAllDeliveriesComponent implements OnInit {
   IdDeliverer = localStorage.getItem('IdDeliverer');

@@ -13,7 +13,7 @@ let dishes_price: string;
 @Component({
   selector: 'app-insert-dishes',
   templateUrl: './insert-dishes.component.html',
-  styleUrls: ['./insert-dishes.component.css'],
+  // styleUrls: ['./insert-dishes.component.css'],
 })
 export class InsertDishesComponent implements OnInit {
   IdRestaurant = localStorage.getItem('IdRestaurant');

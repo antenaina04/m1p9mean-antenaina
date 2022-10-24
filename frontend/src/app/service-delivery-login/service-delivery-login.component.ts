@@ -7,7 +7,7 @@ import { Deliverer } from '../shared/deliverer.model';
 @Component({
   selector: 'app-service-delivery-login',
   templateUrl: './service-delivery-login.component.html',
-  styleUrls: ['./service-delivery-login.component.css'],
+  // styleUrls: ['./service-delivery-login.component.css'],
 })
 export class ServiceDeliveryLoginComponent implements OnInit {
   loginError: any;

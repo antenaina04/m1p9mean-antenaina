@@ -22,7 +22,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-get-order-by-id-order-admin',
   templateUrl: './get-order-by-id-order-admin.component.html',
-  styleUrls: ['./get-order-by-id-order-admin.component.css'],
+  // styleUrls: ['./get-order-by-id-order-admin.component.css'],
 })
 export class GetOrderByIdOrderAdminComponent implements OnInit {
   constructor(

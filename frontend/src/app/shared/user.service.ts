@@ -15,8 +15,8 @@ export class UserService {
   email: any;
   password: any;
 
-  readonly baseURL: 'http://localhost:3000/users' =
-    'http://localhost:3000/users';
+  readonly baseURL: 'https://m1p9mean-antenaina-backend.herokuapp.com/users' =
+    'https://m1p9mean-antenaina-backend.herokuapp.com/users';
 
   constructor(private http: HttpClient) {}
 

@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-restaurant-admin-menu',
   templateUrl: './restaurant-admin-menu.component.html',
-  styleUrls: ['./restaurant-admin-menu.component.css'],
+  // styleUrls: ['./restaurant-admin-menu.component.css'],
 })
 export class RestaurantAdminMenuComponent implements OnInit {
   IdRestaurant = localStorage.getItem('IdRestaurant');

@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-login-ekaly',
   templateUrl: './login-ekaly.component.html',
-  styleUrls: ['./login-ekaly.component.css'],
+  // styleUrls: ['./login-ekaly.component.css'],
 })
 export class LoginEkalyComponent implements OnInit {
 

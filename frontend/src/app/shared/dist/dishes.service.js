@@ -16,7 +16,7 @@ var DishesService = /** @class */ (function () {
         this.selectedDishes = new dishes_model_1.Dishes();
         this.selectedRestaurant = new restaurant_model_1.Restaurant();
         this.dishes = [];
-        this.baseURL = 'http://localhost:3000/dishes';
+        this.baseURL = 'https://m1p9mean-antenaina-backend.herokuapp.com/dishes';
     }
     DishesService.prototype.postDishes = function (dishes) {
         return this.http.post(this.baseURL, dishes);

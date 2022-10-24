@@ -13,7 +13,7 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-preview',
   templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.css'],
+  // styleUrls: ['./preview.component.css'],
 })
 export class PreviewComponent implements OnInit {
   Username = localStorage.getItem('Username');

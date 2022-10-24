@@ -8,7 +8,7 @@ import { Deliverer } from '../shared/deliverer.model';
 @Component({
   selector: 'app-insert-deliverer',
   templateUrl: './insert-deliverer.component.html',
-  styleUrls: ['./insert-deliverer.component.css']
+  // styleUrls: ['./insert-deliverer.component.css']
 })
 export class InsertDelivererComponent implements OnInit {
 

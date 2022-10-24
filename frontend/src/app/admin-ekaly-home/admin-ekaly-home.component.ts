@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-admin-ekaly-home',
   templateUrl: './admin-ekaly-home.component.html',
-  styleUrls: ['./admin-ekaly-home.component.css']
+  // styleUrls: ['./admin-ekaly-home.component.css']
 })
 export class AdminEkalyHomeComponent implements OnInit {
 

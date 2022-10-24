@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-order-page',
   templateUrl: './order-page.component.html',
-  styleUrls: ['./order-page.component.css'],
+  // styleUrls: ['./order-page.component.css'],
 })
 export class OrderPageComponent implements OnInit {
   // items = this.cartService.getItems();

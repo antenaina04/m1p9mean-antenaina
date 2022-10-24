@@ -22,7 +22,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-get-delivery-by-id-delivery-admin',
   templateUrl: './get-delivery-by-id-delivery-admin.component.html',
-  styleUrls: ['./get-delivery-by-id-delivery-admin.component.css'],
+  // styleUrls: ['./get-delivery-by-id-delivery-admin.component.css'],
 })
 export class GetDeliveryByIdDeliveryAdminComponent implements OnInit {
   IdDeliverer = localStorage.getItem('IdDeliverer');

@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-get-all-orders-by-restaurant',
   templateUrl: './get-all-orders-by-restaurant.component.html',
-  styleUrls: ['./get-all-orders-by-restaurant.component.css'],
+  // styleUrls: ['./get-all-orders-by-restaurant.component.css'],
 })
 export class GetAllOrdersByRestaurantComponent implements OnInit {
   IdRestaurant = localStorage.getItem('IdRestaurant');

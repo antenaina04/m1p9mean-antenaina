@@ -8,7 +8,7 @@ import { Restaurant } from '../shared/restaurant.model';
 @Component({
   selector: 'app-insert-restaurant',
   templateUrl: './insert-restaurant.component.html',
-  styleUrls: ['./insert-restaurant.component.css'],
+  // styleUrls: ['./insert-restaurant.component.css'],
 })
 export class InsertRestaurantComponent implements OnInit {
   constructor(

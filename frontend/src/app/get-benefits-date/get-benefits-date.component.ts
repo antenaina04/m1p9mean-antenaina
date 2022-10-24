@@ -9,7 +9,7 @@ import { Restaurant } from '../shared/restaurant.model';
 @Component({
   selector: 'app-get-benefits-date',
   templateUrl: './get-benefits-date.component.html',
-  styleUrls: ['./get-benefits-date.component.css'],
+  // styleUrls: ['./get-benefits-date.component.css'],
 })
 export class GetBenefitsDateComponent implements OnInit {
   constructor(

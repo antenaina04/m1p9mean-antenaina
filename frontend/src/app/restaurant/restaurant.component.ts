@@ -12,7 +12,7 @@ let restaurant_logo: string;
 @Component({
   selector: 'app-restaurant',
   templateUrl: './restaurant.component.html',
-  styleUrls: ['./restaurant.component.css'],
+  // styleUrls: ['./restaurant.component.css'],
   providers: [RestaurantService],
 })
 export class RestaurantComponent implements OnInit {

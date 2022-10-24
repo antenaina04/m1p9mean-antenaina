@@ -21,7 +21,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-get-order-by-user',
   templateUrl: './get-order-by-user.component.html',
-  styleUrls: ['./get-order-by-user.component.css']
+  // styleUrls: ['./get-order-by-user.component.css']
 })
 export class GetOrderByUserComponent implements OnInit {
 

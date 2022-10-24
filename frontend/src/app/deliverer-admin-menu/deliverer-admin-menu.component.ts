@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-deliverer-admin-menu',
   templateUrl: './deliverer-admin-menu.component.html',
-  styleUrls: ['./deliverer-admin-menu.component.css']
+  // styleUrls: ['./deliverer-admin-menu.component.css']
 })
 export class DelivererAdminMenuComponent implements OnInit {
   IdDeliverer = localStorage.getItem('IdDeliverer');

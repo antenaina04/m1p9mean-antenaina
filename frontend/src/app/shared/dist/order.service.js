@@ -15,7 +15,7 @@ var OrderService = /** @class */ (function () {
         this.selectedOrder = new order_model_1.Order();
         // selectedRestaurant: Restaurant = new Restaurant();
         this.order = [];
-        this.baseURL = 'http://localhost:3000/orders';
+        this.baseURL = 'https://m1p9mean-antenaina-backend.herokuapp.com/orders';
     }
     OrderService.prototype.postOrder = function (order) {
         return this.http.post(this.baseURL, order);

@@ -14,7 +14,7 @@ var RestaurantService = /** @class */ (function () {
         this.http = http;
         this.selectedRestaurant = new restaurant_model_1.Restaurant();
         this.restaurants = [];
-        this.baseURL = 'http://localhost:3000/restaurants';
+        this.baseURL = 'https://m1p9mean-antenaina-backend.herokuapp.com/restaurants';
     }
     RestaurantService.prototype.postRestaurant = function (restaurant) {
         return this.http.post(this.baseURL, restaurant);
