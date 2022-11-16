@@ -19,20 +19,20 @@
       </div>
       <div class="col-7">
         <div class="form-group">
-          <label for="inputName">Nom</label>
-          <input type="text" id="inputName" class="form-control">
+          <label for="inputName">E-mail de l'expediteur : </label>
+          <input type="text" [(ngModel)]="mailServiceService.selectedMail.sender" class="form-control">
         </div>
         <div class="form-group">
-          <label for="inputEmail">E-Mail</label>
-          <input type="email" id="inputEmail" class="form-control">
+          <label for="inputEmail">E-mail du destinataire : </label>
+          <input type="email" [(ngModel)]="mailServiceService.selectedMail.recipient" class="form-control">
         </div>
         <div class="form-group">
-          <label for="inputSubject">Objet</label>
-          <input type="text" id="inputSubject" class="form-control">
+          <label for="inputSubject">Objet : </label>
+          <input type="text" [(ngModel)]="mailServiceService.selectedMail.subject" class="form-control">
         </div>
         <div class="form-group">
-          <label for="inputMessage">Votre message</label>
-          <textarea id="inputMessage" class="form-control" rows="4"></textarea>
+          <label for="inputMessage">Votre message : </label>
+          <textarea class="form-control" [(ngModel)]="mailServiceService.selectedMail.text" rows="4"></textarea>
         </div>
         <div class="form-group">
           <input type="submit" class="btn btn-success" value="Envoyer le message">

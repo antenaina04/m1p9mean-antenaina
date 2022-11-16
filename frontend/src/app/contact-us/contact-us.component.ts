@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { from } from 'rxjs';
+import { MailServiceService } from '../shared/mail-service.service';
+import { Mail } from '../shared/mail.model';
 
 @Component({
   selector: 'app-contact-us',
@@ -7,7 +12,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router,
+    private _Activatedroute: ActivatedRoute,
+    public mailServiceService: MailServiceService) { }
 
   ngOnInit(): void {
   }
