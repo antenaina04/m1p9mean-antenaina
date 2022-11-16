@@ -14,7 +14,7 @@ var DelivererService = /** @class */ (function () {
         this.http = http;
         this.selectedDeliverer = new deliverer_model_1.Deliverer();
         this.deliverers = [];
-        this.baseURL = 'https://m1p9mean-antenaina-backend.herokuapp.com/deliverers';
+        this.baseURL = 'http://localhost:3000/deliverers';
     }
     DelivererService.prototype.postDeliverer = function (deliverer) {
         return this.http.post(this.baseURL, deliverer);

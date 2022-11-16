@@ -13,8 +13,8 @@ export class DelivererService {
   email: any;
   password: any;
 
-  readonly baseURL: 'https://m1p9mean-antenaina-backend.herokuapp.com/deliverers' =
-    'https://m1p9mean-antenaina-backend.herokuapp.com/deliverers';
+  readonly baseURL: 'http://localhost:3000/deliverers' =
+    'http://localhost:3000/deliverers';
 
 
   constructor(private http: HttpClient) { }

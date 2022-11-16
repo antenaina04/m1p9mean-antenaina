@@ -14,7 +14,7 @@ var ProfileService = /** @class */ (function () {
         this.http = http;
         this.selectedProfile = new profile_model_1.Profile();
         this.profiles = [];
-        this.baseURL = 'https://m1p9mean-antenaina-backend.herokuapp.com/profiles';
+        this.baseURL = 'http://localhost:3000/profiles';
     }
     ProfileService.prototype.postProfile = function (profile) {
         return this.http.post(this.baseURL, profile);

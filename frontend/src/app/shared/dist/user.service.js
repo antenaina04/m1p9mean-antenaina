@@ -16,7 +16,7 @@ var UserService = /** @class */ (function () {
         this.http = http;
         this.selectedUser = new user_model_1.User();
         this.users = [];
-        this.baseURL = 'https://m1p9mean-antenaina-backend.herokuapp.com/users';
+        this.baseURL = 'http://localhost:3000/users';
     }
     UserService.prototype.postUser = function (user) {
         return this.http.post(this.baseURL, user);

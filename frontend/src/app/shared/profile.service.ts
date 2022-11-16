@@ -10,8 +10,8 @@ import { Profile } from './profile.model';
 export class ProfileService {
   selectedProfile: Profile = new Profile();
   profiles: Profile[] = [];
-  readonly baseURL: 'https://m1p9mean-antenaina-backend.herokuapp.com/profiles' =
-    'https://m1p9mean-antenaina-backend.herokuapp.com/profiles';
+  readonly baseURL: 'http://localhost:3000/profiles' =
+    'http://localhost:3000/profiles';
 
   constructor(private http: HttpClient) {}
 

@@ -9,8 +9,8 @@ import { Delivery } from './delivery.model';
 export class DeliveryService {
   selectedDelivery: Delivery = new Delivery();
   delivery: Delivery[] = [];
-  readonly baseURL: 'https://m1p9mean-antenaina-backend.herokuapp.com/delivery' =
-    'https://m1p9mean-antenaina-backend.herokuapp.com/delivery';
+  readonly baseURL: 'http://localhost:3000/delivery' =
+    'http://localhost:3000/delivery';
   constructor(private http: HttpClient) {}
 
   postDelivery(delivery: Delivery) {

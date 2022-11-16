@@ -10,8 +10,8 @@ import { Restaurant } from './restaurant.model';
 export class RestaurantService {
   selectedRestaurant: Restaurant = new Restaurant();
   restaurants: Restaurant[] = [];
-  readonly baseURL: 'https://m1p9mean-antenaina-backend.herokuapp.com/restaurants' =
-    'https://m1p9mean-antenaina-backend.herokuapp.com/restaurants';
+  readonly baseURL: 'http://localhost:3000/restaurants' =
+    'http://localhost:3000/restaurants';
 
   constructor(private http: HttpClient) {}
 

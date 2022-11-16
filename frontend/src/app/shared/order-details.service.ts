@@ -11,8 +11,8 @@ export class OrderDetailsService {
   selectedOrderDetails: OrderDetails = new OrderDetails();
   orderDetails: OrderDetails[] = [];
   
-  readonly baseURL: 'https://m1p9mean-antenaina-backend.herokuapp.com/orderDetails' =
-    'https://m1p9mean-antenaina-backend.herokuapp.com/orderDetails';
+  readonly baseURL: 'http://localhost:3000/orderDetails' =
+    'http://localhost:3000/orderDetails';
 
   constructor(private http: HttpClient) {}
 
